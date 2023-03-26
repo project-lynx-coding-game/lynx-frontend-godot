@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d22dw8hqcka7o"]
+
+[ext_resource type="PackedScene" uid="uid://bttilk1setp4s" path="res://ui.tscn" id="1_sys4y"]
+
+[node name="Scene" type="Node2D"]
+
+[node name="UI" parent="." instance=ExtResource("1_sys4y")]
