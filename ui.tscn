@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bttilk1setp4s"]
+[gd_scene load_steps=4 format=3 uid="uid://bttilk1setp4s"]
 
 [ext_resource type="Script" path="res://ui/CodeEditor.gd" id="1_gixgk"]
+[ext_resource type="Script" path="res://ui/CodeManager.gd" id="2_bquhy"]
 
 [sub_resource type="CodeHighlighter" id="CodeHighlighter_2lklk"]
 
@@ -25,3 +26,25 @@ syntax_highlighter = SubResource("CodeHighlighter_2lklk")
 auto_brace_completion_enabled = true
 auto_brace_completion_highlight_matching = true
 script = ExtResource("1_gixgk")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -168.0
+offset_top = -56.5
+offset_bottom = -0.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "Send"
+
+[node name="CodeManager" type="Node" parent="."]
+script = ExtResource("2_bquhy")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="CodeManager"]
+use_threads = true
+
+[connection signal="button_up" from="Button" to="CodeManager" method="_on_button_button_up"]
