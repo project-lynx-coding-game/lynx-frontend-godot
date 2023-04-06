@@ -8,5 +8,6 @@ func _process(delta):
 	# var error = http_request.request(tick_endpoint_url, ["Content-Type: application/json"], HTTPClient.METHOD_POST)
 	# if error != OK:
 	# 	push_error("An error occurred in the HTTP request.")
-	if code != "":
-		print(code)
+#	if code != "":
+#		print(code)
+	pass

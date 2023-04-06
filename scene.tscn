@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://d22dw8hqcka7o"]
 
-[ext_resource type="Script" path="res://scene/WorldUpdater.gd" id="1_sn32c"]
+[ext_resource type="PackedScene" uid="uid://ys4yp7v30m3k" path="res://scene/world_updater.tscn" id="1_0bk4q"]
 [ext_resource type="PackedScene" uid="uid://bttilk1setp4s" path="res://ui.tscn" id="1_sys4y"]
 [ext_resource type="Texture2D" uid="uid://bn7lns6kcjjha" path="res://assets/NinjaAdventure/Backgrounds/Tilesets/TilesetFloor.png" id="2_m0xfg"]
 
@@ -470,10 +470,8 @@ sources/0 = SubResource("TileSetAtlasSource_71a80")
 
 [node name="Scene" type="Node2D"]
 
-[node name="WorldUpdater" type="Node" parent="."]
-script = ExtResource("1_sn32c")
-
-[node name="HTTPRequest" type="HTTPRequest" parent="WorldUpdater"]
+[node name="WorldUpdater" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("1_0bk4q")]
+tilemap = NodePath("../TileMap")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_xw6tb")
