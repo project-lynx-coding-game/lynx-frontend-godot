@@ -6,9 +6,6 @@ extends Node
 
 #@onready var add_object_endpoint_url = "http://0.0.0.0:8555/add_object"
 
-func _ready():
-	pass
-
 #func create_agent(code):
 #	var new_agent = agent_scene.instantiate()
 #	new_agent.code = code
