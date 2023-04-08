@@ -1,6 +1,6 @@
 extends Node
 
-@onready var tilemap = get_parent().get_parent().tilemap
+@onready var tilemap = get_node("/root/Scene/WorldUpdater").tilemap
 
 func apply_deltas(deltas_data):
 	# each object has its ID, we put in in node name
