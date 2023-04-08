@@ -4,7 +4,7 @@ extends Node
 
 #@onready var agent_scene = preload("res://objects/agent.tscn")
 
-#@onready var add_object_endpoint_url = "http://0.0.0.0:8555/add_object"
+#@onready var add_object_endpoint_url = "http://127.0.0.1:8555/add_object"
 
 #func create_agent(code):
 #	var new_agent = agent_scene.instantiate()

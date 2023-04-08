@@ -1,6 +1,6 @@
 extends Node
 
-@export var get_state_endpoint_url = "http://0.0.0.0:8555/"
+@export var get_state_endpoint_url = "http://127.0.0.1:8555/"
 
 @onready var get_state_http_request = get_node("GetStateHTTPRequest")
 @onready var scene_recreator = get_node("SceneRecreator")
@@ -20,8 +20,9 @@ func _on_get_state_http_request_request_completed(_result, response_code, _heade
 	if response_code == 200:
 		json.parse(body.get_string_from_utf8())
 		var response = json.get_data()
-		if response.scene:
-			scene_recreator.recreate_scene(response.scene) # we have outdated scene, recreate everything
+		print(response)
+		if "scene" in response.keys():
+			scene_recreator.recreate_scene(response["scene"]) # we have outdated scene, recreate everything
 		else:
-			deltas_applier.apply_deltas(response.deltas) # just do deltas
-		current_tick_hash = response.tick_number
+			deltas_applier.apply_deltas(response["deltas"]) # just do deltas
+		current_tick_hash = response["tick_number"]

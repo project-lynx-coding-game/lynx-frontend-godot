@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var tick_endpoint_url = "http://0.0.0.0:8555/tick"
+@onready var tick_endpoint_url = "http://127.0.0.1:8555/tick"
 @export var code = ""
 
 func _process(delta):

@@ -1,6 +1,6 @@
 extends Node
 
-@export var post_tick_endpoint_url = "http://0.0.0.0:8555/tick"
+@export var post_tick_endpoint_url = "http://127.0.0.1:8555/tick"
 
 @onready var post_tick_http_request = get_node("PostTickHTTPRequest")
 
