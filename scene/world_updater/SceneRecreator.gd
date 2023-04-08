@@ -1,11 +1,18 @@
 extends Node
 
-@onready var tilemap = get_parent().get_parent().tilemap
+@onready var scene = get_parent().get_parent()
+@onready var tilemap = scene.tilemap
+
+# we do not need actions when recreating a scene
+# only objects in following dictionary will be recreated
+@onready var objects = [{"Agent": preload("res://objects/agent.tscn")}]
 
 func recreate_scene(scene_data):
-	# recreates scene
-	# first we get tiles and do pass through them, setting them on respective positions on tilemap using set_cell()
-	# maybe separate node tilemap recreator?
-	# second we iterate through all entities and objects and match them to respective nodes (packed into .tscn), then we instantiate them on correct positions
-	# maybe separate nodes? object mapper? 
-	pass
+	for entity_data in scene_data["entities"]:
+		if entity_data["type"] in objects.keys():
+			recreate_object(entity_data)
+
+func recreate_object(object_data):
+	var new_object = call(objects[object_data["type"]] + ".instantiate()")
+	new_object.from_json(object_data["attributes"])
+	scene.add_child(new_object)
