@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://owxwp5jpp265"]
+[gd_scene load_steps=3 format=3 uid="uid://bfodcq8n12mha"]
 
-[ext_resource type="Script" path="res://entities/objects/object/Object.gd" id="1_pi7li"]
+[ext_resource type="PackedScene" uid="uid://dfjsyv1l8e17s" path="res://entities/entity.tscn" id="1_7norg"]
+[ext_resource type="Script" path="res://entities/objects/object/Object.gd" id="2_1j2w0"]
 
-[node name="object" type="Node2D"]
-script = ExtResource("1_pi7li")
+[node name="Object" instance=ExtResource("1_7norg")]
+script = ExtResource("2_1j2w0")
+_position = Vector2(0, 0)
+_id = 0
+_owner = null

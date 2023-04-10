@@ -1,10 +1,11 @@
-extends Node2D
+extends "res://entities/entity/Entity.gd"
 
-@export var attributes = {
-	"position": {"x": int(), "y": int()},
-	"id": randi(),
-	"owner": str()
-}
+@export var _position = Vector2()
+@export var _id = int()
+@export var _owner = str()
 
-func construct():
-	self.position = Vector2(attributes["position"]["x"] * 100, attributes["position"]["y"] * 100)
+func _init():
+	self.accepted_attributes = ["position", "id", "owner"]
+
+func post_populate():
+	self.position = self._position
