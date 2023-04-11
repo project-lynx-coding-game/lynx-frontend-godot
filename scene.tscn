@@ -480,4 +480,8 @@ tile_set = SubResource("TileSet_xw6tb")
 format = 2
 script = ExtResource("3_cqne8")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(160, 90)
+zoom = Vector2(4, 4)
+
 [node name="UI" parent="." instance=ExtResource("1_sys4y")]

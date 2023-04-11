@@ -3,6 +3,7 @@ extends Node
 @onready var entity_deserializer = get_node("../EntityDeserializer")
 
 @onready var objects_container = get_owner().objects_container
+@onready var tilemap: TileMap = get_owner().tilemap
 
 func recreate_scene(scene_json):
 	for entity_json in scene_json["entities"]:
@@ -18,3 +19,8 @@ func recreate_scene(scene_json):
 			continue
 		
 		objects_container.add_child(entity)
+		
+		# set position snapped to tilemap
+		# TODO decide where it should be and whether we need post_populate position
+		entity.position = entity.position.snapped(tilemap.tile_set.tile_size)
+		entity.position += Vector2(tilemap.tile_set.tile_size/2)
