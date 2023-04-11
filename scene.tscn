@@ -484,4 +484,6 @@ script = ExtResource("3_cqne8")
 position = Vector2(160, 90)
 zoom = Vector2(4, 4)
 
-[node name="UI" parent="." instance=ExtResource("1_sys4y")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("1_sys4y")]
