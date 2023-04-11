@@ -1,6 +1,6 @@
 extends Node
 
-@onready var tilemap: TileMap = get_parent().get_parent().get_parent().tilemap
+@onready var tilemap: TileMap = get_owner().tilemap
 
 func set_tile(name: String, position: Vector2i):
 	if not tilemap.tiles.has(name):

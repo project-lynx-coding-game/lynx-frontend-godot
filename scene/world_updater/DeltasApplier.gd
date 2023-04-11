@@ -1,8 +1,8 @@
 extends Node
 
-@onready var entity_deserializer = get_node("/root/Scene/WorldUpdater/StateGetter/EntityDeserializer")
+@onready var entity_deserializer = get_node("../EntityDeserializer")
 
-@onready var tilemap = get_node("/root/Scene/WorldUpdater").tilemap
+@onready var tilemap = get_owner().tilemap
 
 func apply_deltas(deltas_json):
 	for delta_json in deltas_json:
