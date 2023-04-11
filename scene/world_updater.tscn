@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ys4yp7v30m3k"]
+[gd_scene load_steps=9 format=3 uid="uid://ys4yp7v30m3k"]
 
 [ext_resource type="Script" path="res://scene/world_updater/WorldUpdater.gd" id="1_kjpk4"]
 [ext_resource type="Script" path="res://scene/world_updater/StateGetter.gd" id="2_bi80l"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scene/world_updater/SceneRecreator.gd" id="4_ep45b"]
 [ext_resource type="PackedScene" uid="uid://8erhc5r3ryln" path="res://scene/world_updater/entity_deserializer.tscn" id="4_ho1sd"]
 [ext_resource type="Script" path="res://scene/world_updater/DeltasApplier.gd" id="5_iqoum"]
+[ext_resource type="Script" path="res://scene/world_updater/TileSetter.gd" id="5_u74nd"]
 [ext_resource type="Script" path="res://scene/world_updater/AgentPoster.gd" id="6_vxnq6"]
 
 [node name="WorldUpdater" type="Node"]
@@ -25,10 +26,14 @@ autostart = true
 [node name="SceneRecreator" type="Node" parent="StateGetter"]
 script = ExtResource("4_ep45b")
 
+[node name="EntityDeserializer" parent="StateGetter/SceneRecreator" node_paths=PackedStringArray("tile_setter") instance=ExtResource("4_ho1sd")]
+tile_setter = NodePath("../TileSetter")
+
+[node name="TileSetter" type="Node" parent="StateGetter/SceneRecreator"]
+script = ExtResource("5_u74nd")
+
 [node name="DeltasApplier" type="Node" parent="StateGetter"]
 script = ExtResource("5_iqoum")
-
-[node name="EntityDeserializer" parent="StateGetter" instance=ExtResource("4_ho1sd")]
 
 [node name="Ticker" type="Node" parent="."]
 script = ExtResource("3_xkju4")

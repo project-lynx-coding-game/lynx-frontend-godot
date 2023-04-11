@@ -1,5 +1,7 @@
 extends Node
 
+@export var tile_setter: Node
+
 @onready var entity_mapper = get_node("EntityMapper")
 var json = JSON.new()
 
@@ -18,6 +20,11 @@ func deserialize(entity_json: Dictionary):
 	if not attributes.has("name"):
 		print("[ERROR] No Entity name attribute when deserializing")
 		return null
+	
+	# it is walkable, so we set tilemap
+	if attributes.walkable:
+		tile_setter.set_tile(attributes.name, Vector2i(attributes.position[0], attributes.position[1]))
+		return null # TODO change the logic so that we can decouple deserialization and instatiation of entities, and we can handle tiles
 	
 	# map entity name to packed tscn
 	var entity = entity_mapper.map_entity_type_to_node(attributes.get("name"))
