@@ -5,8 +5,7 @@ var accepted_attributes = []
 # update when a new entity is added
 static func get_available_entity_types():
 	return {
-		"Agent": load("res://entities/agent.tscn"),
-		"Move": load("res://entities/move.tscn")
+		"Agent": load("res://entities/objects/agent.tscn")
 	}
 
 # WIP

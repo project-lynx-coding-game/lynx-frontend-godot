@@ -9,5 +9,8 @@ func recreate_scene(scene_json):
 		recreate_object(entity_json)
 
 func recreate_object(object_json):
-	var object = entity.deserialize(object_json)
-	scene.add_child(object)
+	# TODO: remove "instantiate()"
+	# deserialize should be able to get called without an instantiated scene 
+	var object = entity.instantiate().deserialize(object_json)
+	if object:
+		scene.add_child(object)

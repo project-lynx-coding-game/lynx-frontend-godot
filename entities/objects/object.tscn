@@ -5,6 +5,3 @@
 
 [node name="Object" instance=ExtResource("1_7norg")]
 script = ExtResource("2_1j2w0")
-_position = Vector2(0, 0)
-_id = 0
-_owner = null
