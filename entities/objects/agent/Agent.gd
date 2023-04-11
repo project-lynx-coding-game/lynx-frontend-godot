@@ -1,6 +1,6 @@
 extends "res://entities/objects/object/Object.gd"
 
-@export var _code = str()
+var _code = str()
 
 func _init():
 	self.accepted_attributes = ["position", "id", "owner", "code"]

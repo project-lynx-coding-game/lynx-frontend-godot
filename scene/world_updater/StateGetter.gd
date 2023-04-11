@@ -1,6 +1,6 @@
 extends Node
 
-@export var get_state_endpoint_url = "http://127.0.0.1:8555/"
+var get_state_endpoint_url = "http://127.0.0.1:8555/"
 
 @onready var get_state_http_request = get_node("GetStateHTTPRequest")
 @onready var scene_recreator = get_node("SceneRecreator")

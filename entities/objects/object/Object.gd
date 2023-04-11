@@ -1,8 +1,8 @@
 extends "res://entities/entity/Entity.gd"
 
-@export var _position = Vector2()
-@export var _id = int()
-@export var _owner = str()
+var _position = Vector2()
+var _id = int()
+var _owner = str()
 
 func _init():
 	self.accepted_attributes = ["position", "id", "owner"]
