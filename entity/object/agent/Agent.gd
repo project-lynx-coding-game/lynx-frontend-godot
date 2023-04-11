@@ -1,6 +1,6 @@
-extends "res://entities/objects/object/Object.gd"
+extends LynxObject
 
-var _code = str()
+var _code = ""
 
 func _init():
 	self.accepted_attributes = ["position", "id", "owner", "code"]

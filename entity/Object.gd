@@ -1,8 +1,9 @@
-extends "res://entities/entity/Entity.gd"
+extends LynxEntity
+class_name LynxObject
 
 var _position = Vector2()
 var _id = int()
-var _owner = str()
+var _owner = ""
 
 func _init():
 	self.accepted_attributes = ["position", "id", "owner"]

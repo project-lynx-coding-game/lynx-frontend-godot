@@ -24,6 +24,5 @@ func _on_get_state_http_request_request_completed(_result, response_code, _heade
 			json.parse(response["scene"])
 			scene_recreator.recreate_scene(json.get_data()) # we have outdated scene, recreate everything
 		else:
-			json.parse(response["deltas"])
-			deltas_applier.apply_deltas(json.get_data()) # just do deltas
+			deltas_applier.apply_deltas(response["deltas"]) # just do deltas
 		current_tick_hash = response["tick_number"]

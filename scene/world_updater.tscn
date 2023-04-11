@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ys4yp7v30m3k"]
+[gd_scene load_steps=8 format=3 uid="uid://ys4yp7v30m3k"]
 
 [ext_resource type="Script" path="res://scene/world_updater/WorldUpdater.gd" id="1_kjpk4"]
 [ext_resource type="Script" path="res://scene/world_updater/StateGetter.gd" id="2_bi80l"]
 [ext_resource type="Script" path="res://scene/world_updater/Ticker.gd" id="3_xkju4"]
 [ext_resource type="Script" path="res://scene/world_updater/SceneRecreator.gd" id="4_ep45b"]
+[ext_resource type="PackedScene" uid="uid://8erhc5r3ryln" path="res://scene/world_updater/entity_deserializer.tscn" id="4_ho1sd"]
 [ext_resource type="Script" path="res://scene/world_updater/DeltasApplier.gd" id="5_iqoum"]
 [ext_resource type="Script" path="res://scene/world_updater/AgentPoster.gd" id="6_vxnq6"]
 
@@ -23,6 +24,8 @@ autostart = true
 
 [node name="SceneRecreator" type="Node" parent="StateGetter"]
 script = ExtResource("4_ep45b")
+
+[node name="EntityDeserializer" parent="StateGetter/SceneRecreator" instance=ExtResource("4_ho1sd")]
 
 [node name="DeltasApplier" type="Node" parent="StateGetter"]
 script = ExtResource("5_iqoum")
