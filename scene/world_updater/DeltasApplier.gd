@@ -1,8 +1,19 @@
 extends Node
 
+@onready var entity_deserializer = get_node("/root/Scene/WorldUpdater/StateGetter/EntityDeserializer")
+
 @onready var tilemap = get_node("/root/Scene/WorldUpdater").tilemap
 
-func apply_deltas(deltas_data):
-	# each object has its ID, we put in in node name
-	# then we can query each node by id and do stuff (actions)
-	pass
+func apply_deltas(deltas_json):
+	for delta_json in deltas_json:
+		var entity = entity_deserializer.deserialize(delta_json)
+		
+		if !entity:
+			print("[ERROR] Could not deserialize Entity")
+			
+# 		TODO: this could be done at beginning of the loop by checking type key value
+#		if !entity is LynxAction:
+#			print("[ERROR] Entity could not be recreated, because it is not an Action")
+
+#		TODO: apply deserialized action
+		

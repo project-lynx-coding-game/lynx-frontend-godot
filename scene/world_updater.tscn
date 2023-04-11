@@ -25,10 +25,10 @@ autostart = true
 [node name="SceneRecreator" type="Node" parent="StateGetter"]
 script = ExtResource("4_ep45b")
 
-[node name="EntityDeserializer" parent="StateGetter/SceneRecreator" instance=ExtResource("4_ho1sd")]
-
 [node name="DeltasApplier" type="Node" parent="StateGetter"]
 script = ExtResource("5_iqoum")
+
+[node name="EntityDeserializer" parent="StateGetter" instance=ExtResource("4_ho1sd")]
 
 [node name="Ticker" type="Node" parent="."]
 script = ExtResource("3_xkju4")
