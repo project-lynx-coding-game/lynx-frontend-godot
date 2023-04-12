@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bttilk1setp4s"]
+[gd_scene load_steps=5 format=3 uid="uid://b82xhixc5siru"]
 
 [ext_resource type="Script" path="res://ui/CodeEditor.gd" id="1_gixgk"]
 [ext_resource type="Script" path="res://ui/CodeManager.gd" id="2_bquhy"]
@@ -13,7 +13,7 @@ offset_top = 2.0
 offset_right = 1279.0
 offset_bottom = 723.0
 
-[node name="AccessCodeEditor" type="Button" parent="."]
+[node name="AccessAgentCreator" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -64,5 +64,5 @@ grow_horizontal = 0
 grow_vertical = 2
 text = "Create Agent"
 
-[connection signal="button_up" from="AccessCodeEditor" to="AgentCreator" method="_on_access_code_editor_button_up"]
+[connection signal="button_up" from="AccessAgentCreator" to="AgentCreator" method="_on_access_code_editor_button_up"]
 [connection signal="button_up" from="AgentCreator/CreateAgent" to="CodeManager" method="_on_button_button_up"]

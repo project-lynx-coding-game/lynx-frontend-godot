@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ys4yp7v30m3k"]
+[gd_scene load_steps=9 format=3 uid="uid://b1ele5lo5n6u1"]
 
 [ext_resource type="Script" path="res://scene/world_updater/WorldUpdater.gd" id="1_kjpk4"]
 [ext_resource type="Script" path="res://scene/world_updater/StateGetter.gd" id="2_bi80l"]
@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://8erhc5r3ryln" path="res://scene/world_updater/entity_deserializer.tscn" id="4_ho1sd"]
 [ext_resource type="Script" path="res://scene/world_updater/DeltasApplier.gd" id="5_iqoum"]
 [ext_resource type="Script" path="res://scene/world_updater/TileSetter.gd" id="5_u74nd"]
-[ext_resource type="Script" path="res://scene/world_updater/AgentPoster.gd" id="6_vxnq6"]
+[ext_resource type="Script" path="res://scene/world_updater/AgentCreator.gd" id="8_k6pu8"]
 
 [node name="WorldUpdater" type="Node"]
 script = ExtResource("1_kjpk4")
@@ -43,8 +43,10 @@ autostart = true
 
 [node name="PostTickHTTPRequest" type="HTTPRequest" parent="Ticker"]
 
-[node name="AgentPoster" type="Node" parent="."]
-script = ExtResource("6_vxnq6")
+[node name="AgentCreator" type="Node" parent="."]
+script = ExtResource("8_k6pu8")
+
+[node name="PostAgentHTTPRequest" type="HTTPRequest" parent="AgentCreator"]
 
 [connection signal="request_completed" from="StateGetter/GetStateHTTPRequest" to="StateGetter" method="_on_get_state_http_request_request_completed"]
 [connection signal="timeout" from="StateGetter/GetStateTimer" to="StateGetter" method="_on_get_state_timer_timeout"]
