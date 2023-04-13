@@ -16,10 +16,10 @@ func post_agent(new_agent):
 		if error != OK:
 			push_error("[ERROR] Could not POST Agent")
 
-func create_agent(code):
+func create_agent(code, owner = "", x = 0, y = 0):
 	var new_agent = Agent.instantiate()
-	new_agent._code = code
-	# TODO: save actual owner
-	new_agent._owner = ""
+	var attributes = {"code": code, "owner": "", "position": {"x": x, "y": y}}
+	new_agent.populate(attributes)
+	new_agent.post_populate()
 	scene.add_child(new_agent)
 	post_agent(new_agent)

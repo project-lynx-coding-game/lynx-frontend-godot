@@ -6,27 +6,28 @@ var accepted_attributes = []
 func populate(attributes_json: Dictionary):
 	for accepted_attribute in accepted_attributes:
 		if attributes_json.has(accepted_attribute):
-			var attribute = self.get("_" + accepted_attribute)
-			if attribute is Array:
-				var type = attribute.get_typed_class_name()
-				if type is int or type is float or type is bool or type is String:
+			var attribute = "_" + accepted_attribute
+			var attribute_value = self.get(attribute)
+			if attribute_value is Array:
+				var internal_type = attribute_value.get_typed_class_name()
+				if internal_type is int or internal_type is float or internal_type is bool or internal_type is String:
 					for element in attributes_json.get(accepted_attribute):
-						attribute.append(element)
-				elif type is Vector2:
+						attribute_value.append(element)
+				elif internal_type is Vector2:
 					for element in attributes_json.get(accepted_attribute):
 						var vector2 = Vector2(element.get("x"), element.get("y"))
-						attribute.append(vector2)
-				elif type.has_method("deserialize"):
+						attribute_value.append(vector2)
+				elif internal_type.has_method("deserialize"):
 					for element in attributes_json.get(accepted_attribute):
-						attribute.append(type.deserialize(element))
+						attribute_value.append(internal_type.deserialize(element))
 				else:
 					print("[ERROR] Unknown Array attribute type when populating")
-			if attribute is int or attribute is float or attribute is bool or attribute is String:
+			if attribute_value is int or attribute_value is float or attribute_value is bool or attribute_value is String:
 				self.set(attribute, attributes_json.get(accepted_attribute))
-			elif attribute is Vector2:
+			elif attribute_value is Vector2:
 				var vector2 = Vector2(attributes_json.get(accepted_attribute).get("x"), attributes_json.get(accepted_attribute).get("y"))
 				self.set(attribute, vector2)
-			elif attribute.has_method("deserialize"):
+			elif attribute_value.has_method("deserialize"):
 				self.set(attribute, attribute.deserialize(attributes_json.get(accepted_attribute)))
 			else:
 				print("[ERROR] Unknown attribute type when populating")
