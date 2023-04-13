@@ -1,17 +1,28 @@
 extends LynxObject
 
-var _code = String()
+var _tick = String()
 
-func _init():
-	self.accepted_attributes = ["position", "id", "owner", "code"]
+# payload string used specifically for POST requests to scene-host
+func to_payload_string(dict: Dictionary):
+	for key in dict.keys():
+		var value = dict.get(key)
+		if value is Dictionary:
+			dict[key] = JSON.stringify(value)
+	return JSON.stringify(dict)
 
+# TODO: move to Entity
 func serialize():
-	var serialized = {"type": "Object", "attributes": {"position": {}}}
-	serialized["attributes"]["name"] = self.get_name()
-	for accepted_attribute in self.accepted_attributes:
-		if accepted_attribute == "position":
-			serialized["attributes"]["position"]["x"] =  self.position.x
-			serialized["attributes"]["position"]["y"] =  self.position.y
-		else:
-			serialized["attributes"][accepted_attribute] = self.get("_" + accepted_attribute)
-	return serialized
+	# TODO: generate attributes json automatically, use logic similar to populate
+	var attributes_json = {
+		"type": "Object",
+		"attributes": {
+			"id" = self._id,
+			"position" = {
+				"x": self._position.x,
+				"y": self._position.y
+			},
+			"owner" = self._owner,
+			"tick" = self._tick
+		}
+	}
+	return to_payload_string(attributes_json)
