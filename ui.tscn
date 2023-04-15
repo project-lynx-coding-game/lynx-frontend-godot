@@ -56,13 +56,39 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -110.0
-offset_top = -29.0
-offset_right = -1.0
-offset_bottom = 2.0
+offset_left = -134.0
+offset_top = -62.0
+offset_bottom = -31.0
 grow_horizontal = 0
 grow_vertical = 2
 text = "Create Agent"
+
+[node name="XInput" type="LineEdit" parent="AgentCreator"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -134.063
+offset_top = -30.5
+offset_right = -67.0
+offset_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+placeholder_text = "X"
+
+[node name="YInput" type="LineEdit" parent="AgentCreator"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -67.0625
+offset_top = -30.5
+offset_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+placeholder_text = "Y"
 
 [connection signal="button_up" from="AccessAgentCreator" to="AgentCreator" method="_on_access_code_editor_button_up"]
 [connection signal="button_up" from="AgentCreator/CreateAgent" to="CodeManager" method="_on_button_button_up"]
