@@ -34,6 +34,6 @@ func deserialize(entity_json: Dictionary):
 		return null
 	
 	var entity_instance = entity.instantiate()
-	entity_instance.populate(attributes)
-	entity_instance.post_populate()
+	entity_instance._populate(attributes)
+	entity_instance._post_populate()
 	return entity_instance

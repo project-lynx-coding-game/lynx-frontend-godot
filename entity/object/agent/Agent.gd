@@ -2,6 +2,13 @@ extends LynxObject
 
 var _tick = String()
 
+func _init(_position, _id, _owner, _tick):
+	self._position = _position
+	self._id = _id
+	self._owner = _owner
+	self._tick = _tick
+	self._post_populate()
+
 # payload string used specifically for POST requests to scene-host
 func to_payload_string(dict: Dictionary):
 	for key in dict.keys():

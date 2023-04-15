@@ -1,9 +1,15 @@
 extends Node2D
 class_name LynxEntity
 
+@onready var entity_deserializer = get_node("/root/Scene/WorldUpdater/StateGetter/EntityDeserializer")
+
 var accepted_attributes = []
 
-func populate(attributes_json: Dictionary):
+func set_attribute(attribute, value):
+	self.set(attribute, value)
+	self._post_populate()
+
+func _populate(attributes_json: Dictionary):
 	for accepted_attribute in accepted_attributes:
 		if attributes_json.has(accepted_attribute):
 			var attribute = "_" + accepted_attribute
@@ -17,9 +23,9 @@ func populate(attributes_json: Dictionary):
 					for element in attributes_json.get(accepted_attribute):
 						var vector2 = Vector2(element.get("x"), element.get("y"))
 						attribute_value.append(vector2)
-				elif internal_type.has_method("deserialize"):
+				elif internal_type is LynxEntity:
 					for element in attributes_json.get(accepted_attribute):
-						attribute_value.append(internal_type.deserialize(element))
+						attribute_value.append(entity_deserializer.deserialize(element))
 				else:
 					print("[ERROR] Unknown Array attribute type when populating")
 			if attribute_value is int or attribute_value is float or attribute_value is bool or attribute_value is String:
@@ -27,8 +33,8 @@ func populate(attributes_json: Dictionary):
 			elif attribute_value is Vector2:
 				var vector2 = Vector2(attributes_json.get(accepted_attribute).get("x"), attributes_json.get(accepted_attribute).get("y"))
 				self.set(attribute, vector2)
-			elif attribute_value.has_method("deserialize"):
-				self.set(attribute, attribute.deserialize(attributes_json.get(accepted_attribute)))
+			elif attribute_value is LynxEntity:
+				self.set(attribute, entity_deserializer.deserialize(attributes_json.get(accepted_attribute)))
 			else:
 				print("[ERROR] Unknown attribute type when populating")
 

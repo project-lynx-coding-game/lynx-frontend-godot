@@ -10,10 +10,6 @@ func apply_deltas(deltas_json):
 		
 		if !entity:
 			print("[ERROR] Could not deserialize Entity")
-			
-# 		TODO: this could be done at beginning of the loop by checking type key value
-#		if !entity is LynxAction:
-#			print("[ERROR] Entity could not be recreated, because it is not an Action")
-
-#		TODO: apply deserialized action
 		
+		if entity is LynxAction:
+			get_node("../ActionQueue").add_child(entity)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1ele5lo5n6u1"]
+[gd_scene load_steps=10 format=3 uid="uid://b1ele5lo5n6u1"]
 
 [ext_resource type="Script" path="res://scene/world_updater/WorldUpdater.gd" id="1_kjpk4"]
 [ext_resource type="Script" path="res://scene/world_updater/StateGetter.gd" id="2_bi80l"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scene/world_updater/DeltasApplier.gd" id="5_iqoum"]
 [ext_resource type="Script" path="res://scene/world_updater/TileSetter.gd" id="5_u74nd"]
 [ext_resource type="Script" path="res://scene/world_updater/AgentCreator.gd" id="8_k6pu8"]
+[ext_resource type="Script" path="res://scene/world_updater/ActionQueue.gd" id="9_pp2nj"]
 
 [node name="WorldUpdater" type="Node"]
 script = ExtResource("1_kjpk4")
@@ -47,6 +48,9 @@ autostart = true
 script = ExtResource("8_k6pu8")
 
 [node name="PostAgentHTTPRequest" type="HTTPRequest" parent="AgentCreator"]
+
+[node name="ActionQueue" type="Node" parent="."]
+script = ExtResource("9_pp2nj")
 
 [connection signal="request_completed" from="StateGetter/GetStateHTTPRequest" to="StateGetter" method="_on_get_state_http_request_request_completed"]
 [connection signal="timeout" from="StateGetter/GetStateTimer" to="StateGetter" method="_on_get_state_timer_timeout"]

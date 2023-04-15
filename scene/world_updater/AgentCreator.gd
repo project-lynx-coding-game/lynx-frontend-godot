@@ -4,8 +4,9 @@ extends Node
 
 @onready var Agent = preload("res://entity/object/agent.tscn")
 
-@onready var scene = get_node("/root/Scene")
+@onready var objects_container = get_owner().objects_container
 @onready var post_agent_http_request = get_node("PostAgentHTTPRequest")
+@onready var entity_deserializer = get_owner().get_node("StateGetter/EntityDeserializer")
 
 func post_agent(new_agent):
 	var payload_json = {"serialized_object": new_agent.serialize()}
@@ -16,10 +17,8 @@ func post_agent(new_agent):
 		if error != OK:
 			push_error("[ERROR] Could not POST Agent")
 
-func create_agent(code, owner = "", x = 0, y = 0):
+func create_agent(_code, _id = randi(), _owner = "", _position = Vector2(0, 0)):
 	var new_agent = Agent.instantiate()
-	var attributes = {"tick": code, "owner": "", "position": {"x": x, "y": y}}
-	new_agent.populate(attributes)
-	new_agent.post_populate()
-	scene.add_child(new_agent)
+	new_agent._init(_position, _id, _owner, _code)
+	objects_container.add_child(new_agent)
 	post_agent(new_agent)

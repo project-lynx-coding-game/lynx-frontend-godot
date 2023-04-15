@@ -21,6 +21,6 @@ func recreate_scene(scene_json):
 		objects_container.add_child(entity)
 		
 		# set position snapped to tilemap
-		# TODO decide where it should be and whether we need post_populate position
+		# TODO decide where it should be
 		entity.position = entity.position.snapped(tilemap.tile_set.tile_size)
 		entity.position += Vector2(tilemap.tile_set.tile_size/2)
