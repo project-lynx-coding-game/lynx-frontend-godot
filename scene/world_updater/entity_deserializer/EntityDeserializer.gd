@@ -22,7 +22,7 @@ func deserialize(entity_json: Dictionary):
 		return null
 	
 	# it is walkable, so we set tilemap
-	if attributes.walkable:
+	if attributes.has("walkable") and attributes.walkable:
 		tile_setter.set_tile(attributes.name, Vector2i(attributes.position[0], attributes.position[1]))
 		return null # TODO change the logic so that we can decouple deserialization and instatiation of entities, and we can handle tiles
 	
