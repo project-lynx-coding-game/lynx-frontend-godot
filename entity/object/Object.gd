@@ -1,6 +1,8 @@
 extends LynxEntity
 class_name LynxObject
 
+var tile_size: Vector2i
+
 var _position = Vector2()
 var _id = int()
 var _owner = ""
@@ -11,4 +13,6 @@ func _init():
 func _post_populate():
 	# all objects are identified by their unique id
 	self.set_name(str(self._id))
-	# TODO: set position on a tilemap using _position
+	self.position = self._position
+	self.position = self.position.snapped(tile_size)
+	self.position += Vector2(tile_size / 2)

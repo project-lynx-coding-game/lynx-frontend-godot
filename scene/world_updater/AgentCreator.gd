@@ -5,6 +5,7 @@ extends Node
 @onready var Agent = preload("res://entity/object/agent.tscn")
 
 @onready var objects_container = get_owner().objects_container
+@onready var tilemap = get_owner().tilemap
 @onready var post_agent_http_request = get_node("PostAgentHTTPRequest")
 @onready var entity_deserializer = get_owner().get_node("StateGetter/EntityDeserializer")
 
@@ -19,6 +20,7 @@ func post_agent(new_agent):
 
 func create_agent(_code, _position = Vector2(0, 0), _id = randi(), _owner = ""):
 	var new_agent = Agent.instantiate()
+	new_agent.tile_size = tilemap.tile_set.tile_size
 	new_agent.init(_position, _id, _owner, _code)
 	objects_container.add_child(new_agent)
 	post_agent(new_agent)
