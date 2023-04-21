@@ -4,7 +4,6 @@ extends Node
 
 func apply_deltas(deltas_json):
 	for delta_json in deltas_json:
-		print(delta_json)
 		var entity = entity_deserializer.deserialize(delta_json)
 		
 		if !entity:

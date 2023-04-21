@@ -5,6 +5,7 @@ var get_state_endpoint_url = "http://127.0.0.1:8555/"
 @onready var get_state_http_request = get_node("GetStateHTTPRequest")
 @onready var scene_recreator = get_node("SceneRecreator")
 @onready var deltas_applier = get_node("DeltasApplier")
+@onready var scene_wiper = get_node("SceneWiper")
 
 var json = JSON.new()
 var current_tick_hash = -1
@@ -22,6 +23,7 @@ func _on_get_state_http_request_request_completed(_result, response_code, _heade
 		var response = json.get_data()
 		if "scene" in response.keys():
 			json.parse(response["scene"])
+			scene_wiper.wipe() # wipe the whole scene
 			scene_recreator.recreate_scene(json.get_data()) # we have outdated scene, recreate everything
 			current_tick_hash = response["tick_number"]
 		elif "deltas" in response.keys():

@@ -473,7 +473,7 @@ sources/0 = SubResource("TileSetAtlasSource_71a80")
 
 [node name="WorldUpdater" parent="." node_paths=PackedStringArray("tilemap", "objects_container") instance=ExtResource("1_0bk4q")]
 tilemap = NodePath("../TileMap")
-objects_container = NodePath("..")
+objects_container = NodePath("../ObjectsContainer")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_xw6tb")
@@ -487,3 +487,5 @@ zoom = Vector2(4, 4)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("1_sys4y")]
+
+[node name="ObjectsContainer" type="Node2D" parent="."]

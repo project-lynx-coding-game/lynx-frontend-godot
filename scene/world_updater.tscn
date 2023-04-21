@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b1ele5lo5n6u1"]
+[gd_scene load_steps=11 format=3 uid="uid://b1ele5lo5n6u1"]
 
 [ext_resource type="Script" path="res://scene/world_updater/WorldUpdater.gd" id="1_kjpk4"]
 [ext_resource type="Script" path="res://scene/world_updater/StateGetter.gd" id="2_bi80l"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://8erhc5r3ryln" path="res://scene/world_updater/entity_deserializer.tscn" id="4_ho1sd"]
 [ext_resource type="Script" path="res://scene/world_updater/DeltasApplier.gd" id="5_iqoum"]
 [ext_resource type="Script" path="res://scene/world_updater/TileSetter.gd" id="5_u74nd"]
+[ext_resource type="Script" path="res://scene/world_updater/SceneWiper.gd" id="7_dt4b1"]
 [ext_resource type="Script" path="res://scene/world_updater/AgentCreator.gd" id="8_k6pu8"]
 [ext_resource type="Script" path="res://scene/world_updater/ActionQueue.gd" id="9_pp2nj"]
 
@@ -35,6 +36,9 @@ script = ExtResource("5_iqoum")
 
 [node name="EntityDeserializer" parent="StateGetter" node_paths=PackedStringArray("tile_setter") instance=ExtResource("4_ho1sd")]
 tile_setter = NodePath("../SceneRecreator/TileSetter")
+
+[node name="SceneWiper" type="Node" parent="StateGetter"]
+script = ExtResource("7_dt4b1")
 
 [node name="Ticker" type="Node" parent="."]
 script = ExtResource("3_xkju4")
