@@ -31,7 +31,7 @@ func _populate(attributes_json: Dictionary):
 			if attribute_value is int or attribute_value is float or attribute_value is bool or attribute_value is String:
 				self.set(attribute, attributes_json.get(accepted_attribute))
 			elif attribute_value is Vector2:
-				var vector2 = Vector2(attributes_json.get(accepted_attribute).get("x"), attributes_json.get(accepted_attribute).get("y"))
+				var vector2 = Vector2(attributes_json.get(accepted_attribute)[0], attributes_json.get(accepted_attribute)[1])
 				self.set(attribute, vector2)
 			elif attribute_value is LynxEntity:
 				self.set(attribute, entity_deserializer.deserialize(attributes_json.get(accepted_attribute)))
