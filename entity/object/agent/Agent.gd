@@ -7,7 +7,6 @@ func init(_position, _id, _owner, _tick):
 	self._id = _id
 	self._owner = _owner
 	self._tick = _tick
-	self._post_populate()
 
 # payload string used specifically for POST requests to scene-host
 func to_payload_string(dict: Dictionary):
@@ -24,6 +23,7 @@ func serialize():
 		"type": "Object",
 		"attributes": {
 			"id" = self._id,
+			"name" = "Agent",
 			"position" = {
 				"x": self._position.x,
 				"y": self._position.y

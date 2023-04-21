@@ -487,5 +487,3 @@ zoom = Vector2(4, 4)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("1_sys4y")]
-
-[node name="Objects" type="Node" parent="."]

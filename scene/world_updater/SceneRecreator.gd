@@ -17,7 +17,6 @@ func recreate_scene(scene_json):
 		if !entity is LynxObject:
 			print("[ERROR] Entity could not be recreated, because it is not an Object")
 			continue
-			
-		entity.tile_size = tilemap.tile_set.tile_size
 		
 		objects_container.add_child(entity)
+		entity._post_populate()
