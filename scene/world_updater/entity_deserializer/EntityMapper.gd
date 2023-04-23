@@ -2,7 +2,8 @@ extends Node
 
 # update when a new entity is added
 var available_entity_types = {
-	"Agent": load("res://entity/object/agent.tscn")
+	"Agent": load("res://entity/object/agent.tscn"),
+	"Move" : load("res://entity/action/move.tscn")
 	}
 
 func map_entity_type_to_node(entity_type):
