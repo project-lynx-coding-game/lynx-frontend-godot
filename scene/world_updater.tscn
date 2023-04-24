@@ -56,6 +56,10 @@ script = ExtResource("8_k6pu8")
 [node name="ActionQueue" type="Node" parent="."]
 script = ExtResource("9_pp2nj")
 
+[node name="ExecuteActionTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="request_completed" from="StateGetter/GetStateHTTPRequest" to="StateGetter" method="_on_get_state_http_request_request_completed"]
 [connection signal="timeout" from="StateGetter/GetStateTimer" to="StateGetter" method="_on_get_state_timer_timeout"]
 [connection signal="timeout" from="Ticker/PostTickTimer" to="Ticker" method="_on_post_tick_timer_timeout"]
+[connection signal="timeout" from="ExecuteActionTimer" to="ActionQueue" method="_on_execute_action_timer_timeout"]

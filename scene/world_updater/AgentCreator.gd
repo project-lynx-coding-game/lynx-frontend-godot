@@ -11,7 +11,6 @@ extends Node
 func post_agent(new_agent):
 	var payload_json = {"serialized_object": new_agent.serialize()}
 	var payload_string = JSON.stringify(payload_json)
-	print(payload_json)
 	var headers = ["Content-Type: application/json"]
 	if post_agent_http_request.get_http_client_status() != HTTPClient.STATUS_CONNECTING:
 		var error = post_agent_http_request.request(add_agent_endpoint_url, headers, HTTPClient.METHOD_POST, payload_string)

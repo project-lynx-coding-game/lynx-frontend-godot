@@ -13,4 +13,4 @@ func apply_deltas(deltas_json):
 		if !entity:
 			print("[ERROR] Could not deserialize Entity")
 		if entity is LynxAction:
-			get_node("../ActionQueue").add_child(entity) # TODO add action to action queue and execute
+			get_owner().get_node("ActionQueue").add_child(entity) # TODO add action to action queue and execute
