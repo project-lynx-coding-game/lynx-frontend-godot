@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://8erhc5r3ryln"]
+
+[ext_resource type="Script" path="res://scene/world_updater/entity_deserializer/EntityDeserializer.gd" id="1_givwj"]
+[ext_resource type="Script" path="res://scene/world_updater/entity_deserializer/EntityMapper.gd" id="2_uthst"]
+
+[node name="EntityDeserializer" type="Node"]
+script = ExtResource("1_givwj")
+
+[node name="EntityMapper" type="Node" parent="."]
+script = ExtResource("2_uthst")

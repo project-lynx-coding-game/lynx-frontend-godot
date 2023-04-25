@@ -1,23 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://bttilk1setp4s"]
+[gd_scene load_steps=5 format=3 uid="uid://b82xhixc5siru"]
 
 [ext_resource type="Script" path="res://ui/CodeEditor.gd" id="1_gixgk"]
 [ext_resource type="Script" path="res://ui/CodeManager.gd" id="2_bquhy"]
+[ext_resource type="Script" path="res://ui/AgentCreator.gd" id="3_kmffy"]
 
 [sub_resource type="CodeHighlighter" id="CodeHighlighter_2lklk"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+offset_top = 2.0
 offset_right = 1279.0
-offset_bottom = 721.0
+offset_bottom = 723.0
 
-[node name="CodeEditor" type="CodeEdit" parent="."]
+[node name="AccessAgentCreator" type="Button" parent="."]
 layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -161.0
+offset_top = -2.0
+offset_right = 1.0
+offset_bottom = 29.0
+grow_horizontal = 0
+text = "Open/Close Agent Creator"
+
+[node name="CodeManager" type="Node" parent="."]
+script = ExtResource("2_bquhy")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="CodeManager"]
+use_threads = true
+
+[node name="AgentCreator" type="Node" parent="."]
+script = ExtResource("3_kmffy")
+
+[node name="CodeEditor" type="CodeEdit" parent="AgentCreator"]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -362.0
+offset_top = -359.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 0
 highlight_current_line = true
@@ -27,24 +50,45 @@ auto_brace_completion_enabled = true
 auto_brace_completion_highlight_matching = true
 script = ExtResource("1_gixgk")
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 1
+[node name="CreateAgent" type="Button" parent="AgentCreator"]
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -168.0
-offset_top = -56.5
-offset_bottom = -0.5
+offset_left = -134.0
+offset_top = -62.0
+offset_bottom = -31.0
 grow_horizontal = 0
 grow_vertical = 2
-text = "Send"
+text = "Create Agent"
 
-[node name="CodeManager" type="Node" parent="."]
-script = ExtResource("2_bquhy")
+[node name="XInput" type="LineEdit" parent="AgentCreator"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -134.063
+offset_top = -30.5
+offset_right = -67.0
+offset_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+placeholder_text = "X"
 
-[node name="HTTPRequest" type="HTTPRequest" parent="CodeManager"]
-use_threads = true
+[node name="YInput" type="LineEdit" parent="AgentCreator"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -67.0625
+offset_top = -30.5
+offset_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+placeholder_text = "Y"
 
-[connection signal="button_up" from="Button" to="CodeManager" method="_on_button_button_up"]
+[connection signal="button_up" from="AccessAgentCreator" to="AgentCreator" method="_on_access_code_editor_button_up"]
+[connection signal="button_up" from="AgentCreator/CreateAgent" to="CodeManager" method="_on_button_button_up"]
