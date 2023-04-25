@@ -1,6 +1,7 @@
 extends Node
 
 @onready var entity_deserializer = get_node("../EntityDeserializer")
+@onready var objects_container = get_owner().objects_container
 var json = JSON.new()
 
 func apply_deltas(deltas_json):
@@ -13,4 +14,5 @@ func apply_deltas(deltas_json):
 		if !entity:
 			print("[ERROR] Could not deserialize Entity")
 		if entity is LynxAction:
-			get_owner().get_node("ActionQueue").add_child(entity) # TODO add action to action queue and execute
+			var agent = objects_container.get_node(str(entity._object_id))
+			agent.get_node("ActionQueue").add_child(entity)

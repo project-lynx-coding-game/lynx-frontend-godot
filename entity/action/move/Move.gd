@@ -7,5 +7,31 @@ func _init():
 	self.accepted_attributes = ["object_id", "movement"]
 
 func _execute():
-	var object = get_parent().objects_container.get_node(str(self._object_id))
-	object.set_attribute("_position", object._position + self._movement)
+	# TODO make it cleaner its a big hack as for now
+	var tween = get_tree().create_tween()
+	
+	var agent = get_parent().agent
+	var vect_anim = {
+		Vector2(1,0) : "walk_right",
+		Vector2(-1,0) : "walk_left",
+		Vector2(0,1) : "walk_down",
+		Vector2(0,-1) : "walk_up"
+	}
+	var animation = ""
+	if vect_anim.has(self._movement):
+		animation = vect_anim[self._movement]
+	else:
+		animation = "walk_right"
+	agent.get_node("AnimatedSprite2D").set_animation(animation)
+	agent.get_node("AnimatedSprite2D").play()
+	agent.get_node("AnimatedSprite2D").set_frame(0)
+	
+	var _target_position = agent._position + self._movement
+	var target_position = Vector2(Vector2i(agent._position + self._movement) * Globals.TILE_SIZE)
+	target_position = target_position.snapped(Globals.TILE_SIZE)
+	target_position += Vector2(Globals.TILE_SIZE / 2)
+	tween.tween_property(agent, "position", target_position, 0.4).set_trans(Tween.TRANS_LINEAR)
+	await tween.finished
+	agent.get_node("AnimatedSprite2D").stop()
+	agent._position = _target_position
+#	agent.set_attribute("_position", _target_position) # we want to avoid this, as this was the old way TODO refactor set_attribute()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://dnbagkdya4mnw"]
+[gd_scene load_steps=21 format=3 uid="uid://dnbagkdya4mnw"]
 
 [ext_resource type="Script" path="res://entity/object/agent/Agent.gd" id="1_vcg4i"]
 [ext_resource type="Texture2D" uid="uid://cy6fgu12r3dx1" path="res://assets/NinjaAdventure/Actor/Characters/Villager/SeparateAnim/Walk.png" id="2_v4nox"]
+[ext_resource type="Script" path="res://entity/object/agent/ActionQueue.gd" id="3_dlyry"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_opo26"]
 atlas = ExtResource("2_v4nox")
@@ -144,3 +145,12 @@ script = ExtResource("1_vcg4i")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gslp2")
 animation = &"walk_up"
+
+[node name="ActionQueue" type="Node" parent="."]
+script = ExtResource("3_dlyry")
+
+[node name="ExecuteActionTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="ExecuteActionTimer" to="ActionQueue" method="_on_execute_action_timer_timeout"]

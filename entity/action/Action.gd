@@ -5,7 +5,7 @@ class_name LynxAction
 # it is to be called to run an action
 # action is destroyed from queue after running
 func apply():
-	self._execute()
+	await self._execute()
 	self.queue_free()
 
 # overide method, executes action
