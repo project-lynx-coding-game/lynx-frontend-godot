@@ -1,6 +1,6 @@
 extends Node
 
-@onready var agent = get_parent()
+@onready var object = get_parent()
 
 func _on_execute_action_timer_timeout():
 	if self.get_child_count() == 0:
