@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c47qlcbmfsr1m"]
+
+[ext_resource type="Texture2D" uid="uid://cfdh754xr2c68" path="res://assets/NinjaAdventure/Items/Food/Beaf.png" id="1_88agp"]
+[ext_resource type="Script" path="res://entity/object/log/Log.gd" id="1_lq4sp"]
+
+[node name="Log" type="Node2D"]
+script = ExtResource("1_lq4sp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_88agp")
