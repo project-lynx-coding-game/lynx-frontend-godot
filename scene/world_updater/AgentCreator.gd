@@ -9,7 +9,7 @@ extends Node
 @onready var entity_deserializer = get_owner().get_node("StateGetter/EntityDeserializer")
 
 func post_agent(new_agent):
-	var payload_json = {"serialized_object": new_agent.serialize()}
+	var payload_json = {"serialized_object": JSON.stringify(new_agent.serialize())}
 	var payload_string = JSON.stringify(payload_json)
 	var headers = ["Content-Type: application/json"]
 	if post_agent_http_request.get_http_client_status() != HTTPClient.STATUS_CONNECTING:
