@@ -1,7 +1,5 @@
 extends Node
 
-var get_state_endpoint_url = "http://127.0.0.1:8555/"
-
 @onready var get_state_http_request = get_node("GetStateHTTPRequest")
 @onready var scene_recreator = get_node("SceneRecreator")
 @onready var deltas_applier = get_node("DeltasApplier")
@@ -13,7 +11,7 @@ var current_tick_hash = -1
 # send get state requests every timer timeout (1s)
 func _on_get_state_timer_timeout():
 	if get_state_http_request.get_http_client_status() != HTTPClient.STATUS_CONNECTING:
-		var error = get_state_http_request.request(get_state_endpoint_url + "?tick_number=" + str(current_tick_hash))
+		var error = get_state_http_request.request(Globals.SERVER_ADDRESS + "?tick_number=" + str(current_tick_hash))
 		if error != OK:
 			push_error("An error occurred in the get state HTTP request.")
 
