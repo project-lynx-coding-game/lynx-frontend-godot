@@ -12,7 +12,7 @@ func recreate_scene(scene_json):
 			continue
 		
 		# TODO: this could be done at beginning of the loop by checking type key value
-		if !entity is LynxObject:
+		if not (entity is LynxObject):
 			print("[ERROR] Entity could not be recreated, because it is not an Object")
 			entity.queue_free()
 			continue
