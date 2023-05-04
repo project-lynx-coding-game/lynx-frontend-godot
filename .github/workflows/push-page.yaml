@@ -1,0 +1,29 @@
+name: Deploy to gh-pages
+
+env:
+  package_prefix: lynx-frontend
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  exports:
+    name: Export from Godot
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: Export html from Godot
+        uses: robpc/godot-export-action@v4.0.2
+        with:
+          preset: html
+          export_path: build/html/index.html
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: gh-pages
+          folder: build/html
