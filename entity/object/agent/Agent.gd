@@ -8,14 +8,6 @@ func init(_position, _id, _owner, _tick):
 	self._owner = _owner
 	self._tick = _tick
 
-# payload string used specifically for POST requests to scene-host
-func to_payload_string(dict: Dictionary):
-	for key in dict.keys():
-		var value = dict.get(key)
-		if value is Dictionary:
-			dict[key] = JSON.stringify(value)
-	return JSON.stringify(dict)
-
 # TODO: move to Entity
 func serialize():
 	# TODO: generate attributes json automatically, use logic similar to populate
@@ -32,4 +24,4 @@ func serialize():
 			"tick" = self._tick
 		}
 	}
-	return to_payload_string(attributes_json)
+	return attributes_json

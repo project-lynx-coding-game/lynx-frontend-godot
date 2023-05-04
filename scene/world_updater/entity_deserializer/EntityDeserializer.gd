@@ -10,8 +10,7 @@ func deserialize_action(entity_json: Dictionary):
 		print("[ERROR] No Entity attributes when deserializing")
 		return null
 	
-	json.parse(entity_json["attributes"])
-	var attributes = json.get_data()
+	var attributes = entity_json["attributes"]
 	var entity = entity_mapper.map_entity_type_to_node(entity_json.get("type"))
 	if not entity:
 		print("[ERROR] Deserializing unknown action type: " + entity_json.get("type"))
@@ -26,8 +25,7 @@ func deserialize_object(entity_json: Dictionary):
 		print("[ERROR] No Entity attributes when deserializing")
 		return null
 	
-	json.parse(entity_json["attributes"])
-	var attributes = json.get_data()
+	var attributes = entity_json["attributes"]
 	
 	if not attributes.has("name"):
 		print("[ERROR] No Entity name attribute when deserializing")
