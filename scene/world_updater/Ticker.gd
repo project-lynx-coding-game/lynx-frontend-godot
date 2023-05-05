@@ -4,6 +4,7 @@ extends Node
 
 var json = JSON.new()
 
+# DISABLED 
 # send post tick requests every timer timeout (1s)
 func _on_post_tick_timer_timeout():
 	if post_tick_http_request.get_http_client_status() != HTTPClient.STATUS_CONNECTING:

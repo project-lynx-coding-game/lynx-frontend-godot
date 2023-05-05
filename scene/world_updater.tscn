@@ -43,7 +43,6 @@ script = ExtResource("7_dt4b1")
 script = ExtResource("3_xkju4")
 
 [node name="PostTickTimer" type="Timer" parent="Ticker"]
-autostart = true
 
 [node name="PostTickHTTPRequest" type="HTTPRequest" parent="Ticker"]
 
