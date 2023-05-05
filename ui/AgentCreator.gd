@@ -1,13 +1,13 @@
-extends Node
+extends Control
 
 func _ready():
-	self.get_node("CreateAgent").visible = false
-	self.get_node("XInput").visible = false
-	self.get_node("YInput").visible = false
-	self.get_node("CodeEditor").visible = false
+	self.get_node("CreateAgent").hide()
+	self.get_node("XInput").hide()
+	self.get_node("YInput").hide()
+	self.get_node("CodeEditor").hide()
 
-func _on_access_code_editor_button_up():
-	self.get_node("CreateAgent").visible = !self.get_node("CreateAgent").visible
-	self.get_node("XInput").visible = !self.get_node("XInput").visible
-	self.get_node("YInput").visible = !self.get_node("YInput").visible
-	self.get_node("CodeEditor").visible = !self.get_node("CodeEditor").visible
+func _on_agent_creator_toggle_toggled(button_pressed):
+	self.get_node("CreateAgent").visible = button_pressed
+	self.get_node("XInput").visible = button_pressed
+	self.get_node("YInput").visible = button_pressed
+	self.get_node("CodeEditor").visible = button_pressed

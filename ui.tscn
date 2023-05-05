@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b82xhixc5siru"]
+[gd_scene load_steps=6 format=3 uid="uid://biup80g48y5ml"]
 
+[ext_resource type="Script" path="res://ui/UI.gd" id="1_bsom3"]
 [ext_resource type="Script" path="res://ui/CodeEditor.gd" id="1_gixgk"]
-[ext_resource type="Script" path="res://ui/CodeManager.gd" id="2_bquhy"]
 [ext_resource type="Script" path="res://ui/AgentCreator.gd" id="3_kmffy"]
+[ext_resource type="Script" path="res://ui/Settings.gd" id="4_ss325"]
 
 [sub_resource type="CodeHighlighter" id="CodeHighlighter_2lklk"]
 
@@ -12,8 +13,9 @@ anchors_preset = 0
 offset_top = 2.0
 offset_right = 1279.0
 offset_bottom = 723.0
+script = ExtResource("1_bsom3")
 
-[node name="AccessAgentCreator" type="Button" parent="."]
+[node name="AgentCreatorToggle" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -23,24 +25,29 @@ offset_top = -2.0
 offset_right = 1.0
 offset_bottom = 29.0
 grow_horizontal = 0
+toggle_mode = true
 text = "Open/Close Agent Creator"
 
-[node name="CodeManager" type="Node" parent="."]
-script = ExtResource("2_bquhy")
-
-[node name="HTTPRequest" type="HTTPRequest" parent="CodeManager"]
-use_threads = true
-
-[node name="AgentCreator" type="Node" parent="."]
+[node name="AgentCreator" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1279.0
+offset_bottom = -721.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("3_kmffy")
 
 [node name="CodeEditor" type="CodeEdit" parent="AgentCreator"]
+layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -359.0
-offset_bottom = 3.0
+offset_top = 359.0
+offset_right = 1280.0
+offset_bottom = 721.0
 grow_horizontal = 2
 grow_vertical = 0
 highlight_current_line = true
@@ -51,44 +58,101 @@ auto_brace_completion_highlight_matching = true
 script = ExtResource("1_gixgk")
 
 [node name="CreateAgent" type="Button" parent="AgentCreator"]
+layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -134.0
-offset_top = -62.0
-offset_bottom = -31.0
+offset_left = 1146.0
+offset_top = 296.0
+offset_right = 1280.0
+offset_bottom = 327.0
 grow_horizontal = 0
 grow_vertical = 2
 text = "Create Agent"
 
 [node name="XInput" type="LineEdit" parent="AgentCreator"]
+layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -134.063
-offset_top = -30.5
-offset_right = -67.0
-offset_bottom = 0.5
+offset_left = 1145.94
+offset_top = 327.5
+offset_right = 1213.0
+offset_bottom = 358.5
 grow_horizontal = 0
 grow_vertical = 2
 placeholder_text = "X"
 
 [node name="YInput" type="LineEdit" parent="AgentCreator"]
+layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -67.0625
-offset_top = -30.5
-offset_bottom = 0.5
+offset_left = 1212.94
+offset_top = 327.5
+offset_right = 1280.0
+offset_bottom = 358.5
 grow_horizontal = 0
 grow_vertical = 2
 placeholder_text = "Y"
 
-[connection signal="button_up" from="AccessAgentCreator" to="AgentCreator" method="_on_access_code_editor_button_up"]
-[connection signal="button_up" from="AgentCreator/CreateAgent" to="CodeManager" method="_on_button_button_up"]
+[node name="Settings" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_ss325")
+
+[node name="SettingsPanel" type="Panel" parent="Settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.0
+offset_top = -20.0
+offset_right = 1258.0
+offset_bottom = 700.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/SettingsPanel"]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 355.0
+offset_right = 788.0
+offset_bottom = 435.0
+
+[node name="AddressLabel" type="Label" parent="Settings/SettingsPanel/VBoxContainer"]
+layout_mode = 2
+text = "Server address:"
+
+[node name="AddressTextEdit" type="TextEdit" parent="Settings/SettingsPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SaveButton" type="Button" parent="Settings/SettingsPanel"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 597.0
+offset_right = 944.0
+offset_bottom = 628.0
+text = "Save"
+
+[node name="SettingsButton" type="Button" parent="Settings"]
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 31.0
+toggle_mode = true
+text = "Settings"
+
+[connection signal="toggled" from="AgentCreatorToggle" to="AgentCreator" method="_on_agent_creator_toggle_toggled"]
+[connection signal="button_up" from="AgentCreator/CreateAgent" to="." method="_on_create_agent_button_up"]
+[connection signal="button_up" from="Settings/SettingsPanel/SaveButton" to="Settings" method="_on_save_button_button_up"]
+[connection signal="toggled" from="Settings/SettingsButton" to="Settings" method="_on_settings_button_toggled"]
