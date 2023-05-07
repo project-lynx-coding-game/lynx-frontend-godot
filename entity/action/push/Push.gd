@@ -33,7 +33,7 @@ func _execute():
 	for pushed_object_id in _pushed_object_ids:
 		var move = entity_mapper.map_entity_type_to_node("Move").instantiate()
 		move._object_id = pushed_object_id
-		move._movement = self._direction
+		move._direction = self._direction
 		
 		var pushed_object = objects_container.get_node(str(pushed_object_id))
 		pushed_object.get_node("ActionQueue").add_child(move)
