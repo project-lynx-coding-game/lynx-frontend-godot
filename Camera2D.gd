@@ -17,6 +17,7 @@ func _unhandled_input(event):
 			zoom = clamp(zoom, min_zoom, max_zoom)
 
 func _process(delta):
+	# TODO: Add restrictions to disable camera movement when the player moves the mouse away from the map
 	var viewport_rect = get_viewport_rect()
 	var camera_pos  = position
 	var moved = false
