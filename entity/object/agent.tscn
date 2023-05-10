@@ -113,6 +113,50 @@ animations = [{
 "texture": SubResource("AtlasTexture_v2t2q")
 }],
 "loop": true,
+"name": &"chop_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1t6b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umkaq")
+}],
+"loop": true,
+"name": &"chop_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmx0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qm7d8")
+}],
+"loop": true,
+"name": &"chop_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xevpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijh0f")
+}],
+"loop": true,
+"name": &"chop_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1wb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2t2q")
+}],
+"loop": true,
 "name": &"push_down",
 "speed": 5.0
 }, {
