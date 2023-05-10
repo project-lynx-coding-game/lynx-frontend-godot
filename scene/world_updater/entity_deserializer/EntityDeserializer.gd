@@ -21,11 +21,11 @@ func deserialize_object(attributes: Dictionary):
 		return null
 	# map entity name to packed tscn
 	var entity = entity_mapper.map_entity_type_to_node(attributes.get("name"))
-	
+
 	if not entity:
 		print("[ERROR] Deserializing unknown Object name: " + attributes.get("name"))
 		return null
-	
+
 	var entity_instance = entity.instantiate()
 	entity_instance._populate(attributes)
 	return entity_instance

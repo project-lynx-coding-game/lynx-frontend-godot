@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d22dw8hqcka7o"]
+[gd_scene load_steps=10 format=3 uid="uid://d22dw8hqcka7o"]
 
 [ext_resource type="PackedScene" uid="uid://b1ele5lo5n6u1" path="res://scene/world_updater.tscn" id="1_0bk4q"]
 [ext_resource type="PackedScene" uid="uid://biup80g48y5ml" path="res://ui.tscn" id="1_sys4y"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scene/Tiles.gd" id="3_cqne8"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="4_xglqh"]
 [ext_resource type="Script" path="res://scene/world_updater/AgentCreator.gd" id="5_qv3y0"]
+[ext_resource type="Script" path="res://scene/world_updater/MapPopulator.gd" id="7_q0qsl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_71a80"]
 texture = ExtResource("2_m0xfg")
@@ -467,6 +468,7 @@ texture = ExtResource("2_m0xfg")
 17:25/0 = 0
 18:25/0 = 0
 19:25/0 = 0
+2:18/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_xw6tb"]
 sources/0 = SubResource("TileSetAtlasSource_71a80")
@@ -498,4 +500,11 @@ script = ExtResource("5_qv3y0")
 
 [node name="PostAgentHTTPRequest" type="HTTPRequest" parent="AgentCreator"]
 
+[node name="Populator" type="Node" parent="."]
+script = ExtResource("7_q0qsl")
+
+[node name="PostPopulateHTTPRequest" type="HTTPRequest" parent="Populator"]
+use_threads = true
+
 [connection signal="create_agent_requested" from="CanvasLayer/UI" to="AgentCreator" method="_on_ui_create_agent_requested"]
+[connection signal="post_populate_map_requested" from="CanvasLayer/UI" to="Populator" method="_on_ui_post_populate_map_requested"]

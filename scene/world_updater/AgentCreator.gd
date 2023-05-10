@@ -24,3 +24,4 @@ func create_agent(_code, _position = Vector2(0, 0), _id = randi(), _owner = ""):
 
 func _on_ui_create_agent_requested(position, code):
 	create_agent(code, position)
+

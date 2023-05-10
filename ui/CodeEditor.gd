@@ -1,6 +1,6 @@
 extends CodeEdit
 
-const keywords = ['dupa', 'and', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else',
+const keywords = ['and', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else',
 'except', 'exec', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda',
 'not', 'or', 'pass', 'print', 'raise', 'return', 'try', 'while', 'yield', 'None', 'True', 'False']
 
@@ -29,6 +29,5 @@ func _ready():
 	syntax_highlighter.set_number_color(number_color)
 	syntax_highlighter.set_symbol_color(symbol_color)
 	syntax_highlighter.set_member_variable_color(member_variable_color)
-	
 	add_theme_color_override("background_color", Color(background_color))
 	add_theme_color_override("current_line_color", Color(current_line_color))

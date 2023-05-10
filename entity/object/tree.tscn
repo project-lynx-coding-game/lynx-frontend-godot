@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://bx65h5y8jjg6g"]
+
+[ext_resource type="Script" path="res://entity/object/tree/Tree.gd" id="1_8u28c"]
+[ext_resource type="Texture2D" uid="uid://dfl6otahv4btm" path="res://assets/NinjaAdventure/Backgrounds/Tilesets/tree_pack/tree_pack/tree2b_16x16.png" id="2_uysl4"]
+[ext_resource type="Script" path="res://entity/object/agent/ActionQueue.gd" id="3_ytkjj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2p52"]
+atlas = ExtResource("2_uysl4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_itohy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2p52")
+}],
+"loop": true,
+"name": &"tree",
+"speed": 5.0
+}]
+
+[node name="tree" type="Node2D"]
+script = ExtResource("1_8u28c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_itohy")
+animation = &"tree"
+
+[node name="ActionQueue" type="Node" parent="."]
+script = ExtResource("3_ytkjj")
+
+[node name="ExecuteActionTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="ExecuteActionTimer" to="ActionQueue" method="_on_execute_action_timer_timeout"]

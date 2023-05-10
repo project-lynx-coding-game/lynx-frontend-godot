@@ -13,9 +13,10 @@ func _execute():
 		var vect_anim = {
 			Vector2(1,0) : "push_right",
 			Vector2(-1,0) : "push_left",
-			Vector2(0,1) : "push_down",
-			Vector2(0,-1) : "push_up"
+			Vector2(0,-1) : "push_down",
+			Vector2(0,1) : "push_up"
 		}
+		
 		var animation = ""
 		if vect_anim.has(self._direction):
 			animation = vect_anim[self._direction]
