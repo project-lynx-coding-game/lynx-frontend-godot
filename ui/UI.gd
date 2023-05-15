@@ -6,6 +6,7 @@ signal post_populate_map_requested()
 @onready var code_editor = get_node("AgentCreator/CodeEditor")
 @onready var x_input = get_node("AgentCreator/XInput")
 @onready var y_input = get_node("AgentCreator/YInput")
+@onready var tooltips = get_node("Tooltips")
 
 func _on_create_agent_button_up():
 	create_agent_requested.emit(Vector2(float(x_input.text), float(y_input.text)), code_editor.text)

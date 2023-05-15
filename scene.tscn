@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://d22dw8hqcka7o"]
+[gd_scene load_steps=11 format=3 uid="uid://cnn2yy3xlrmnh"]
 
 [ext_resource type="PackedScene" uid="uid://b1ele5lo5n6u1" path="res://scene/world_updater.tscn" id="1_0bk4q"]
-[ext_resource type="PackedScene" uid="uid://biup80g48y5ml" path="res://ui.tscn" id="1_sys4y"]
+[ext_resource type="PackedScene" uid="uid://bkm4i5405grrr" path="res://ui.tscn" id="1_sys4y"]
 [ext_resource type="Texture2D" uid="uid://bn7lns6kcjjha" path="res://assets/NinjaAdventure/Backgrounds/Tilesets/TilesetFloor.png" id="2_m0xfg"]
 [ext_resource type="Script" path="res://scene/Tiles.gd" id="3_cqne8"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="4_xglqh"]
-[ext_resource type="Script" path="res://scene/world_updater/AgentCreator.gd" id="5_qv3y0"]
-[ext_resource type="Script" path="res://scene/world_updater/MapPopulator.gd" id="7_q0qsl"]
+[ext_resource type="Script" path="res://scene/AgentCreator.gd" id="6_mlocu"]
+[ext_resource type="Script" path="res://scene/MapPopulator.gd" id="7_jlnul"]
+[ext_resource type="Script" path="res://scene/Tooltips.gd" id="8_a3fby"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_71a80"]
 texture = ExtResource("2_m0xfg")
@@ -484,7 +485,7 @@ tile_set = SubResource("TileSet_xw6tb")
 format = 2
 script = ExtResource("3_cqne8")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="TileMap"]
 position = Vector2(160, 90)
 zoom = Vector2(4, 4)
 script = ExtResource("4_xglqh")
@@ -496,15 +497,18 @@ script = ExtResource("4_xglqh")
 [node name="ObjectsContainer" type="Node2D" parent="."]
 
 [node name="AgentCreator" type="Node" parent="."]
-script = ExtResource("5_qv3y0")
+script = ExtResource("6_mlocu")
 
 [node name="PostAgentHTTPRequest" type="HTTPRequest" parent="AgentCreator"]
 
 [node name="Populator" type="Node" parent="."]
-script = ExtResource("7_q0qsl")
+script = ExtResource("7_jlnul")
 
 [node name="PostPopulateHTTPRequest" type="HTTPRequest" parent="Populator"]
 use_threads = true
+
+[node name="TooltipsUpdater" type="Node2D" parent="."]
+script = ExtResource("8_a3fby")
 
 [connection signal="create_agent_requested" from="CanvasLayer/UI" to="AgentCreator" method="_on_ui_create_agent_requested"]
 [connection signal="post_populate_map_requested" from="CanvasLayer/UI" to="Populator" method="_on_ui_post_populate_map_requested"]

@@ -4,6 +4,7 @@ class_name LynxEntity
 @onready var entity_deserializer = get_node("/root/Scene/WorldUpdater/StateGetter/EntityDeserializer")
 
 var accepted_attributes = []
+@onready var _type = get_name()
 
 func set_attribute(attribute, value):
 	self.set(attribute, value)
