@@ -49,14 +49,9 @@ autostart = true
 
 [node name="GlobalActionQueue" type="Node" parent="."]
 
-[node name="ExecuteActionTimer" type="Timer" parent="GlobalActionQueue"]
-wait_time = 0.5
-autostart = true
-
 [node name="Queue" type="Node" parent="GlobalActionQueue"]
 script = ExtResource("10_if4lj")
 
 [connection signal="request_completed" from="StateGetter/GetStateHTTPRequest" to="StateGetter" method="_on_get_state_http_request_request_completed"]
 [connection signal="timeout" from="StateGetter/GetStateTimer" to="StateGetter" method="_on_get_state_timer_timeout"]
 [connection signal="timeout" from="Ticker/PostTickTimer" to="Ticker" method="_on_post_tick_timer_timeout"]
-[connection signal="timeout" from="GlobalActionQueue/ExecuteActionTimer" to="GlobalActionQueue/Queue" method="_on_execute_action_timer_timeout"]
