@@ -32,10 +32,5 @@ func _execute():
 	var entity_mapper = get_node("/root/Scene/WorldUpdater/StateGetter/EntityDeserializer/EntityMapper")
 	
 	for pushed_object_id in _pushed_object_ids:
-		var move = entity_mapper.map_entity_type_to_node("Move").instantiate()
-		move._object_id = pushed_object_id
-		move._direction = self._direction
-		
 		var pushed_object = objects_container.get_node(str(pushed_object_id))
-		pushed_object.get_node("ActionQueue").add_child(move)
-		move.apply()
+		await pushed_object.move(Vector2i(pushed_object._position) + Vector2i(self._direction), 0.4)

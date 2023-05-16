@@ -27,15 +27,8 @@ func _execute():
 		object.get_node("AnimatedSprite2D").play()
 		object.get_node("AnimatedSprite2D").set_frame(0)
 		
-	var _target_position = object._position + self._direction
-	var target_position = Vector2(Vector2i(object._position + self._direction) * Globals.TILE_SIZE)
-	target_position = target_position.snapped(Globals.TILE_SIZE)
-	target_position += Vector2(Globals.TILE_SIZE / 2)
-	tween.tween_property(object, "position", target_position, 0.4).set_trans(Tween.TRANS_LINEAR)
-	await tween.finished
+	
+	await object.move(Vector2i(object._position) + Vector2i(self._direction), 0.4)
 	
 	if object.has_node("AnimatedSprite2D"):
 		object.get_node("AnimatedSprite2D").stop()
-	
-	object._position = _target_position
-#	object.set_attribute("_position", _target_position) # we want to avoid this, as this was the old way TODO refactor set_attribute()
