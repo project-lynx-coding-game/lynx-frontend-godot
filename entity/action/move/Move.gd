@@ -38,4 +38,3 @@ func _execute():
 		object.get_node("AnimatedSprite2D").stop()
 	
 	object._position = _target_position
-#	object.set_attribute("_position", _target_position) # we want to avoid this, as this was the old way TODO refactor set_attribute()

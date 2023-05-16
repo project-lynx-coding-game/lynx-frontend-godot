@@ -1,5 +1,9 @@
 extends LynxAction
 
+# TODO: change to relative paths
+@onready var world_updater = get_node("/root/Scene/WorldUpdater")
+@onready var entity_mapper = world_updater.get_node("/StateGetter/EntityDeserializer/EntityMapper")
+
 var _object_id = int()
 var _direction = Vector2()
 var _pushed_object_ids: Array[int] = []
@@ -23,18 +27,15 @@ func _execute():
 		else:
 			animation = "push_right"
 		object.get_node("AnimatedSprite2D").set_animation(animation)
-		object.get_node("AnimatedSprite2D").play()
-		# TODO: animation should play for 0.5 seconds, now it plays for 0 seconds
-		object.get_node("AnimatedSprite2D").stop()
-	
-	# TODO: change to relative paths
-	var objects_container = get_node("/root/Scene/WorldUpdater").objects_container
-	var entity_mapper = get_node("/root/Scene/WorldUpdater/StateGetter/EntityDeserializer/EntityMapper")
 	
 	for pushed_object_id in _pushed_object_ids:
 		var move = entity_mapper.map_entity_type_to_node("Move").instantiate()
 		move._object_id = pushed_object_id
 		move._direction = self._direction
 		
-		var pushed_object = objects_container.get_node(str(pushed_object_id))
-		pushed_object.get_node("ActionQueue").add_child(move)
+		var pushed_object = world_updater.get_object_by_id(pushed_object_id)
+		
+		if pushed_object:
+			pushed_object.get_node("ActionQueue").add_child(move)
+		else:
+			push_error("[ERROR] Could not get pushed object with id: " + str(pushed_object_id))

@@ -4,11 +4,6 @@ class_name LynxEntity
 @onready var entity_deserializer = get_node("/root/Scene/WorldUpdater/StateGetter/EntityDeserializer")
 
 var accepted_attributes = []
-@onready var _type = get_name()
-
-func set_attribute(attribute, value):
-	self.set(attribute, value)
-	self._post_populate()
 
 func _populate(attributes_json: Dictionary):
 	for accepted_attribute in accepted_attributes:
@@ -42,7 +37,7 @@ func _populate(attributes_json: Dictionary):
 				for element in attributes_json.get(accepted_attribute):
 					attribute_value.append(entity_deserializer.deserialize(element))
 			else:
-				print("[ERROR] Unknown attribute type when populating")
+				push_error("[ERROR] Unknown attribute type when populating")
 
 func _post_populate():
 	pass

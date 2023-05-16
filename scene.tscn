@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cnn2yy3xlrmnh"]
+[gd_scene load_steps=11 format=3 uid="uid://ynmbka5a07qq"]
 
 [ext_resource type="PackedScene" uid="uid://b1ele5lo5n6u1" path="res://scene/world_updater.tscn" id="1_0bk4q"]
 [ext_resource type="PackedScene" uid="uid://bkm4i5405grrr" path="res://ui.tscn" id="1_sys4y"]
@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Camera2D.gd" id="4_xglqh"]
 [ext_resource type="Script" path="res://scene/AgentCreator.gd" id="6_mlocu"]
 [ext_resource type="Script" path="res://scene/MapPopulator.gd" id="7_jlnul"]
-[ext_resource type="Script" path="res://scene/Tooltips.gd" id="8_a3fby"]
+[ext_resource type="Script" path="res://scene/TooltipsUpdater.gd" id="8_j32hx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_71a80"]
 texture = ExtResource("2_m0xfg")
@@ -508,7 +508,7 @@ script = ExtResource("7_jlnul")
 use_threads = true
 
 [node name="TooltipsUpdater" type="Node2D" parent="."]
-script = ExtResource("8_a3fby")
+script = ExtResource("8_j32hx")
 
 [connection signal="create_agent_requested" from="CanvasLayer/UI" to="AgentCreator" method="_on_ui_create_agent_requested"]
 [connection signal="post_populate_map_requested" from="CanvasLayer/UI" to="Populator" method="_on_ui_post_populate_map_requested"]

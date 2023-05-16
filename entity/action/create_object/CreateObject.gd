@@ -11,12 +11,12 @@ func _execute():
 	json.parse(self._serialized_object)
 	var entity = entity_deserializer.deserialize(json.get_data())
 	if !entity:
-		print("[ERROR] Could not deserialize Entity")
+		push_error("[ERROR] Could not deserialize Entity")
 		return
 	
 	# TODO: this could be done at beginning of the loop by checking type key value
 	if !entity is LynxObject:
-		print("[ERROR] Entity could not be recreated, because it is not an Object")
+		push_error("[ERROR] Entity could not be recreated, because it is not an Object")
 		return
 	
 	objects_container.add_child(entity)
