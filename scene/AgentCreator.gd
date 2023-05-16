@@ -17,10 +17,8 @@ func post_agent(new_agent):
 func create_agent(_code, _position = Vector2(0, 0), _id = randi(), _owner = ""):
 	var new_agent = Agent.instantiate()
 	new_agent.init(_position, _id, _owner, _code)
-	objects_container.add_child(new_agent) # should be handled by deltas but is not TODO (also we dont check if there's something on that position, deltas would solve that)
 	post_agent(new_agent)
-	new_agent._post_populate()
-#	new_agent.queue_free()
+	new_agent.queue_free()
 
 func _on_ui_create_agent_requested(position, code):
 	create_agent(code, position)
