@@ -38,3 +38,4 @@ func _execute():
 		
 		var pushed_object = objects_container.get_node(str(pushed_object_id))
 		pushed_object.get_node("ActionQueue").add_child(move)
+		move.apply()
