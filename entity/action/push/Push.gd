@@ -1,8 +1,7 @@
 extends LynxAction
 
-# TODO: change to relative paths
-@onready var world_updater = get_node("/root/Scene/WorldUpdater")
-@onready var entity_mapper = world_updater.get_node("/StateGetter/EntityDeserializer/EntityMapper")
+# TODO: change to relative path
+@onready var entity_mapper = get_node("/root/Scene/WorldUpdater/StateGetter/EntityDeserializer/EntityMapper")
 
 var _object_id = int()
 var _direction = Vector2()
@@ -33,7 +32,7 @@ func _execute():
 		move._object_id = pushed_object_id
 		move._direction = self._direction
 		
-		var pushed_object = world_updater.get_object_by_id(pushed_object_id)
+		var pushed_object = Globals.WORLD_UPDATER.objects_container.get_object_by_id(pushed_object_id)
 		
 		if pushed_object:
 			pushed_object.get_node("ActionQueue").add_child(move)

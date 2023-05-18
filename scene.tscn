@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ynmbka5a07qq"]
+[gd_scene load_steps=16 format=3 uid="uid://ynmbka5a07qq"]
 
 [ext_resource type="PackedScene" uid="uid://b1ele5lo5n6u1" path="res://scene/world_updater.tscn" id="1_0bk4q"]
 [ext_resource type="PackedScene" uid="uid://bkm4i5405grrr" path="res://ui.tscn" id="1_sys4y"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Camera2D.gd" id="4_xglqh"]
 [ext_resource type="Script" path="res://scene/AgentCreator.gd" id="6_mlocu"]
 [ext_resource type="Script" path="res://scene/MapPopulator.gd" id="7_jlnul"]
+[ext_resource type="Script" path="res://scene/ObjectsContainer.gd" id="7_ol1bq"]
 [ext_resource type="Script" path="res://scene/TooltipsUpdater.gd" id="8_j32hx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_71a80"]
@@ -504,6 +505,7 @@ script = ExtResource("2_ttjfu")
 [node name="UI" parent="CanvasLayer" instance=ExtResource("1_sys4y")]
 
 [node name="ObjectsContainer" type="Node2D" parent="."]
+script = ExtResource("7_ol1bq")
 
 [node name="AgentCreator" type="Node" parent="."]
 script = ExtResource("6_mlocu")

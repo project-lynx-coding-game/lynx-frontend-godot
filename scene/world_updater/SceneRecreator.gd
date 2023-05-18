@@ -1,8 +1,6 @@
 extends Node
 
 @onready var entity_deserializer = get_node("../EntityDeserializer")
-
-@onready var objects_container = get_owner().objects_container
 @onready var tilemap: TileMap = get_owner().tilemap
 
 func recreate_scene(scene_json):
@@ -17,5 +15,5 @@ func recreate_scene(scene_json):
 			entity.queue_free()
 			continue
 		
-		objects_container.add_child(entity)
+		Globals.WORLD_UPDATER.objects_container.add_child(entity)
 		entity._post_populate()

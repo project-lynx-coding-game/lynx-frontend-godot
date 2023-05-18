@@ -1,7 +1,6 @@
 extends LynxAction
 
 var _serialized_object = int()
-@onready var objects_container =  get_parent().get_parent().get_parent().objects_container
 var json = JSON.new()
 
 func _init():
@@ -19,6 +18,6 @@ func _execute():
 		push_error("[ERROR] Entity could not be recreated, because it is not an Object")
 		return
 	
-	objects_container.add_child(entity)
+	Globals.WORLD_UPDATER.objects_container.add_child(entity)
 	entity._post_populate()
 	
