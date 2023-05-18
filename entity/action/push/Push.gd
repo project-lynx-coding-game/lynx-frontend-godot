@@ -1,6 +1,6 @@
 extends LynxAction
 
-@onready var entity_mapper = Globals.WORLD_UPDATER.get_node("/StateGetter/EntityDeserializer/EntityMapper")
+@onready var entity_mapper = get_node("/root/Scene/WorldUpdater/StateGetter/EntityDeserializer/EntityMapper")
 
 var _object_id = int()
 var _direction = Vector2()

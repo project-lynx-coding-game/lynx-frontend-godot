@@ -1,7 +1,7 @@
 extends Node2D
 class_name LynxEntity
 
-@onready var entity_deserializer = Globals.WORLD_UPDATER.get_node("/StateGetter/EntityDeserializer")
+@onready var entity_deserializer = get_node("/root/Scene/WorldUpdater/StateGetter/EntityDeserializer")
 @onready var _type = get_name()
 
 var accepted_attributes = []
