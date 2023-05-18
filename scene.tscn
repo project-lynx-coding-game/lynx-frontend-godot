@@ -1,12 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://d22dw8hqcka7o"]
+[gd_scene load_steps=16 format=3 uid="uid://ynmbka5a07qq"]
 
 [ext_resource type="PackedScene" uid="uid://b1ele5lo5n6u1" path="res://scene/world_updater.tscn" id="1_0bk4q"]
-[ext_resource type="PackedScene" uid="uid://biup80g48y5ml" path="res://ui.tscn" id="1_sys4y"]
+[ext_resource type="PackedScene" uid="uid://bkm4i5405grrr" path="res://ui.tscn" id="1_sys4y"]
+[ext_resource type="Texture2D" uid="uid://di1kqoorrmc2d" path="res://assets/tile_highlight.png" id="2_2rhco"]
 [ext_resource type="Texture2D" uid="uid://bn7lns6kcjjha" path="res://assets/NinjaAdventure/Backgrounds/Tilesets/TilesetFloor.png" id="2_m0xfg"]
+[ext_resource type="Script" path="res://scene/TileHighlighter.gd" id="2_ttjfu"]
 [ext_resource type="Script" path="res://scene/Tiles.gd" id="3_cqne8"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="4_xglqh"]
-[ext_resource type="Script" path="res://scene/world_updater/AgentCreator.gd" id="5_qv3y0"]
-[ext_resource type="Script" path="res://scene/world_updater/MapPopulator.gd" id="7_q0qsl"]
+[ext_resource type="Script" path="res://scene/AgentCreator.gd" id="6_mlocu"]
+[ext_resource type="Script" path="res://scene/MapPopulator.gd" id="7_jlnul"]
+[ext_resource type="Script" path="res://scene/ObjectsContainer.gd" id="7_ol1bq"]
+[ext_resource type="Script" path="res://scene/TooltipsUpdater.gd" id="8_j32hx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_71a80"]
 texture = ExtResource("2_m0xfg")
@@ -473,6 +477,13 @@ texture = ExtResource("2_m0xfg")
 [sub_resource type="TileSet" id="TileSet_xw6tb"]
 sources/0 = SubResource("TileSetAtlasSource_71a80")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i7tsq"]
+texture = ExtResource("2_2rhco")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_jrwh8"]
+sources/0 = SubResource("TileSetAtlasSource_i7tsq")
+
 [node name="Scene" type="Node2D"]
 
 [node name="WorldUpdater" parent="." node_paths=PackedStringArray("tilemap", "objects_container") instance=ExtResource("1_0bk4q")]
@@ -484,27 +495,36 @@ tile_set = SubResource("TileSet_xw6tb")
 format = 2
 script = ExtResource("3_cqne8")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(160, 90)
-zoom = Vector2(4, 4)
-script = ExtResource("4_xglqh")
+[node name="HighlightTileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_jrwh8")
+format = 2
+script = ExtResource("2_ttjfu")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("1_sys4y")]
 
 [node name="ObjectsContainer" type="Node2D" parent="."]
+script = ExtResource("7_ol1bq")
 
 [node name="AgentCreator" type="Node" parent="."]
-script = ExtResource("5_qv3y0")
+script = ExtResource("6_mlocu")
 
 [node name="PostAgentHTTPRequest" type="HTTPRequest" parent="AgentCreator"]
 
 [node name="Populator" type="Node" parent="."]
-script = ExtResource("7_q0qsl")
+script = ExtResource("7_jlnul")
 
 [node name="PostPopulateHTTPRequest" type="HTTPRequest" parent="Populator"]
 use_threads = true
+
+[node name="TooltipsUpdater" type="Node2D" parent="."]
+script = ExtResource("8_j32hx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(160, 90)
+zoom = Vector2(4, 4)
+script = ExtResource("4_xglqh")
 
 [connection signal="create_agent_requested" from="CanvasLayer/UI" to="AgentCreator" method="_on_ui_create_agent_requested"]
 [connection signal="post_populate_map_requested" from="CanvasLayer/UI" to="Populator" method="_on_ui_post_populate_map_requested"]
