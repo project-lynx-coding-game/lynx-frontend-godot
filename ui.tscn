@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://biup80g48y5ml"]
+[gd_scene load_steps=7 format=3 uid="uid://bkm4i5405grrr"]
 
 [ext_resource type="Script" path="res://ui/UI.gd" id="1_bsom3"]
 [ext_resource type="Script" path="res://ui/CodeEditor.gd" id="1_gixgk"]
 [ext_resource type="Script" path="res://ui/AgentCreator.gd" id="3_kmffy"]
 [ext_resource type="Script" path="res://ui/Settings.gd" id="4_ss325"]
+[ext_resource type="Script" path="res://ui/Tooltips.gd" id="5_fyncs"]
 
 [sub_resource type="CodeHighlighter" id="CodeHighlighter_2lklk"]
 
@@ -168,6 +169,26 @@ offset_right = 70.0
 offset_bottom = 31.0
 toggle_mode = true
 text = "Settings"
+
+[node name="Tooltips" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_fyncs")
+
+[node name="TileData" type="VBoxContainer" parent="Tooltips"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Position" type="Label" parent="Tooltips/TileData"]
+layout_mode = 2
+
+[node name="Type" type="Label" parent="Tooltips/TileData"]
+layout_mode = 2
+
+[node name="ObjectCounts" type="VBoxContainer" parent="Tooltips/TileData"]
+layout_mode = 2
 
 [connection signal="toggled" from="AgentCreatorToggle" to="AgentCreator" method="_on_agent_creator_toggle_toggled"]
 [connection signal="button_up" from="AgentCreator/CreateAgent" to="." method="_on_create_agent_button_up"]

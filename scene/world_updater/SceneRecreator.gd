@@ -1,7 +1,6 @@
 extends Node
 
 @onready var entity_deserializer = get_node("../EntityDeserializer")
-
 @onready var objects_container = get_owner().objects_container
 @onready var tilemap: TileMap = get_owner().tilemap
 
@@ -13,7 +12,7 @@ func recreate_scene(scene_json):
 		
 		# TODO: this could be done at beginning of the loop by checking type key value
 		if not (entity is LynxObject):
-			print("[ERROR] Entity could not be recreated, because it is not an Object")
+			push_error("[ERROR] Entity could not be recreated, because it is not an Object")
 			entity.queue_free()
 			continue
 		
