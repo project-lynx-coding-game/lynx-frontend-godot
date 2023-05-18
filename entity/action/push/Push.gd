@@ -27,7 +27,7 @@ func _execute():
 		object.get_node("AnimatedSprite2D").set_animation(animation)
 	
 	for pushed_object_id in _pushed_object_ids:
-		var pushed_object = objects_container.get_node(str(pushed_object_id))
+		var pushed_object = Globals.WORLD_UPDATER.objects_container.get_node(str(pushed_object_id))
 		
 		if pushed_object:
 			await pushed_object.move(Vector2i(pushed_object._position) + Vector2i(self._direction), 0.4)

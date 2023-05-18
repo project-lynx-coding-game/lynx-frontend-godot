@@ -12,6 +12,6 @@ func remove_object_by_id(id: int):
 func get_objects_by_position(position: Vector2):
 	var objects: Array = []
 	for object in get_children():
-		if object._position == position:
+		if Vector2i(object._position) == Vector2i(position):
 			objects.append(object)
 	return objects
