@@ -494,11 +494,6 @@ tile_set = SubResource("TileSet_xw6tb")
 format = 2
 script = ExtResource("3_cqne8")
 
-[node name="Camera2D" type="Camera2D" parent="TileMap"]
-position = Vector2(160, 90)
-zoom = Vector2(4, 4)
-script = ExtResource("4_xglqh")
-
 [node name="HighlightTileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_jrwh8")
 format = 2
@@ -523,6 +518,11 @@ use_threads = true
 
 [node name="TooltipsUpdater" type="Node2D" parent="."]
 script = ExtResource("8_j32hx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(160, 90)
+zoom = Vector2(4, 4)
+script = ExtResource("4_xglqh")
 
 [connection signal="create_agent_requested" from="CanvasLayer/UI" to="AgentCreator" method="_on_ui_create_agent_requested"]
 [connection signal="post_populate_map_requested" from="CanvasLayer/UI" to="Populator" method="_on_ui_post_populate_map_requested"]

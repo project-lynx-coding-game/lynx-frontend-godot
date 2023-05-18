@@ -18,12 +18,10 @@ func _get_tile_object_counts(tile_position):
 	var objects_on_tile = world_updater.get_objects_by_position(Vector2(tile_position))
 	
 	for object in objects_on_tile:
-		var object_name = object.get_name().lstrip("@").rstrip("0123456789@")
-		
-		if object_name in tile_object_counts.keys():
-			tile_object_counts[object_name] += 1
+		if object.type in tile_object_counts.keys():
+			tile_object_counts[object.type] += 1
 		else:
-			tile_object_counts[object_name] = 1
+			tile_object_counts[object.type] = 1
 	
 	return tile_object_counts
 

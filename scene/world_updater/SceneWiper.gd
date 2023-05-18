@@ -1,10 +1,10 @@
 extends Node
 
-@onready var objects_container = get_owner().objects_container
-@onready var tilemap: TileMap = get_owner().tilemap
+@onready var world_updater = get_owner()
+@onready var objects_container = world_updater.objects_container
+@onready var tilemap: TileMap = world_updater.tilemap
 
 func wipe():
 	tilemap.clear()
 	for object in objects_container.get_children():
-		objects_container.remove_child(object)
-		object.queue_free()
+		world_updater.remove_object_by_id(object._id)
