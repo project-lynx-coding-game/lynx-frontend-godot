@@ -17,10 +17,10 @@ func _get_tile_object_counts(tile_position):
 	var objects_on_tile = Globals.WORLD_UPDATER.objects_container.get_objects_by_position(Vector2(tile_position))
 	
 	for object in objects_on_tile:
-		if object.type in tile_object_counts.keys():
-			tile_object_counts[object.type] += 1
+		if object._type in tile_object_counts.keys():
+			tile_object_counts[object._type] += 1
 		else:
-			tile_object_counts[object.type] = 1
+			tile_object_counts[object._type] = 1
 	
 	return tile_object_counts
 

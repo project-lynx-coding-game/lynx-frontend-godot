@@ -1,10 +1,9 @@
 extends Node
 
+@onready var objects_container = get_owner().objects_container
 @onready var entity_deserializer = get_node("../EntityDeserializer")
-# TODO: change to relative path
-@onready var global_action_queue = get_node("/root/Scene/WorldUpdater/GlobalActionQueue/Queue")
+@onready var global_action_queue = get_owner().get_node("GlobalActionQueue/Queue")
 var json = JSON.new()
-
 
 func apply_deltas(deltas_json):
 	json.parse(deltas_json)
@@ -20,7 +19,7 @@ func apply_deltas(deltas_json):
 				self.global_action_queue.add_child(entity)
 				continue
 			
-			var object = Globals.WORLD_UPDATER.objects_container.get_object_by_id(entity._object_id)
+			var object = objects_container.get_object_by_id(entity._object_id)
 			
 			if object:
 				object.get_node("ActionQueue").add_child(entity)
