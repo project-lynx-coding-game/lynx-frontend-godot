@@ -31,7 +31,7 @@ func _execute():
 		var pushed_object = null
 		var retry_counter = 0
 		while pushed_object == null || retry_counter <= 5:
-			pushed_object = Globals.WORLD_UPDATER.objects_container.get_node(str(pushed_object_id))
+			pushed_object = Globals.WORLD_UPDATER.objects_container.get_object_by_id(pushed_object_id)
 			await get_tree().process_frame
 			retry_counter += 1
 		
