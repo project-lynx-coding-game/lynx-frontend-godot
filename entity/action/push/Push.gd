@@ -27,7 +27,13 @@ func _execute():
 		object.get_node("AnimatedSprite2D").set_animation(animation)
 	
 	for pushed_object_id in _pushed_object_ids:
-		var pushed_object = Globals.WORLD_UPDATER.objects_container.get_node(str(pushed_object_id))
+		# sometimes we might need to wait a few frames for wood to appear
+		var pushed_object = null
+		var retry_counter = 0
+		while pushed_object == null || retry_counter <= 5:
+			pushed_object = Globals.WORLD_UPDATER.objects_container.get_object_by_id(pushed_object_id)
+			await get_tree().process_frame
+			retry_counter += 1
 		
 		if pushed_object:
 			await pushed_object.move(Vector2i(pushed_object._position) + Vector2i(self._direction), 0.4)
