@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://gxisum17kt5c"]
 
-[ext_resource type="Script" path="res://entity/object/rock/Rock.gd" id="1_tnyn5"]
+[ext_resource type="Script" path="res://entity/object/Object.gd" id="1_5m7jg"]
 [ext_resource type="Texture2D" uid="uid://cgcwtqghe5n3w" path="res://assets/NinjaAdventure/Backgrounds/Tilesets/world_elements/rock.png" id="2_w7s2s"]
 [ext_resource type="Script" path="res://entity/object/agent/ActionQueue.gd" id="3_cj6uv"]
 
 [node name="Rock" type="Node2D"]
-script = ExtResource("1_tnyn5")
+script = ExtResource("1_5m7jg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_w7s2s")
