@@ -15,6 +15,9 @@ func _populate(attributes_json: Dictionary):
 				self.set(attribute, attributes_json.get(accepted_attribute))
 			elif attribute_value is Vector2:
 				var vector2 = Vector2(attributes_json.get(accepted_attribute).get("x"), attributes_json.get(accepted_attribute).get("y"))
+				# TODO: directions have reversed y coordinate, they should have their own type and separate handling
+				if accepted_attribute == "direction":
+					vector2.y = -vector2.y
 				self.set(attribute, vector2)
 			elif attribute_value is LynxEntity:
 				self.set(attribute, entity_deserializer.deserialize(attributes_json.get(accepted_attribute)))
