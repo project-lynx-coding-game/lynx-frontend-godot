@@ -7,9 +7,6 @@ func _init():
 	self.accepted_attributes = ["object_id", "direction"]
 
 func _execute():
-	# TODO make it cleaner its a big hack as for now
-	var tween = get_tree().create_tween()
-	
 	var object = get_parent().object
 	if object.has_node("AnimatedSprite2D"):
 		var vect_anim = {
