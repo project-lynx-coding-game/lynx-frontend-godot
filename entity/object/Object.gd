@@ -22,6 +22,6 @@ func move(_target_position: Vector2i, duration: float):
 	
 	target_position = target_position.snapped(Globals.TILE_SIZE)
 	target_position += Vector2(Globals.TILE_SIZE / 2)
-	tween.tween_property(self, "position", target_position, 0.4).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(self, "position", target_position, duration / Globals.ACTION_SPEED_MULTIPLIER).set_trans(Tween.TRANS_LINEAR)
 	await tween.finished
 	self._position = _target_position

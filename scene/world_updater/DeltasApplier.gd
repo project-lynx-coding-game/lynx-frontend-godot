@@ -16,8 +16,14 @@ func apply_deltas(deltas_json):
 			push_error("[ERROR] Could not deserialize Entity")
 		if entity is LynxAction:
 			if not "_object_id" in entity:
+				json.parse(entity._serialized_object)
+				var object_in_creation = json.get_data()
+				Globals.OBJECTS_IN_CREATION.append(object_in_creation["attributes"]["id"])
 				self.global_action_queue.add_child(entity)
 				continue
+				
+			while(entity._object_id in Globals.OBJECTS_IN_CREATION):
+				await get_tree().create_timer(0.01).timeout
 			
 			var object = objects_container.get_object_by_id(entity._object_id)
 			
