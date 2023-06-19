@@ -7,6 +7,7 @@ extends Camera2D
 @export var max_zoom = Vector2(10.0, 10.0)
 @export var min_zoom = Vector2(1.0, 1.0)
 var is_mouse_outside_screen = false
+var is_mouse_on_gui_element = false
 
 func _notification(what):
 	if what == NOTIFICATION_WM_MOUSE_EXIT:
@@ -26,7 +27,8 @@ func _input(event):
 			self._reset_camera_position(get_viewport_rect())
 
 func _process(delta):
-	if is_mouse_outside_screen:
+	print(is_mouse_on_gui_element)
+	if is_mouse_outside_screen or is_mouse_on_gui_element:
 		return
 	
 	var viewport_rect = get_viewport_rect()
@@ -62,3 +64,9 @@ func _process(delta):
 
 func _reset_camera_position(viewport_rect):
 	position = Vector2(0,  0)
+
+func _on_ui_disable_mouse_movement():
+	self.is_mouse_on_gui_element = true
+
+func _on_ui_enable_mouse_movement():
+	self.is_mouse_on_gui_element = false

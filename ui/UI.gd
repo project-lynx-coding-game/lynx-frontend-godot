@@ -2,6 +2,8 @@ extends Control
 
 signal create_agent_requested(position: Vector2, code: String)
 signal post_populate_map_requested()
+signal disable_mouse_movement()
+signal enable_mouse_movement()
 
 @onready var code_editor = get_node("AgentCreator/CodeEditor")
 @onready var x_input = get_node("AgentCreator/XInput")
@@ -13,3 +15,11 @@ func _on_create_agent_button_up():
 
 func _on_populate_button_up():
 	post_populate_map_requested.emit()
+
+func _on_mouse_entered():
+	print("DISABLE")
+#	disable_mouse_movement.emit()
+	
+func _on_mouse_exited():
+	print("ENABLE")
+#	enable_mouse_movement.emit()

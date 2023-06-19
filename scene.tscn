@@ -527,4 +527,6 @@ zoom = Vector2(4, 4)
 script = ExtResource("4_xglqh")
 
 [connection signal="create_agent_requested" from="CanvasLayer/UI" to="AgentCreator" method="_on_ui_create_agent_requested"]
+[connection signal="disable_mouse_movement" from="CanvasLayer/UI" to="Camera2D" method="_on_ui_disable_mouse_movement"]
+[connection signal="enable_mouse_movement" from="CanvasLayer/UI" to="Camera2D" method="_on_ui_enable_mouse_movement"]
 [connection signal="post_populate_map_requested" from="CanvasLayer/UI" to="Populator" method="_on_ui_post_populate_map_requested"]
