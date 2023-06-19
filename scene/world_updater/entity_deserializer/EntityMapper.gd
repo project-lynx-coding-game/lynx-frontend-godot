@@ -8,6 +8,8 @@ var available_entity_types = {
 	"Push" : load("res://entity/action/push.tscn"),
 	"MessageLog" : load("res://entity/action/message_log.tscn"),
 	"Tree" : load("res://entity/object/tree.tscn"),
+	"Rock" : load("res://entity/object/rock.tscn"),
+	"Stone" : load("res://entity/object/stone.tscn"),
 	"Chop" : load("res://entity/action/chop.tscn"),
 	"RemoveObject" : load("res://entity/action/remove_object.tscn"),
 	"CreateObject": load("res://entity/action/create_object.tscn"),
