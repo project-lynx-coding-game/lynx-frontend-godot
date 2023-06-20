@@ -52,7 +52,7 @@ func deserialize(entity_json: Dictionary):
 	var attributes = entity_json["attributes"]
 	
 	if entity_json["type"] == "Object":
-		if attributes.has("walkable") and attributes.walkable:
+		if attributes.has("tags") and attributes.tags.has("walkable"):
 			return deserialize_tile(attributes)
 		return deserialize_object(attributes)
 	else:
