@@ -10,8 +10,8 @@ func _execute():
 	var vect_anim = {
 		Vector2(1,0) : "mine_right",
 		Vector2(-1,0) : "mine_left",
-		Vector2(0,-1) : "mine_down",
-		Vector2(0,1) : "mine_up"
+		Vector2(0,1) : "mine_down",
+		Vector2(0,-1) : "mine_up"
 	}
 	var animation = ""
 	if vect_anim.has( self._direction):

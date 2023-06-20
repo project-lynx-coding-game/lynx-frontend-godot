@@ -374,7 +374,7 @@ script = ExtResource("1_vcg4i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gslp2")
-animation = &"mine_down"
+animation = &"walk_down"
 
 [node name="ActionQueue" type="Node" parent="."]
 script = ExtResource("3_dlyry")
