@@ -5,6 +5,23 @@ extends Node
 @onready var global_action_queue = get_owner().get_node("GlobalActionQueue/Queue")
 var json = JSON.new()
 
+func _handle_create_object(entity):
+	json.parse(entity._serialized_object)
+	var object_in_creation = json.get_data()
+	Globals.OBJECTS_IN_CREATION.append(object_in_creation["attributes"]["id"])
+
+func _handle_global_action(entity):
+	if entity._type == "CreateObject":
+		_handle_create_object(entity)
+	self.global_action_queue.add_child(entity)
+
+func _handle_object_action(entity):
+	var object = objects_container.get_object_by_id(entity._object_id)
+	if object:
+		object.get_node("ActionQueue").add_child(entity)
+	else:
+		push_error("[ERROR] Could not get object to have applied action on with id: " + str(entity._object_id))
+
 func apply_deltas(deltas_json):
 	json.parse(deltas_json)
 	var deltas = json.get_data()
@@ -14,16 +31,9 @@ func apply_deltas(deltas_json):
 		var entity = entity_deserializer.deserialize(delta)
 		if !entity:
 			push_error("[ERROR] Could not deserialize Entity")
+			
 		if entity is LynxAction:
 			if not "_object_id" in entity:
-				json.parse(entity._serialized_object)
-				var object_in_creation = json.get_data()
-				Globals.OBJECTS_IN_CREATION.append(object_in_creation["attributes"]["id"])
-				self.global_action_queue.add_child(entity)
+				_handle_global_action(entity)
 				continue
-			
-			var object = objects_container.get_object_by_id(entity._object_id)
-			if object:
-				object.get_node("ActionQueue").add_child(entity)
-			else:
-				push_error("[ERROR] Could not get object to have applied action on with id: " + str(entity._object_id))	
+			_handle_object_action(entity)
