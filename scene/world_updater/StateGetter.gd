@@ -39,7 +39,7 @@ func _on_get_state_http_request_request_completed(_result, response_code, _heade
 
 # send get state requests every timer timeout (1s)
 func _on_get_state_timer_timeout():
-	if get_state_http_request.get_http_client_status() not in [HTTPClient.STATUS_CONNECTING, HTTPClient.STATUS_REQUESTING]:
+	if get_state_http_request.get_http_client_status() not in Globals.BUSY_HTTP_STATUSES:
 		var error = get_state_http_request.request(Globals.SERVER_ADDRESS + "?tick_number=" + str(current_tick_number))
 		if error != OK:
-			push_error("An error occurred in the get state HTTP request.")
+			push_error("[ERROR] Could not GET state")

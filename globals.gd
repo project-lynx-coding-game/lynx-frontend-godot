@@ -5,3 +5,4 @@ var SERVER_ADDRESS: String = "http://127.0.0.1:8555/" # localhost by default, to
 var WORLD_UPDATER: Node
 var ACTION_SPEED_MULTIPLIER: int
 var OBJECTS_IN_CREATION: Array[float] = []
+var BUSY_HTTP_STATUSES: Array[int] = [HTTPClient.STATUS_CONNECTING, HTTPClient.STATUS_REQUESTING]
