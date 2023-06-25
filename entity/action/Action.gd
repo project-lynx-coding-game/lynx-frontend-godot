@@ -11,3 +11,6 @@ func apply():
 # overide method, executes action
 func _execute():
 	pass
+	
+func _post_populate():
+	self.get_node("ExecuteActionTimer").wait_time = Globals.DEFAULT_ACTION_SPEED

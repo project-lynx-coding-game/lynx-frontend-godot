@@ -16,12 +16,17 @@ func _post_populate():
 	self.position += Vector2(Globals.TILE_SIZE / 2)
 
 # accepts position in tile coordinates 
-func move(_target_position: Vector2i, duration: float):
+func move(_target_position: Vector2i):
 	var tween = get_tree().create_tween()
-	var target_position = Vector2(_target_position * Globals.TILE_SIZE)
 	
+	var target_position = Vector2(_target_position * Globals.TILE_SIZE)
 	target_position = target_position.snapped(Globals.TILE_SIZE)
 	target_position += Vector2(Globals.TILE_SIZE / 2)
-	tween.tween_property(self, "position", target_position, duration / Globals.ACTION_SPEED_MULTIPLIER).set_trans(Tween.TRANS_LINEAR)
+	
+	var duration = Globals.DEFAULT_ACTION_SPEED - 0.1 / Globals.ACTION_SPEED_MULTIPLIER
+	
+	tween.tween_property(self, "position", target_position, duration).set_trans(Tween.TRANS_LINEAR)
+	
 	await tween.finished
+	
 	self._position = _target_position

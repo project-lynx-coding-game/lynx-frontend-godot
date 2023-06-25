@@ -10,7 +10,7 @@ var current_tick_number: int = -1
 
 func _speed_up_actions():
 	for object in Globals.WORLD_UPDATER.objects_container.get_children():
-		object.get_node("ExecuteActionTimer").wait_time = 0.5 / Globals.ACTION_SPEED_MULTIPLIER
+		object.get_node("ExecuteActionTimer").wait_time = Globals.DEFAULT_ACTION_SPEED / Globals.ACTION_SPEED_MULTIPLIER
 		object.get_node("AnimatedSprite2D").speed_scale = Globals.ACTION_SPEED_MULTIPLIER
 
 func _handle_lag(old_tick_number, new_tick_number):

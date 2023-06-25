@@ -29,6 +29,6 @@ func _execute():
 	for pushed_object_id in _pushed_object_ids:
 		var pushed_object = Globals.WORLD_UPDATER.objects_container.get_object_by_id(pushed_object_id)
 		if pushed_object:
-			await pushed_object.move(Vector2i(pushed_object._position) + Vector2i(self._direction), 0.4)
+			await pushed_object.move(Vector2i(pushed_object._position) + Vector2i(self._direction))
 		else:
 			push_error("[ERROR] Could not get pushed object with id: " + str(pushed_object_id))
