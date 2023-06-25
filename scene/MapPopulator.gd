@@ -6,9 +6,9 @@ extends Node
 
 func post_populate():
 	if post_populate_http_request.get_http_client_status() not in Globals.BUSY_HTTP_STATUSES:
-		var error = post_populate_http_request.request(post_populate_endpoint_url, [], HTTPClient.METHOD_POST)
-		if error != OK:
-			push_error("[ERROR] Could not POST populate")
+		var result = post_populate_http_request.request(post_populate_endpoint_url, [], HTTPClient.METHOD_POST)
+		if result != OK:
+			push_error("[ERROR] Could not POST populate: " + str(result))
 			return
 		self.state_getter.current_tick_number = -1
 

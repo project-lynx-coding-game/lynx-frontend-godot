@@ -10,9 +10,9 @@ func post_agent(new_agent):
 	var payload_string = JSON.stringify(payload_json)
 	var headers = ["Content-Type: application/json"]
 	if post_agent_http_request.get_http_client_status() not in Globals.BUSY_HTTP_STATUSES:
-		var error = post_agent_http_request.request(Globals.SERVER_ADDRESS + "add_object", headers, HTTPClient.METHOD_POST, payload_string)
-		if error != OK:
-			push_error("[ERROR] Could not POST Agent")
+		var result = post_agent_http_request.request(Globals.SERVER_ADDRESS + "add_object", headers, HTTPClient.METHOD_POST, payload_string)
+		if result != OK:
+			push_error("[ERROR] Could not POST Agent: " + str(result))
 
 func create_agent(_code, _position = Vector2(0, 0), _id = randi(), _owner = ""):
 	var new_agent = Agent.instantiate()
