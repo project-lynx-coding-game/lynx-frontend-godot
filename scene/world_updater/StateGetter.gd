@@ -8,12 +8,17 @@ extends Node
 var json = JSON.new()
 var current_tick_number: int = -1
 
-func _speed_up_actions_after_lag(old_tick_number, new_tick_number):
-	Globals.ACTION_SPEED_MULTIPLIER = 1 if new_tick_number <= old_tick_number else new_tick_number - old_tick_number
-
+func _speed_up_actions():
 	for object in Globals.WORLD_UPDATER.objects_container.get_children():
 		object.get_node("ExecuteActionTimer").wait_time = 0.5 / Globals.ACTION_SPEED_MULTIPLIER
 		object.get_node("AnimatedSprite2D").speed_scale = Globals.ACTION_SPEED_MULTIPLIER
+
+func _handle_lag(old_tick_number, new_tick_number):
+	var old_action_speed_multiplier = Globals.ACTION_SPEED_MULTIPLIER
+	Globals.ACTION_SPEED_MULTIPLIER = 1 if new_tick_number <= old_tick_number else new_tick_number - old_tick_number
+	
+	if old_action_speed_multiplier != Globals.ACTION_SPEED_MULTIPLIER:
+		_speed_up_actions()
 		
 func _update_state(response):
 	if "scene" in response.keys():
@@ -23,7 +28,7 @@ func _update_state(response):
 	elif "deltas" in response.keys():
 		deltas_applier.apply_deltas(response["deltas"])
 	
-	_speed_up_actions_after_lag(current_tick_number, response["tick_number"])
+	_handle_lag(current_tick_number, response["tick_number"])
 	current_tick_number = response["tick_number"]
 
 func _on_get_state_http_request_request_completed(_result, response_code, _headers, body):
