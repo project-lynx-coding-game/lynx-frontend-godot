@@ -23,7 +23,7 @@ func apply_deltas(deltas_json):
 				continue
 				
 			while(entity._object_id in Globals.OBJECTS_IN_CREATION):
-				await get_tree().create_timer(0.01).timeout
+				await get_tree().process_frame
 			
 			var object = objects_container.get_object_by_id(entity._object_id)
 			
