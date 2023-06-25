@@ -21,12 +21,8 @@ func apply_deltas(deltas_json):
 				Globals.OBJECTS_IN_CREATION.append(object_in_creation["attributes"]["id"])
 				self.global_action_queue.add_child(entity)
 				continue
-				
-			while(entity._object_id in Globals.OBJECTS_IN_CREATION):
-				await get_tree().process_frame
 			
 			var object = objects_container.get_object_by_id(entity._object_id)
-			
 			if object:
 				object.get_node("ActionQueue").add_child(entity)
 			else:
