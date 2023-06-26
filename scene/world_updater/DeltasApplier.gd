@@ -8,7 +8,7 @@ var json = JSON.new()
 func _handle_create_object(entity):
 	json.parse(entity._serialized_object)
 	var object_in_creation = json.get_data()
-	Globals.OBJECTS_IN_CREATION.append(object_in_creation["attributes"]["id"])
+	Globals.OBJECTS_IN_CREATION.append(int(object_in_creation["attributes"]["id"]))
 
 func _handle_global_action(entity):
 	if entity.get_name() == "CreateObject":
