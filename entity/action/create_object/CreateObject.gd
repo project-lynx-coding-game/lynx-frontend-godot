@@ -1,6 +1,6 @@
 extends LynxAction
 
-var _serialized_object = int()
+var _serialized_object = String()
 var json = JSON.new()
 
 func _init():
@@ -21,3 +21,4 @@ func _execute():
 	Globals.WORLD_UPDATER.objects_container.add_child(entity)
 	entity._post_populate()
 	
+	Globals.OBJECTS_IN_CREATION.erase(int(entity._id))
