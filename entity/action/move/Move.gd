@@ -25,7 +25,7 @@ func _execute():
 		object.get_node("AnimatedSprite2D").set_frame(0)
 		
 	
-	await object.move(Vector2i(object._position) + Vector2i(self._direction), Globals.DEFAULT_ACTION_SPEED - 0.1 / Globals.ACTION_SPEED_MULTIPLIER)
+	await object.move(Vector2i(object._position) + Vector2i(self._direction), (Globals.DEFAULT_ACTION_SPEED - 0.1) / Globals.ACTION_SPEED_MULTIPLIER)
 	
 	if object.has_node("AnimatedSprite2D"):
 		object.get_node("AnimatedSprite2D").stop()
