@@ -11,7 +11,7 @@ func _handle_create_object(entity):
 	Globals.OBJECTS_IN_CREATION.append(object_in_creation["attributes"]["id"])
 
 func _handle_global_action(entity):
-	if entity._type == "CreateObject":
+	if entity.get_name() == "CreateObject":
 		_handle_create_object(entity)
 	self.global_action_queue.add_child(entity)
 
