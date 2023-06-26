@@ -5,11 +5,11 @@ func _await_creation_of_object(id: int):
 		await get_tree().process_frame
 
 func get_object_by_id(id: int):
-	_await_creation_of_object(id)
+	await _await_creation_of_object(id)
 	return get_node(str(id))
 	
 func remove_object_by_id(id: int):
-	var object = get_object_by_id(id)
+	var object = await get_object_by_id(id)
 	if object:
 		remove_child(object)
 		object.queue_free()

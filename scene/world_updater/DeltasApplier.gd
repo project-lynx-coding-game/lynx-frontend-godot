@@ -16,7 +16,7 @@ func _handle_global_action(entity):
 	self.global_action_queue.add_child(entity)
 
 func _handle_object_action(entity):
-	var object = objects_container.get_object_by_id(entity._object_id)
+	var object = await objects_container.get_object_by_id(entity._object_id)
 	if object:
 		object.get_node("ActionQueue").add_child(entity)
 	else:
