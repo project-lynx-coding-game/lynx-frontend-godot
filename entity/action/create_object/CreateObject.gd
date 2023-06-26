@@ -21,4 +21,4 @@ func _execute():
 	Globals.WORLD_UPDATER.objects_container.add_child(entity)
 	entity._post_populate()
 	
-	Globals.OBJECTS_IN_CREATION.erase(entity._id)
+	Globals.OBJECTS_IN_CREATION.erase(int(entity._id))
