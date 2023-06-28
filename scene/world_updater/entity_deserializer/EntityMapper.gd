@@ -3,7 +3,7 @@ extends Node
 # update when a new entity is added
 var available_entity_types = {
 	"Agent": load("res://entity/object/agent.tscn"),
-	"Log": load("res://entity/object/log.tscn"),
+	"Wood": load("res://entity/object/wood.tscn"),
 	"Move" : load("res://entity/action/move.tscn"),
 	"Push" : load("res://entity/action/push.tscn"),
 	"MessageLog" : load("res://entity/action/message_log.tscn"),

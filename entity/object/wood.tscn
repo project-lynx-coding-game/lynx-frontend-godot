@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://c47qlcbmfsr1m"]
 
-[ext_resource type="Script" path="res://entity/object/log/Log.gd" id="1_lq4sp"]
+[ext_resource type="Script" path="res://entity/object/Object.gd" id="1_hh1hn"]
 [ext_resource type="Texture2D" uid="uid://ca3n0ke6737vk" path="res://assets/NinjaAdventure/Backgrounds/Tilesets/TilesetHouse.png" id="2_3cfmd"]
-[ext_resource type="Script" path="res://entity/object/agent/ActionQueue.gd" id="3_k4g3e"]
+[ext_resource type="Script" path="res://entity/object/ActionQueue.gd" id="3_lq7q3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fab68"]
 atlas = ExtResource("2_3cfmd")
@@ -19,14 +19,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Log" type="Node2D"]
-script = ExtResource("1_lq4sp")
+[node name="Wood" type="Node2D"]
+script = ExtResource("1_hh1hn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tglnp")
 
 [node name="ActionQueue" type="Node" parent="."]
-script = ExtResource("3_k4g3e")
+script = ExtResource("3_lq7q3")
 
 [node name="ExecuteActionTimer" type="Timer" parent="."]
 wait_time = 0.05
