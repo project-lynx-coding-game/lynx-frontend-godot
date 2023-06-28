@@ -15,7 +15,7 @@ func _post_populate():
 	self.position = self.position.snapped(Globals.TILE_SIZE)
 	self.position += Vector2(Globals.TILE_SIZE / 2)
 
-# accepts position in tile coordinates 
+# accepts position in tile coordinates
 func move(_target_position: Vector2i, duration: float):
 	var tween = get_tree().create_tween()
 	

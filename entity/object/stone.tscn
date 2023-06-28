@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://entity/object/Object.gd" id="1_67j1e"]
 [ext_resource type="Texture2D" uid="uid://do12si5bh4lnq" path="res://assets/NinjaAdventure/Backgrounds/Tilesets/world_elements/stone.png" id="2_34w7g"]
-[ext_resource type="Script" path="res://entity/object/agent/ActionQueue.gd" id="2_a1nhq"]
+[ext_resource type="Script" path="res://entity/object/ActionQueue.gd" id="3_c04a8"]
 
 [node name="Stone" type="Node2D"]
 script = ExtResource("1_67j1e")
@@ -13,7 +13,7 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_34w7g")
 
 [node name="ActionQueue" type="Node" parent="."]
-script = ExtResource("2_a1nhq")
+script = ExtResource("3_c04a8")
 
 [node name="ExecuteActionTimer" type="Timer" parent="."]
 
