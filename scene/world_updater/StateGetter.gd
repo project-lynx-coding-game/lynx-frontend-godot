@@ -7,6 +7,7 @@ extends Node
 
 var json = JSON.new()
 var current_tick_number: int = -1
+var get_state_wait_time: float = 1.0
 
 func _speed_up_actions():
 	for object in Globals.WORLD_UPDATER.objects_container.get_children():
@@ -33,8 +34,11 @@ func _update_state(response):
 
 func _on_get_state_http_request_request_completed(_result, response_code, _headers, body):
 	if response_code == 200:
+		var time_now = Time.get_unix_time_from_system()
 		json.parse(body.get_string_from_utf8())
 		var response = json.get_data()
+		var difference_in_time = (Time.get_unix_time_from_system() - float(response["tick_timestamp"]))*1000
+		self.get_node("GetStateTimer").wait_time = 1 - (float(int(difference_in_time) % 1000)) / 1000
 		_update_state(response)
 
 # send get state requests every timer timeout (1s)
