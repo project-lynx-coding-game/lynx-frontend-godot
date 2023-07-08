@@ -1,20 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://dt53ev7eejxgh"]
+[gd_scene load_steps=6 format=3 uid="uid://dt53ev7eejxgh"]
 
 [ext_resource type="Script" path="res://entity/object/Object.gd" id="1_67j1e"]
 [ext_resource type="Texture2D" uid="uid://do12si5bh4lnq" path="res://assets/NinjaAdventure/Backgrounds/Tilesets/world_elements/stone.png" id="2_34w7g"]
 [ext_resource type="Script" path="res://entity/object/ActionQueue.gd" id="3_c04a8"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcijs"]
+atlas = ExtResource("2_34w7g")
+region = Rect2(0, 0, 7, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vkau3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcijs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Stone" type="Node2D"]
 script = ExtResource("1_67j1e")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 1)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_34w7g")
 
 [node name="ActionQueue" type="Node" parent="."]
 script = ExtResource("3_c04a8")
 
 [node name="ExecuteActionTimer" type="Timer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vkau3")
 
 [connection signal="timeout" from="ExecuteActionTimer" to="ActionQueue" method="_on_execute_action_timer_timeout"]
