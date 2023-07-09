@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkm4i5405grrr"]
+[gd_scene load_steps=8 format=3 uid="uid://bkm4i5405grrr"]
 
 [ext_resource type="Script" path="res://ui/UI.gd" id="1_bsom3"]
 [ext_resource type="Script" path="res://ui/CodeEditor.gd" id="1_gixgk"]
 [ext_resource type="Script" path="res://ui/AgentCreator.gd" id="3_kmffy"]
+[ext_resource type="Script" path="res://OutputConsole.gd" id="4_rw6m0"]
 [ext_resource type="Script" path="res://ui/Settings.gd" id="4_ss325"]
 [ext_resource type="Script" path="res://ui/Tooltips.gd" id="5_fyncs"]
 
@@ -47,7 +48,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 359.0
-offset_right = 1280.0
+offset_right = 947.0
 offset_bottom = 721.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -118,6 +119,14 @@ grow_horizontal = 0
 grow_vertical = 2
 text = "Populate
 "
+
+[node name="OutputConsole" type="RichTextLabel" parent="AgentCreator"]
+layout_mode = 0
+offset_left = 946.0
+offset_top = 360.0
+offset_right = 1278.0
+offset_bottom = 719.0
+script = ExtResource("4_rw6m0")
 
 [node name="Settings" type="Control" parent="."]
 anchors_preset = 0
