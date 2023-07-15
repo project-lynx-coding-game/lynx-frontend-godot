@@ -2,8 +2,11 @@ extends Node
 
 @export var tile_setter: Node
 
-@onready var entity_mapper = get_node("EntityMapper")
+var entity_mapper: Node
 var json = JSON.new()
+
+func _ready():
+	entity_mapper = get_node("EntityMapper")
 
 func deserialize_action(attributes: Dictionary, type: String):
 	var entity = entity_mapper.map_entity_type_to_node(type)
@@ -16,6 +19,7 @@ func deserialize_action(attributes: Dictionary, type: String):
 	return entity_instance
 
 func deserialize_object(attributes: Dictionary):
+	# entity_mapper = get_node("EntityMapper")
 	if not attributes.has("name"):
 		push_error("[ERROR] No Object name attribute when deserializing")
 		return null
