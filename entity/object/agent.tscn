@@ -1,7 +1,6 @@
 [gd_scene load_steps=46 format=3 uid="uid://jysssexve8li"]
 
 [ext_resource type="Script" path="res://entity/object/agent/Agent.gd" id="1_vcg4i"]
-[ext_resource type="Shader" path="res://entity/object/agent/agent.gdshader" id="2_2hmpv"]
 [ext_resource type="Texture2D" uid="uid://d0qtsmpiwwsxl" path="res://assets/NinjaAdventure/Actor/Characters/Villager/SeparateAnim/Attack.png" id="2_bgdlx"]
 [ext_resource type="Texture2D" uid="uid://cy6fgu12r3dx1" path="res://assets/NinjaAdventure/Actor/Characters/Villager/SeparateAnim/Walk.png" id="2_v4nox"]
 [ext_resource type="Texture2D" uid="uid://ic6skivoqf27" path="res://assets/NinjaAdventure/Actor/Characters/Villager/SeparateAnim/Idle.png" id="3_0id8p"]
@@ -9,8 +8,31 @@
 [ext_resource type="PackedScene" uid="uid://ghvgwvmmooc8" path="res://ui/speech_bubble.tscn" id="6_gy6jy"]
 [ext_resource type="Script" path="res://entity/object/ActionQueue.gd" id="6_vrhmt"]
 
+[sub_resource type="Shader" id="Shader_40l27"]
+code = "shader_type canvas_item;
+
+uniform vec4 line_color = vec4(1.0);
+uniform float line_thickness : hint_range(0, 10) = 1.0;
+
+const vec2 OFFSETS[8] = {
+	vec2(-1, -1), vec2(-1, 0), vec2(-1, 1), vec2(0, -1), vec2(0, 1), 
+	vec2(1, -1), vec2(1, 0), vec2(1, 1)
+};
+
+void fragment() {
+	vec2 size = TEXTURE_PIXEL_SIZE * line_thickness;
+	float outline = 0.0;
+	
+	for (int i = 0; i < OFFSETS.length(); i++) {
+		outline += texture(TEXTURE, UV + size * OFFSETS[i]).a;
+	}
+	outline = min(outline, 1.0);
+	vec4 color = texture(TEXTURE, UV);
+	COLOR = mix(color, line_color, outline - color.a);
+}"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k8o1p"]
-shader = ExtResource("2_2hmpv")
+shader = SubResource("Shader_40l27")
 shader_parameter/line_color = Quaternion(1, 1, 1, 1)
 shader_parameter/line_thickness = 0.0
 
