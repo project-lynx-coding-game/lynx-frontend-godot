@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://jysssexve8li"]
+[gd_scene load_steps=44 format=3 uid="uid://jysssexve8li"]
 
 [ext_resource type="Script" path="res://entity/object/agent/Agent.gd" id="1_vcg4i"]
 [ext_resource type="Texture2D" uid="uid://d0qtsmpiwwsxl" path="res://assets/NinjaAdventure/Actor/Characters/Villager/SeparateAnim/Attack.png" id="2_bgdlx"]
@@ -7,34 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://ewkhgaisv5sq" path="res://assets/NinjaAdventure/Actor/Characters/Villager/SpriteSheet.png" id="4_ivyqg"]
 [ext_resource type="PackedScene" uid="uid://ghvgwvmmooc8" path="res://ui/speech_bubble.tscn" id="6_gy6jy"]
 [ext_resource type="Script" path="res://entity/object/ActionQueue.gd" id="6_vrhmt"]
-
-[sub_resource type="Shader" id="Shader_40l27"]
-code = "shader_type canvas_item;
-
-uniform vec4 line_color = vec4(1.0);
-uniform float line_thickness : hint_range(0, 10) = 1.0;
-
-const vec2 OFFSETS[8] = {
-	vec2(-1, -1), vec2(-1, 0), vec2(-1, 1), vec2(0, -1), vec2(0, 1), 
-	vec2(1, -1), vec2(1, 0), vec2(1, 1)
-};
-
-void fragment() {
-	vec2 size = TEXTURE_PIXEL_SIZE * line_thickness;
-	float outline = 0.0;
-	
-	for (int i = 0; i < OFFSETS.length(); i++) {
-		outline += texture(TEXTURE, UV + size * OFFSETS[i]).a;
-	}
-	outline = min(outline, 1.0);
-	vec4 color = texture(TEXTURE, UV);
-	COLOR = mix(color, line_color, outline - color.a);
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k8o1p"]
-shader = SubResource("Shader_40l27")
-shader_parameter/line_color = Quaternion(1, 1, 1, 1)
-shader_parameter/line_thickness = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o1wb4"]
 atlas = ExtResource("2_bgdlx")
@@ -401,7 +373,6 @@ animations = [{
 script = ExtResource("1_vcg4i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_k8o1p")
 sprite_frames = SubResource("SpriteFrames_gslp2")
 animation = &"walk_down"
 
