@@ -1,11 +1,10 @@
 extends LynxAction
 
 var _text: String
-signal append_message_to_console(message: String)
+@onready var _output_console = get_node("/root/Scene/CanvasLayer/UI/AgentCreator/ColorRect/OutputConsole")
 
 func _init():
 	self.accepted_attributes = ["text"]
 
 func _execute():
-	get_parent().get_parent().print_tree()
-	self.append_message_to_console.emit(self._text)
+	self._output_console.print(self._text, Color.DARK_RED)

@@ -120,12 +120,18 @@ grow_vertical = 2
 text = "Populate
 "
 
-[node name="OutputConsole" type="RichTextLabel" parent="AgentCreator"]
+[node name="ColorRect" type="ColorRect" parent="AgentCreator"]
 layout_mode = 0
-offset_left = 946.0
-offset_top = 360.0
-offset_right = 1278.0
-offset_bottom = 719.0
+offset_left = 947.0
+offset_top = 359.0
+offset_right = 1281.0
+offset_bottom = 720.0
+color = Color(0.156863, 0.164706, 0.211765, 1)
+
+[node name="OutputConsole" type="RichTextLabel" parent="AgentCreator/ColorRect"]
+layout_mode = 0
+offset_right = 332.0
+offset_bottom = 362.0
 script = ExtResource("4_rw6m0")
 
 [node name="Settings" type="Control" parent="."]
