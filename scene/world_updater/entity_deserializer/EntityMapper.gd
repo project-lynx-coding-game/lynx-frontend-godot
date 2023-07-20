@@ -14,6 +14,7 @@ var available_entity_types = {
 	"Mine" : load("res://entity/action/mine.tscn"),
 	"RemoveObject" : load("res://entity/action/remove_object.tscn"),
 	"CreateObject": load("res://entity/action/create_object.tscn"),
+	"ErrorLog": load("res://entity/action/error_log.tscn")
 	}
 
 func map_entity_type_to_node(entity_type):
