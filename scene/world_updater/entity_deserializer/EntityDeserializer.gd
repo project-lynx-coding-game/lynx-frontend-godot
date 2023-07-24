@@ -19,7 +19,6 @@ func deserialize_action(attributes: Dictionary, type: String):
 	return entity_instance
 
 func deserialize_object(attributes: Dictionary):
-	# entity_mapper = get_node("EntityMapper")
 	if not attributes.has("name"):
 		push_error("[ERROR] No Object name attribute when deserializing")
 		return null
