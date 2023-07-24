@@ -20,3 +20,4 @@ func test_serialize_valid_agent_properly_serializes():
 	agent.init(Vector2(1, 2), 123, "dummy-owner", "dummy-code")
 	var serialized_agent = agent.serialize()
 	assert_eq(serialized_agent, expected_serialized_agent)
+	agent.free()

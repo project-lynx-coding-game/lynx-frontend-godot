@@ -2,11 +2,8 @@ extends Node
 
 @export var tile_setter: Node
 
-var entity_mapper: Node
+@onready var entity_mapper = get_node("EntityMapper")
 var json = JSON.new()
-
-func _ready():
-	entity_mapper = get_node("EntityMapper")
 
 func deserialize_action(attributes: Dictionary, type: String):
 	var entity = entity_mapper.map_entity_type_to_node(type)

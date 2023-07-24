@@ -8,7 +8,7 @@ class TestEntityDeserialization:
 	func before_all():
 		var EntityDeserializer = preload("res://scene/world_updater/entity_deserializer.tscn")
 		entity_deserializer = EntityDeserializer.instantiate()
-		entity_deserializer._ready()
+		get_tree().get_root().add_child(entity_deserializer)
 
 	func test_entity_without_type_returns_null():
 		var serialized_entity_without_type = {
@@ -38,7 +38,7 @@ class TestTileDeserialization:
 	func before_all():
 		var EntityDeserializer = preload("res://scene/world_updater/entity_deserializer.tscn")
 		entity_deserializer = EntityDeserializer.instantiate()
-		entity_deserializer._ready()
+		get_tree().get_root().add_child(entity_deserializer)
 		
 	func test_tile_without_name_returns_null():
 		var serialized_tile = {
@@ -77,7 +77,7 @@ class TestObjectDeserialization:
 	func before_all():
 		var EntityDeserializer = preload("res://scene/world_updater/entity_deserializer.tscn")
 		entity_deserializer = EntityDeserializer.instantiate()
-		entity_deserializer._ready()
+		get_tree().get_root().add_child(entity_deserializer)
 	
 	func test_valid_object_properly_deserializes():
 		var serialized_object = {
@@ -103,6 +103,7 @@ class TestObjectDeserialization:
 		assert_eq(deserialized_object._position, Vector2(1, 2))
 		assert_eq(deserialized_object._id, 123)
 		assert_eq(deserialized_object._owner, "dummy-owner")
+		deserialized_object.free()
 	
 	func test_object_without_name_returns_null():
 		var serialized_object = {
@@ -153,7 +154,7 @@ class TestActionDeserialization:
 	func before_all():
 		var EntityDeserializer = preload("res://scene/world_updater/entity_deserializer.tscn")
 		entity_deserializer = EntityDeserializer.instantiate()
-		entity_deserializer._ready()
+		get_tree().get_root().add_child(entity_deserializer)
 	
 	func test_valid_action_properly_deserializes():
 		var serialized_action = {
@@ -170,6 +171,7 @@ class TestActionDeserialization:
 		assert_eq(deserialized_action.get_name(), "Move")
 		assert_eq(deserialized_action._object_id, 123)
 		assert_eq(deserialized_action._direction, Vector2(1, 2))
+		deserialized_action.free()
 	
 	func test_unknown_action_returns_null():
 		var serialized_action = {
