@@ -41,8 +41,7 @@ func deserialize_tile(attributes: Dictionary):
 	if not attributes.has("position") or not attributes.position.has("x") or not attributes.position.has("y"):
 		push_error("[ERROR] No Tile position attribute when deserializing")
 		return null
-	tile_setter.set_tile(attributes.name, Vector2i(attributes.position.get("x"), attributes.position.get("y")))
-	return null
+	return tile_setter.set_tile(attributes.name, Vector2i(attributes.position.get("x"), attributes.position.get("y")))
 
 func deserialize(entity_json: Dictionary):
 	if not entity_json.has("type"):

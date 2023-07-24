@@ -1,6 +1,5 @@
 extends 'res://addons/gut/test.gd'
 
-
 class TestEntityDeserialization:
 	extends GutTest
 	
@@ -9,11 +8,12 @@ class TestEntityDeserialization:
 	func before_all():
 		var EntityDeserializer = preload("res://scene/world_updater/entity_deserializer.tscn")
 		entity_deserializer = EntityDeserializer.instantiate()
-		
+		entity_deserializer._ready()
+	
 	func after_all():
-		entity_deserializer.free()
+		entity_deserializer.queue_free()
 
-	func test_entity_without_type_pushes_error():
+	func test_entity_without_type_returns_null():
 		var serialized_entity_without_type = {
 			"attributes": {
 				"object_id": 123,
@@ -23,18 +23,14 @@ class TestEntityDeserialization:
 				}
 			}
 		}
-		
 		var deserialized_entity = entity_deserializer.deserialize(serialized_entity_without_type)
-		
 		assert_null(deserialized_entity)
 		
-	func test_entity_without_attributes_pushes_error():
+	func test_entity_without_attributes_returns_null():
 		var serialized_entity_without_attributes = {
 			"type": "Move"
 		}
-		
 		var deserialized_entity = entity_deserializer.deserialize(serialized_entity_without_attributes)
-		
 		assert_null(deserialized_entity)
 
 class TestTileDeserialization:
@@ -45,32 +41,12 @@ class TestTileDeserialization:
 	func before_all():
 		var EntityDeserializer = preload("res://scene/world_updater/entity_deserializer.tscn")
 		entity_deserializer = EntityDeserializer.instantiate()
+		entity_deserializer._ready()
 		
 	func after_all():
-		entity_deserializer.free()
-	
-	"""
-	func test_valid_tile_properly_deserializes():
-		var serialized_tile = {
-			"type": "Object",
-			"attributes": {
-				"name": "Grass",
-				"position": {
-					"x": 1,
-					"y": 2
-				},
-				"tags": [
-					"walkable"
-				]
-			}
-		}
+		entity_deserializer.queue_free()
 		
-		var deserialized_tile = entity_deserializer.deserialize(serialized_tile)
-		
-		assert_not_null(deserialized_tile)
-	"""
-		
-	func test_tile_without_name_pushes_error():
+	func test_tile_without_name_returns_null():
 		var serialized_tile = {
 			"type": "Object",
 			"attributes": {
@@ -83,12 +59,10 @@ class TestTileDeserialization:
 				]
 			}
 		}
-		
 		var deserialized_tile = entity_deserializer.deserialize(serialized_tile)
-		
 		assert_null(deserialized_tile)
 		
-	func test_tile_without_position_pushes_error():
+	func test_tile_without_position_returns_null():
 		var serialized_tile = {
 			"type": "Object",
 			"attributes": {
@@ -98,9 +72,7 @@ class TestTileDeserialization:
 				]
 			}
 		}
-		
 		var deserialized_tile = entity_deserializer.deserialize(serialized_tile)
-		
 		assert_null(deserialized_tile)
 
 class TestObjectDeserialization:
@@ -112,9 +84,6 @@ class TestObjectDeserialization:
 		var EntityDeserializer = preload("res://scene/world_updater/entity_deserializer.tscn")
 		entity_deserializer = EntityDeserializer.instantiate()
 		entity_deserializer._ready()
-		
-	func after_all():
-		entity_deserializer.free()
 	
 	func test_valid_object_properly_deserializes():
 		var serialized_object = {
@@ -134,16 +103,14 @@ class TestObjectDeserialization:
 				"tags":[]
 			}
 		}
-		
 		var Agent = preload("res://entity/object/agent.tscn")
 		var deserialized_object = entity_deserializer.deserialize(serialized_object)
-		
 		assert_eq(deserialized_object.get_name(), "Agent")
 		assert_eq(deserialized_object._position, Vector2(1, 2))
 		assert_eq(deserialized_object._id, 123)
 		assert_eq(deserialized_object._owner, "dummy-owner")
 	
-	func test_object_without_name_pushes_error():
+	func test_object_without_name_returns_null():
 		var serialized_object = {
 			"type": "Object",
 			"attributes": {
@@ -160,12 +127,10 @@ class TestObjectDeserialization:
 				"tags":[]
 			}
 		}
-		
 		var deserialized_object = entity_deserializer.deserialize(serialized_object)
-		
 		assert_null(deserialized_object)
 	
-	func test_unknown_object_pushes_error():
+	func test_unknown_object_returns_null():
 		var serialized_object = {
 			"type": "Object",
 			"attributes": {
@@ -183,10 +148,7 @@ class TestObjectDeserialization:
 				"tags":[]
 			}
 		}
-		
 		var deserialized_object = entity_deserializer.deserialize(serialized_object)
-		
-		# assert that error has been pushed
 		assert_null(deserialized_object)
 	
 class TestActionDeserialization:
@@ -198,9 +160,6 @@ class TestActionDeserialization:
 		var EntityDeserializer = preload("res://scene/world_updater/entity_deserializer.tscn")
 		entity_deserializer = EntityDeserializer.instantiate()
 		entity_deserializer._ready()
-		
-	func after_all():
-		entity_deserializer.free()
 	
 	func test_valid_action_properly_deserializes():
 		var serialized_action = {
@@ -213,14 +172,12 @@ class TestActionDeserialization:
 				}
 			}
 		}
-		
 		var deserialized_action = entity_deserializer.deserialize(serialized_action)
-		
 		assert_eq(deserialized_action.get_name(), "Move")
 		assert_eq(deserialized_action._object_id, 123)
 		assert_eq(deserialized_action._direction, Vector2(1, 2))
 	
-	func test_unknown_action_pushes_error():
+	func test_unknown_action_returns_null():
 		var serialized_action = {
 			"type": "ThisActionIsUnknown",
 			"attributes": {
@@ -231,7 +188,5 @@ class TestActionDeserialization:
 				}
 			}
 		}
-		
 		var deserialized_action = entity_deserializer.deserialize(serialized_action)
-		
 		assert_null(deserialized_action)
