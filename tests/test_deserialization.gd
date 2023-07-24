@@ -9,9 +9,6 @@ class TestEntityDeserialization:
 		var EntityDeserializer = preload("res://scene/world_updater/entity_deserializer.tscn")
 		entity_deserializer = EntityDeserializer.instantiate()
 		entity_deserializer._ready()
-	
-	func after_all():
-		entity_deserializer.queue_free()
 
 	func test_entity_without_type_returns_null():
 		var serialized_entity_without_type = {
@@ -42,9 +39,6 @@ class TestTileDeserialization:
 		var EntityDeserializer = preload("res://scene/world_updater/entity_deserializer.tscn")
 		entity_deserializer = EntityDeserializer.instantiate()
 		entity_deserializer._ready()
-		
-	func after_all():
-		entity_deserializer.queue_free()
 		
 	func test_tile_without_name_returns_null():
 		var serialized_tile = {
