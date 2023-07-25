@@ -14,14 +14,14 @@ func serialize():
 	var attributes_json = {
 		"type": "Object",
 		"attributes": {
-			"id" = self._id,
-			"name" = "Agent",
-			"position" = {
-				"x": self._position.x,
-				"y": self._position.y
+			"id": self._id,
+			"name": "Agent",
+			"position": {
+				"x": int(self._position.x),
+				"y": int(self._position.y)
 			},
-			"owner" = self._owner,
-			"tick" = self._tick
+			"owner": self._owner,
+			"tick": self._tick
 		}
 	}
 	return attributes_json
