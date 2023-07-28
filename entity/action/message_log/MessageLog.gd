@@ -13,7 +13,7 @@ func _execute():
 		
 		# show speech bubble with the text inside
 		speech_bubble.visible = true
-		speech_bubble.get_node("RichTextLabel").text = self._text
+		speech_bubble.get_node("RichTextLabel").text = str(self._text)
 		
 		# count down to when it is stopped being shown
 		speech_bubble.get_node("VisibilityTimer").start(1)
