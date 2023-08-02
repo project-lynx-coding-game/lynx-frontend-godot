@@ -7,7 +7,6 @@ extends Node
 
 var json = JSON.new()
 var current_tick_number: int = -1
-const ACCEPTABLE_DELAY : float = 0.01
 var delays: Array = []
 var last_delay: float = 0.0
 
