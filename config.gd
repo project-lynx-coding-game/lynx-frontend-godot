@@ -1,6 +1,6 @@
 extends Node
 
 const DEFAULT_GET_STATE_WAIT_TIME: float = 1.0
-const THRESHHOLD_of_SECOND_ROUNDING: float = 0.85
+const THRESHOLD_OF_SECOND_ROUNDING: float = 0.85
 const DELAYS_LIST_SIZE: int = 10
 const TICKS_WITHOUT_SYNCHRONIZATION: int = 3

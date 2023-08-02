@@ -20,7 +20,7 @@ func _calculate_average_delay_time():
 func _normalize_second(lower_time, higher_time):
 	var difference_in_ms = float(int(higher_time - lower_time) % 1000) / 1000
 	var difference_in_ms_normalized = difference_in_ms
-	if difference_in_ms_normalized >= Config.THRESHHOLD_of_SECOND_ROUNDING:
+	if difference_in_ms_normalized >= Config.THRESHOLD_OF_SECOND_ROUNDING:
 		difference_in_ms_normalized = difference_in_ms - Config.DEFAULT_GET_STATE_WAIT_TIME
 	return difference_in_ms_normalized
 
