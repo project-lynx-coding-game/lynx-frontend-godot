@@ -11,19 +11,17 @@ const ACCEPTABLE_DELAY : float = 0.01
 var delays: Array = []
 var last_delay: float = 0.0
 
-func _average_time():
+func _calculate_average_delay_time():
 	var sum := 0.0
 	if delays.size() == 0:
 		return 0.0
-	for n in delays:
-		sum += n
-	return sum / delays.size()
+	return delays.reduce(func(accum, number): return accum + number) / delays.size()
 
 func _normalize_second(lower_time, higher_time):
 	var difference_in_ms = float(int(higher_time - lower_time) % 1000) / 1000
 	var difference_in_ms_normalized = difference_in_ms
-	if difference_in_ms_normalized >= 0.85:
-		difference_in_ms_normalized =  difference_in_ms -  Globals.DEFAULT_GET_STATE_WAIT_TIME
+	if difference_in_ms_normalized >= Config.THRESHHOLD_of_SECOND_ROUNDING:
+		difference_in_ms_normalized = difference_in_ms - Config.DEFAULT_GET_STATE_WAIT_TIME
 	return difference_in_ms_normalized
 
 func _speed_up_actions():
@@ -44,11 +42,11 @@ func _update_state(response):
 		scene_wiper.wipe()
 		scene_recreator.recreate_scene(json.get_data())
 	elif "deltas" in response.keys():
-		if delays.size() == 10:
+		if delays.size() == Config.DELAYS_LIST_SIZE:
 			delays.pop_front()
 		var difference_in_ms_normalized = _normalize_second(response["send_time_ms"], Time.get_unix_time_from_system() * 1000)
 		delays.push_back(difference_in_ms_normalized + last_delay)
-		last_delay = _average_time()
+		last_delay = _calculate_average_delay_time()
 		deltas_applier.apply_deltas(response["deltas"])
 	_handle_lag(current_tick_number, response["tick_number"])
 	
@@ -71,7 +69,7 @@ func _on_get_state_timer_timeout():
 			push_error("[ERROR] Could not GET state: " + str(result))
 		
 		var delay_time_normalized = _normalize_second(0, Time.get_unix_time_from_system() * 1000)
-		if current_tick_number % 3 == 0:
-			get_node("GetStateTimer").wait_time = Globals.DEFAULT_GET_STATE_WAIT_TIME - delay_time_normalized - _average_time()
+		if current_tick_number % Config.TICKS_WITHOUT_SYNCHRONIZATION == 0:
+			get_node("GetStateTimer").wait_time = Config.DEFAULT_GET_STATE_WAIT_TIME - delay_time_normalized - _calculate_average_delay_time()
 		else:
-			get_node("GetStateTimer").wait_time = Globals.DEFAULT_GET_STATE_WAIT_TIME 
+			get_node("GetStateTimer").wait_time = Config.DEFAULT_GET_STATE_WAIT_TIME 
