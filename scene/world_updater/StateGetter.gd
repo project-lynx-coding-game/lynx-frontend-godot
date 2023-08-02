@@ -49,8 +49,11 @@ func _update_state(response):
 		deltas_applier.apply_deltas(response["deltas"])
 	_handle_lag(current_tick_number, response["tick_number"])
 	
-	current_tick_number = response["tick_number"]
-
+	if get_owner().objects_container.get_child_count() == 0:
+		current_tick_number = -1
+	else:
+		current_tick_number = response["tick_number"]
+	
 func _on_get_state_http_request_request_completed(_result, response_code, _headers, body):
 	if response_code == 200:
 		json.parse(body.get_string_from_utf8())
