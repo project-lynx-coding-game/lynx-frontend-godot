@@ -8,12 +8,10 @@ func _init():
 	
 func _execute():
 	var object = get_parent().object
-	if object.has_node("SpeechBubble"):
-		var speech_bubble = object.get_node("SpeechBubble")
-		
+	if object.speech_bubble:
 		# show speech bubble with the text inside
-		speech_bubble.visible = true
-		speech_bubble.get_node("RichTextLabel").text = str(self._text)
+		object.speech_bubble.visible = true
+		object.speech_bubble.get_node("RichTextLabel").text = str(self._text)
 		
 		# count down to when it is stopped being shown
-		speech_bubble.get_node("VisibilityTimer").start(1)
+		object.speech_bubble.get_node("VisibilityTimer").start(1)

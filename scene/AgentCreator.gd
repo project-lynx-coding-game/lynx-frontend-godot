@@ -1,6 +1,6 @@
 extends Node
 
-@onready var Agent = preload("res://entity/object/agent.tscn")
+@onready var Agent = preload("res://entity/object/agent/agent.tscn")
 
 @onready var objects_container = get_node("../ObjectsContainer")
 @onready var post_agent_http_request = get_node("PostAgentHTTPRequest")

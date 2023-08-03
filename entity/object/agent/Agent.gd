@@ -1,4 +1,5 @@
 extends LynxObject
+class_name LynxAgent
 
 var _tick = String()
 
