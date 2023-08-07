@@ -97,7 +97,6 @@ class TestObjectDeserialization:
 				"tags":[]
 			}
 		}
-		var Agent = preload("res://entity/object/agent.tscn")
 		var deserialized_object = entity_deserializer.deserialize(serialized_object)
 		assert_eq(deserialized_object.get_name(), "Agent")
 		assert_eq(deserialized_object._position, Vector2(1, 2))

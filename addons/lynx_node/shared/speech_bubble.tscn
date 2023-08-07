@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ghvgwvmmooc8"]
 
-[ext_resource type="Script" path="res://ui/speech_bubble/SpeechBubble.gd" id="1_hukh5"]
+[ext_resource type="Script" path="res://addons/lynx_node/shared/speech_bubble/SpeechBubble.gd" id="1_a5jj3"]
 [ext_resource type="Texture2D" uid="uid://vtgbixhxo82p" path="res://assets/NinjaAdventure/HUD/Dialog/DialogInfo.png" id="1_nfdv7"]
 [ext_resource type="FontFile" uid="uid://uxkpb0fktw2s" path="res://assets/NinjaAdventure/HUD/Font/6px-Normal.ttf" id="2_p0135"]
 
@@ -24,7 +24,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_hukh5")
+script = ExtResource("1_a5jj3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -27)

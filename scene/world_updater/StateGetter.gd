@@ -25,7 +25,7 @@ func _normalize_second(lower_time, higher_time):
 
 func _speed_up_actions():
 	for object in Globals.WORLD_UPDATER.objects_container.get_children():
-		object.get_node("ExecuteActionTimer").wait_time = Globals.DEFAULT_ACTION_SPEED / Globals.ACTION_SPEED_MULTIPLIER
+		object.execute_action_timer.wait_time = Globals.DEFAULT_ACTION_SPEED / Globals.ACTION_SPEED_MULTIPLIER
 		object.get_node("AnimatedSprite2D").speed_scale = Globals.ACTION_SPEED_MULTIPLIER
 
 func _handle_lag(old_tick_number, new_tick_number):

@@ -13,4 +13,4 @@ func _execute():
 	pass
 	
 func _post_populate():
-	self.get_node("ExecuteActionTimer").wait_time = Globals.DEFAULT_ACTION_SPEED
+	self.execute_action_timer.wait_time = Globals.DEFAULT_ACTION_SPEED

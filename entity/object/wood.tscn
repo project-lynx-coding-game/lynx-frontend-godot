@@ -1,18 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://c47qlcbmfsr1m"]
+[gd_scene load_steps=5 format=3 uid="uid://cu526r6478kku"]
 
-[ext_resource type="Script" path="res://entity/object/Object.gd" id="1_hh1hn"]
+[ext_resource type="Script" path="res://addons/lynx_node/lynx_object_node/lynx_object_node.gd" id="1_jega8"]
 [ext_resource type="Texture2D" uid="uid://ca3n0ke6737vk" path="res://assets/NinjaAdventure/Backgrounds/Tilesets/TilesetHouse.png" id="2_3cfmd"]
-[ext_resource type="Script" path="res://entity/object/ActionQueue.gd" id="3_lq7q3"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fab68"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bmy0"]
 atlas = ExtResource("2_3cfmd")
 region = Rect2(496, 288, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_tglnp"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_pe6wo"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fab68")
+"texture": SubResource("AtlasTexture_8bmy0")
 }],
 "loop": true,
 "name": &"default",
@@ -20,16 +19,8 @@ animations = [{
 }]
 
 [node name="Wood" type="Node2D"]
-script = ExtResource("1_hh1hn")
+script = ExtResource("1_jega8")
+action_speed = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_tglnp")
-
-[node name="ActionQueue" type="Node" parent="."]
-script = ExtResource("3_lq7q3")
-
-[node name="ExecuteActionTimer" type="Timer" parent="."]
-wait_time = 0.05
-autostart = true
-
-[connection signal="timeout" from="ExecuteActionTimer" to="ActionQueue" method="_on_execute_action_timer_timeout"]
+sprite_frames = SubResource("SpriteFrames_pe6wo")
