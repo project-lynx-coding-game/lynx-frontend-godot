@@ -10,3 +10,6 @@ func _on_settings_button_toggled(button_pressed):
 func _on_save_button_button_up():
 	Globals.SERVER_ADDRESS = get_node("SettingsPanel/VBoxContainer/AddressTextEdit").text
 	get_node("SettingsButton").button_pressed = false
+
+func _on_settings_button_button_down():
+	get_node("../button_audio_effect").play()

@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://ui/Settings.gd" id="4_ss325"]
 [ext_resource type="Script" path="res://ui/Tooltips.gd" id="5_fyncs"]
 [ext_resource type="Script" path="res://ui/AgentOptions.gd" id="7_ft5ov"]
+[ext_resource type="AudioStream" uid="uid://cltatxqlm1rwe" path="res://assets/Music/button_press.wav" id="7_e7dui"]
 
 [sub_resource type="CodeHighlighter" id="CodeHighlighter_2lklk"]
 
@@ -246,6 +247,11 @@ offset_bottom = 27.0
 layout_mode = 2
 text = "Agent: "
 
+[node name="button_audio_effect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_e7dui")
+volume_db = -30.636
+
+[connection signal="button_down" from="AgentCreatorToggle" to="AgentCreator" method="_on_agent_creator_toggle_button_down"]
 [connection signal="mouse_entered" from="AgentCreatorToggle" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="AgentCreatorToggle" to="." method="_on_mouse_exited"]
 [connection signal="toggled" from="AgentCreatorToggle" to="AgentCreator" method="_on_agent_creator_toggle_toggled"]
@@ -262,6 +268,7 @@ text = "Agent: "
 [connection signal="mouse_entered" from="AgentCreator/Populate" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="AgentCreator/Populate" to="." method="_on_mouse_exited"]
 [connection signal="button_up" from="Settings/SettingsPanel/SaveButton" to="Settings" method="_on_save_button_button_up"]
+[connection signal="button_down" from="Settings/SettingsButton" to="Settings" method="_on_settings_button_button_down"]
 [connection signal="mouse_entered" from="Settings/SettingsButton" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Settings/SettingsButton" to="." method="_on_mouse_exited"]
 [connection signal="toggled" from="Settings/SettingsButton" to="Settings" method="_on_settings_button_toggled"]

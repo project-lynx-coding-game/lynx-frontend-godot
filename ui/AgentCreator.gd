@@ -15,3 +15,7 @@ func _on_agent_creator_toggle_toggled(button_pressed):
 	self.get_node("CodeEditor").visible = button_pressed
 	self.get_node("Populate").visible = button_pressed
 	self.get_node("ColorRect").visible = button_pressed
+
+
+func _on_agent_creator_toggle_button_down():
+		get_node("../button_audio_effect").play()
