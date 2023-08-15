@@ -23,7 +23,8 @@ func _execute():
 		object.get_node("AnimatedSprite2D").set_animation(animation)
 		object.get_node("AnimatedSprite2D").play()
 		object.get_node("AnimatedSprite2D").set_frame(0)
-		
+		object.get_node("AnimationEffect").stream = load("res://assets/Music/walking.wav")
+		object.get_node("AnimationEffect").play()
 	
 	await object.move(Vector2i(object._position) + Vector2i(self._direction), (Globals.DEFAULT_ACTION_SPEED - 0.1) / Globals.ACTION_SPEED_MULTIPLIER)
 	

@@ -7,8 +7,7 @@
 [ext_resource type="Script" path="res://ui/Settings.gd" id="4_ss325"]
 [ext_resource type="Script" path="res://ui/Tooltips.gd" id="5_fyncs"]
 [ext_resource type="Script" path="res://ui/AgentOptions.gd" id="7_ft5ov"]
-[ext_resource type="AudioStream" uid="uid://cltatxqlm1rwe" path="res://assets/Music/button_press.wav" id="7_e7dui"]
-
+[ext_resource type="AudioStream" uid="uid://dwhe2pfkl4no8" path="res://assets/Music/button_press.wav" id="7_e7dui"]
 [sub_resource type="CodeHighlighter" id="CodeHighlighter_2lklk"]
 
 [node name="UI" type="Control"]

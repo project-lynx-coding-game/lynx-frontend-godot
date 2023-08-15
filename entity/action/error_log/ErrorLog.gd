@@ -11,3 +11,6 @@ func _init():
 func _execute():
 	if _user_id == Globals.USER_ID:
 		self._output_console.print(self._text, Color.DARK_RED)
+		var audio = get_node("/root/Scene/AudioEffect")
+		audio.stream = load("res://assets/Music/error_message.wav")
+		audio.play()

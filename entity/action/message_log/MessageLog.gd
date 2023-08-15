@@ -15,3 +15,4 @@ func _execute():
 		
 		# count down to when it is stopped being shown
 		object.speech_bubble.get_node("VisibilityTimer").start(1)
+		

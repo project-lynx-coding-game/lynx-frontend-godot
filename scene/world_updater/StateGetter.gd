@@ -27,14 +27,16 @@ func _speed_up_actions():
 	for object in Globals.WORLD_UPDATER.objects_container.get_children():
 		object.execute_action_timer.wait_time = Globals.DEFAULT_ACTION_SPEED / Globals.ACTION_SPEED_MULTIPLIER
 		object.get_node("AnimatedSprite2D").speed_scale = Globals.ACTION_SPEED_MULTIPLIER
-
+		
 func _handle_lag(old_tick_number, new_tick_number):
 	var old_action_speed_multiplier = Globals.ACTION_SPEED_MULTIPLIER
+	var action_audio_node = get_node("/root/entity/object/Agent/AnimationEffect")
 	Globals.ACTION_SPEED_MULTIPLIER = 1 if new_tick_number <= old_tick_number else new_tick_number - old_tick_number
-	
+	action_audio_node.pitch_scale = Config.DEFAULT_ACTION_AUDIO
 	if old_action_speed_multiplier != Globals.ACTION_SPEED_MULTIPLIER:
+		action_audio_node.pitch_scale = Config.DEFAULT_ACTION_AUDIO / Globals.ACTION_SPEED_MULTIPLIER
 		_speed_up_actions()
-		
+
 func _update_state(response):
 	if "scene" in response.keys():
 		json.parse(response["scene"])

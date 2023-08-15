@@ -10,3 +10,7 @@ func _init():
 func _execute():
 	if _user_id == Globals.USER_ID:
 		self._output_console.print(self._text, Color.WHITE)
+		var audio = get_node("/root/Scene/AudioEffect")
+		audio.stream = load("res://assets/Music/message.wav")
+		audio.play()
+		
