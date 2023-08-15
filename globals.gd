@@ -7,3 +7,4 @@ var DEFAULT_ACTION_SPEED: float = 0.5
 var ACTION_SPEED_MULTIPLIER: int
 var OBJECTS_IN_CREATION: Array[int] = []
 var BUSY_HTTP_STATUSES: Array[int] = [HTTPClient.STATUS_CONNECTING, HTTPClient.STATUS_REQUESTING]
+var USER_ID: String = str(RandomNumberGenerator.new().randi())
