@@ -371,6 +371,14 @@ animations = [{
 script = ExtResource("1_0hv86")
 action_speed = 1.0
 
+[node name="Border" type="Line2D" parent="."]
+position = Vector2(0.820005, 1.54839)
+scale = Vector2(1.05989, 1.03226)
+points = PackedVector2Array(-8.51515, 7.4375, 6.9678, 7.4375, 6.9678, -8.5, -8.51515, -8.5, -8.51515, 7.4375, -8.51515, 7.4375, -8.51515, 7.4375, -8.51515, 7.4375, -8.51515, 7.4375, -8.51515, 7.4375, -8.51515, 7.4375, -8.51515, 7.4375)
+width = 1.0
+default_color = Color(0.545098, 0, 0, 1)
+sharp_limit = 1.0
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6onvm")
 animation = &"walk_down"
