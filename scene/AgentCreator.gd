@@ -16,7 +16,7 @@ func post_agent(new_agent):
 
 func create_agent(_code, _position = Vector2(0, 0), _id = randi(), _owner = ""):
 	var new_agent = Agent.instantiate()
-	new_agent.init(_position, _id, _owner, _code)
+	new_agent.init(_position, _id, Globals.USER_ID, _code)
 	post_agent(new_agent)
 	new_agent.queue_free()
 
