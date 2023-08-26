@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ynmbka5a07qq"]
+[gd_scene load_steps=17 format=3 uid="uid://ynmbka5a07qq"]
 
 [ext_resource type="PackedScene" uid="uid://b1ele5lo5n6u1" path="res://scene/world_updater.tscn" id="1_0bk4q"]
 [ext_resource type="PackedScene" uid="uid://bkm4i5405grrr" path="res://ui.tscn" id="1_sys4y"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scene/MapPopulator.gd" id="7_jlnul"]
 [ext_resource type="Script" path="res://scene/ObjectsContainer.gd" id="7_ol1bq"]
 [ext_resource type="Script" path="res://scene/TooltipsUpdater.gd" id="8_j32hx"]
+[ext_resource type="Script" path="res://scene/AgentDeleter.gd" id="12_3vloe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_71a80"]
 texture = ExtResource("2_m0xfg")
@@ -526,7 +527,13 @@ position = Vector2(160, 90)
 zoom = Vector2(4, 4)
 script = ExtResource("4_xglqh")
 
+[node name="AgentDeleter" type="Node" parent="."]
+script = ExtResource("12_3vloe")
+
+[node name="DeleteAgentHTTPRequest" type="HTTPRequest" parent="AgentDeleter"]
+
 [connection signal="create_agent_requested" from="CanvasLayer/UI" to="AgentCreator" method="_on_ui_create_agent_requested"]
+[connection signal="delete_agent_requested" from="CanvasLayer/UI" to="AgentDeleter" method="_on_ui_delete_agent_requested"]
 [connection signal="disable_camera_movement" from="CanvasLayer/UI" to="Camera2D" method="_on_ui_disable_camera_movement"]
 [connection signal="enable_camera_movement" from="CanvasLayer/UI" to="Camera2D" method="_on_ui_enable_camera_movement"]
 [connection signal="post_populate_map_requested" from="CanvasLayer/UI" to="Populator" method="_on_ui_post_populate_map_requested"]

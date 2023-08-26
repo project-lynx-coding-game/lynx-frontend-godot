@@ -2,6 +2,7 @@ extends LynxObject
 class_name LynxAgent
 
 var _tick = String()
+@onready var agent_options = get_node("/root/Scene/CanvasLayer/UI/AgentOptions")
 
 func _ready():
 	var color = self._generate_color_from_id(int(self._owner))
@@ -20,6 +21,14 @@ func init(_position, _id, _owner, _tick):
 	self._owner = _owner
 	self._tick = _tick
 
+func _input(event):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
+		var tile_position: Vector2 = Globals.WORLD_UPDATER.tilemap.local_to_map(get_global_mouse_position())
+		if tile_position.is_equal_approx(self._position):
+			agent_options.on_agent_clicked(self._id)
+		elif agent_options.panel_is_visible():
+			agent_options.hide_panel()
+				
 # TODO: move to Entity
 func serialize():
 	# TODO: generate attributes json automatically, use logic similar to populate
