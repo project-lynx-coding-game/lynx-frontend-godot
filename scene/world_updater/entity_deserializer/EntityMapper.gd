@@ -15,7 +15,8 @@ var available_entity_types = {
 	"RemoveObject" : load("res://entity/action/remove_object.tscn"),
 	"CreateObject": load("res://entity/action/create_object.tscn"),
 	"ErrorLog": load("res://entity/action/error_log.tscn"),
-	"Print": load("res://entity/action/print.tscn")
+	"Print": load("res://entity/action/print.tscn"),
+	"Take": load("res://entity/action/take.tscn")
 	}
 
 func map_entity_type_to_node(entity_type):
