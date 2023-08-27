@@ -384,7 +384,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"take_up",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -401,7 +401,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_down",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -418,7 +418,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_left",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -465,9 +465,4 @@ width = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6onvm")
-animation = &"take_down"
-
-[node name="AnimationEffect" type="AudioStreamPlayer2D" parent="."]
-volume_db = -15.0
-max_distance = 100.0
-attenuation = 1.07177
+animation = &"walk_down"

@@ -16,7 +16,7 @@ func _execute():
 	
 	var animation = ""
 	var object = get_parent().object
-	var direction = self._position - object._position
+	var direction = self._position - Vector2(object._position)
 	if vect_anim.has(direction):
 		animation = vect_anim[direction]
 	else:
