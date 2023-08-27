@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://scene/ObjectsContainer.gd" id="7_ol1bq"]
 [ext_resource type="Script" path="res://scene/TooltipsUpdater.gd" id="8_j32hx"]
 [ext_resource type="Script" path="res://scene/AgentDeleter.gd" id="12_3vloe"]
-
+[ext_resource type="Script" path="res://scene/RankingFetcher.gd" id="12_11l3g"]
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_udycp"]
 texture = ExtResource("2_bxdqr")
 1:0/0 = 0
@@ -978,8 +978,15 @@ script = ExtResource("12_3vloe")
 
 [node name="DeleteAgentHTTPRequest" type="HTTPRequest" parent="AgentDeleter"]
 
+[node name="RankingFetcher" type="Node" parent="."]
+script = ExtResource("12_11l3g")
+
+[node name="GetRankingHTTPRequest" type="HTTPRequest" parent="RankingFetcher"]
+
 [connection signal="create_agent_requested" from="CanvasLayer/UI" to="AgentCreator" method="_on_ui_create_agent_requested"]
 [connection signal="delete_agent_requested" from="CanvasLayer/UI" to="AgentDeleter" method="_on_ui_delete_agent_requested"]
 [connection signal="disable_camera_movement" from="CanvasLayer/UI" to="Camera2D" method="_on_ui_disable_camera_movement"]
 [connection signal="enable_camera_movement" from="CanvasLayer/UI" to="Camera2D" method="_on_ui_enable_camera_movement"]
+[connection signal="get_ranking_requested" from="CanvasLayer/UI" to="RankingFetcher" method="_on_ui_get_ranking_requested"]
 [connection signal="post_populate_map_requested" from="CanvasLayer/UI" to="Populator" method="_on_ui_post_populate_map_requested"]
+[connection signal="request_completed" from="RankingFetcher/GetRankingHTTPRequest" to="RankingFetcher" method="_on_get_ranking_http_request_request_completed"]

@@ -5,6 +5,7 @@ signal post_populate_map_requested()
 signal enable_camera_movement()
 signal disable_camera_movement()
 signal delete_agent_requested(agent_id: int)
+signal get_ranking_requested()
 
 @onready var code_editor = get_node("AgentCreator/CodeEditor")
 @onready var x_input = get_node("AgentCreator/XInput")
