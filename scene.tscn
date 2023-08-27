@@ -534,7 +534,7 @@ script = ExtResource("12_3vloe")
 
 [node name="GameMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_emngv")
-volume_db = -40.31
+volume_db = -40.0
 autoplay = true
 
 [node name="AudioEffect" type="AudioStreamPlayer" parent="."]
