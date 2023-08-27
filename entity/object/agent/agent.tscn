@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bjpqr01437cuf"]
+[gd_scene load_steps=50 format=3 uid="uid://bjpqr01437cuf"]
 
 [ext_resource type="Script" path="res://addons/lynx_node/lynx_agent_node/lynx_agent_node.gd" id="1_0hv86"]
 [ext_resource type="Texture2D" uid="uid://d0qtsmpiwwsxl" path="res://assets/NinjaAdventure/Actor/Characters/Villager/SeparateAnim/Attack.png" id="2_8m6kb"]
@@ -81,6 +81,38 @@ region = Rect2(16, 64, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_gbcws"]
 atlas = ExtResource("4_1rasa")
 region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lj2o"]
+atlas = ExtResource("4_1rasa")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nga6"]
+atlas = ExtResource("4_1rasa")
+region = Rect2(0, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gic8r"]
+atlas = ExtResource("4_1rasa")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6qrl"]
+atlas = ExtResource("4_1rasa")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfc2q"]
+atlas = ExtResource("4_1rasa")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xa8r"]
+atlas = ExtResource("4_1rasa")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kr4j"]
+atlas = ExtResource("4_1rasa")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7xy8"]
+atlas = ExtResource("4_1rasa")
+region = Rect2(16, 64, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_opo26"]
 atlas = ExtResource("5_u3eaw")
@@ -296,7 +328,63 @@ animations = [{
 }],
 "loop": true,
 "name": &"push_up",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_4lj2o")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_6nga6")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_4lj2o")
+}],
+"loop": false,
+"name": &"take_down",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_gic8r")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_o6qrl")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_gic8r")
+}],
+"loop": false,
+"name": &"take_left",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_hfc2q")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_6xa8r")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_hfc2q")
+}],
+"loop": false,
+"name": &"take_right",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_5kr4j")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_b7xy8")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_5kr4j")
+}],
+"loop": false,
+"name": &"take_up",
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -313,7 +401,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_down",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -330,7 +418,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_left",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -377,7 +465,7 @@ width = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6onvm")
-animation = &"walk_down"
+animation = &"take_down"
 
 [node name="AnimationEffect" type="AudioStreamPlayer2D" parent="."]
 volume_db = -15.0

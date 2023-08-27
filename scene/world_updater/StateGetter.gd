@@ -72,7 +72,6 @@ func _on_get_state_timer_timeout():
 		
 		var delay_time_normalized = _normalize_second(0, Time.get_unix_time_from_system() * 1000)
 		if current_tick_number % Config.TICKS_WITHOUT_SYNCHRONIZATION == 0:
-			print(Config.DEFAULT_GET_STATE_WAIT_TIME - delay_time_normalized - _calculate_average_delay_time())
 			get_node("GetStateTimer").wait_time = Config.DEFAULT_GET_STATE_WAIT_TIME - delay_time_normalized - _calculate_average_delay_time()
 		else:
 			get_node("GetStateTimer").wait_time = Config.DEFAULT_GET_STATE_WAIT_TIME 

@@ -8,17 +8,19 @@ func _init():
 
 func _execute():
 	var vect_anim = {
-		Vector2(1,0) : "mine_right",
-		Vector2(-1,0) : "mine_left",
-		Vector2(0,1) : "mine_down",
-		Vector2(0,-1) : "mine_up"
+		Vector2(1,0) : "take_right",
+		Vector2(-1,0) : "take_left",
+		Vector2(0,1) : "take_down",
+		Vector2(0,-1) : "take_up"
 	}
+	
 	var animation = ""
-	#if vect_anim.has( self._direction):
-	#	animation = vect_anim[ self._direction]
-	#else:
-	animation = "mine_right"
 	var object = get_parent().object
+	var direction = self._position - object._position
+	if vect_anim.has(direction):
+		animation = vect_anim[direction]
+	else:
+		animation = "take_down"
 	object.get_node("AnimatedSprite2D").set_animation(animation)
 	object.get_node("AnimatedSprite2D").play()
 	object.get_node("AnimatedSprite2D").set_frame(0)

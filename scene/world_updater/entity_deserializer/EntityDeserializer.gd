@@ -10,7 +10,6 @@ func deserialize_action(attributes: Dictionary, type: String):
 	if not entity:
 		push_error("[ERROR] Deserializing unknown action type: " + type)
 		return null
-	
 	var entity_instance = entity.instantiate()
 	entity_instance._populate(attributes)
 	return entity_instance

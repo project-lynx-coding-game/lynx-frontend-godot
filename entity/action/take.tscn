@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwnc5xnnhhcww"]
+[gd_scene load_steps=2 format=3 uid="uid://ddve2uks44wyk"]
 
 [ext_resource type="Script" path="res://entity/action/take/Take.gd" id="1_yk3jf"]
 
