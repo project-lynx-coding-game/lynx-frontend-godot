@@ -1,22 +1,23 @@
 extends Node
 
-# update when a new entity is added
+# update when a new entities is added
 var available_entity_types = {
-	"Agent": load("res://entity/object/agent/agent.tscn"),
-	"Wood": load("res://entity/object/wood.tscn"),
-	"Move" : load("res://entity/action/move.tscn"),
-	"Push" : load("res://entity/action/push.tscn"),
-	"MessageLog" : load("res://entity/action/message_log.tscn"),
-	"Tree" : load("res://entity/object/tree.tscn"),
-	"Rock" : load("res://entity/object/rock.tscn"),
-	"Stone" : load("res://entity/object/stone.tscn"),
-	"Chop" : load("res://entity/action/chop.tscn"),
-	"Mine" : load("res://entity/action/mine.tscn"),
-	"RemoveObject" : load("res://entity/action/remove_object.tscn"),
-	"CreateObject": load("res://entity/action/create_object.tscn"),
-	"ErrorLog": load("res://entity/action/error_log.tscn"),
-	"Print": load("res://entity/action/print.tscn")
-	}
+	"Tree" : load("res://entities/objects/tree.tscn"),
+	"Wood": load("res://entities/objects/wood.tscn"),
+	"Rock" : load("res://entities/objects/rock.tscn"),
+	"Stone" : load("res://entities/objects/stone.tscn"),
+	"Agent": load("res://entities/objects/player_objects/agents/agent.tscn"),
+	"DropArea" : load("res://entities/objects/player_objects/drop_area.tscn"),
+	"Move" : load("res://entities/actions/move.tscn"),
+	"Push" : load("res://entities/actions/push.tscn"),
+	"Chop" : load("res://entities/actions/chop.tscn"),
+	"Mine" : load("res://entities/actions/mine.tscn"),
+	"CreateObject": load("res://entities/actions/create_object.tscn"),
+	"RemoveObject" : load("res://entities/actions/remove_object.tscn"),
+	"MessageLog" : load("res://entities/actions/message_log.tscn"),
+	"ErrorLog": load("res://entities/actions/error_log.tscn"),
+	"Print": load("res://entities/actions/print.tscn")
+}
 
 func map_entity_type_to_node(entity_type):
 	if not available_entity_types.has(entity_type):
