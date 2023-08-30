@@ -25,10 +25,10 @@ func _normalize_second(lower_time, higher_time):
 
 func _speed_up_actions():
 	for object in Globals.WORLD_UPDATER.objects_container.get_children():
-		object.execute_action_timer.wait_time = Globals.DEFAULT_ACTION_SPEED / Globals.ACTION_SPEED_MULTIPLIER
+		object.execute_action_timer.wait_time = Config.DEFAULT_ACTION_SPEED / Globals.ACTION_SPEED_MULTIPLIER
 		object.get_node("AnimatedSprite2D").speed_scale = Globals.ACTION_SPEED_MULTIPLIER
 		if object is LynxAgent:
-			object.get_node("AnimationEffect").pitch_scale = Globals.ACTION_SPEED_MULTIPLIER
+			object.get_node("SoundEffect").pitch_scale = Globals.ACTION_SPEED_MULTIPLIER
 		
 func _handle_lag(old_tick_number, new_tick_number):
 	var old_action_speed_multiplier = Globals.ACTION_SPEED_MULTIPLIER
@@ -66,7 +66,7 @@ func _on_get_state_http_request_request_completed(_result, response_code, _heade
 
 # send get state requests every timer timeout (1s)
 func _on_get_state_timer_timeout():
-	if get_state_http_request.get_http_client_status() not in Globals.BUSY_HTTP_STATUSES:
+	if get_state_http_request.get_http_client_status() not in Config.BUSY_HTTP_STATUSES:
 		var result = get_state_http_request.request(Globals.SERVER_ADDRESS + "?tick_number=" + str(current_tick_number))
 		if result != OK:
 			push_error("[ERROR] Could not GET state: " + str(result))

@@ -3,6 +3,8 @@ extends LynxAction
 var _object_id = int()
 var _direction = Vector2()
 
+@onready var _audio_effect = load("res://assets/Music/walking.wav")
+
 func _init():
 	self.accepted_attributes = ["object_id", "direction"]
 
@@ -23,10 +25,9 @@ func _execute():
 		object.get_node("AnimatedSprite2D").set_animation(animation)
 		object.get_node("AnimatedSprite2D").play()
 		object.get_node("AnimatedSprite2D").set_frame(0)
-		object.get_node("AnimationEffect").stream = load("res://assets/Music/walking.wav")
-		object.get_node("AnimationEffect").play()
+		object._play_audio(self._audio_effect)
 	
-	await object.move(Vector2i(object._position) + Vector2i(self._direction), (Globals.DEFAULT_ACTION_SPEED - 0.1) / Globals.ACTION_SPEED_MULTIPLIER)
+	await object.move(Vector2i(object._position) + Vector2i(self._direction), (Config.DEFAULT_ACTION_SPEED - 0.1) / Globals.ACTION_SPEED_MULTIPLIER)
 	
 	if object.has_node("AnimatedSprite2D"):
 		object.get_node("AnimatedSprite2D").stop()

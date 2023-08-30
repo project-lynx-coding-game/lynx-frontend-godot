@@ -379,7 +379,7 @@ width = 1.0
 sprite_frames = SubResource("SpriteFrames_6onvm")
 animation = &"walk_down"
 
-[node name="AnimationEffect" type="AudioStreamPlayer2D" parent="."]
+[node name="SoundEffect" type="AudioStreamPlayer2D" parent="."]
 volume_db = -15.0
 max_distance = 100.0
 attenuation = 1.07177

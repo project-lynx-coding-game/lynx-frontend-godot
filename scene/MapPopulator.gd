@@ -5,7 +5,7 @@ extends Node
 @onready var state_getter = get_node("../WorldUpdater").state_getter
 
 func post_populate():
-	if post_populate_http_request.get_http_client_status() not in Globals.BUSY_HTTP_STATUSES:
+	if post_populate_http_request.get_http_client_status() not in Config.BUSY_HTTP_STATUSES:
 		var result = post_populate_http_request.request(post_populate_endpoint_url, [], HTTPClient.METHOD_POST)
 		if result != OK:
 			push_error("[ERROR] Could not POST populate: " + str(result))

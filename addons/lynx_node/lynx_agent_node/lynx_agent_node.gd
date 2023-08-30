@@ -4,7 +4,7 @@ extends LynxAgent
 var action_queue: Node
 var execute_action_timer: Timer
 var speech_bubble: Control
-
+@onready var _audio_node = get_node("SoundEffect") 
 @export var action_speed: float
 
 func _setup_action_queue():
@@ -39,3 +39,9 @@ func _get_configuration_warnings() -> PackedStringArray:
 		if child is AnimatedSprite2D:
 			return []
 	return ["Add AnimatedSprite2D as a child."]
+
+#Function used to play sound around agents, like sound animation of action
+func _play_audio(effect):
+	self._audio_node.stream = effect
+	self._audio_node.play() 
+	
