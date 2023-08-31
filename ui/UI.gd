@@ -25,6 +25,7 @@ func _on_mouse_exited():
 	self.enable_camera_movement.emit()
 	
 func _on_delete_agent_button_up():
-	self.delete_agent_requested.emit(int(self.agent_options.agent_id_to_delete))
+	var id_of_agent_to_delete = int(self.agent_options.id_of_agent_to_delete)
+	self.delete_agent_requested.emit(id_of_agent_to_delete)
 	self.agent_options.hide_panel()
 	
