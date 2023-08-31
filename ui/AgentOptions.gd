@@ -7,7 +7,7 @@ func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
 		var tooltips = get_owner().tooltips
 		var objects_on_tile =  Globals.WORLD_UPDATER.objects_container.get_objects_by_position(tooltips.tile_position)
-		var agent = objects_on_tile.filter(func(obj): return obj["_type"] == "Agent")
+		var agent = objects_on_tile.filter(func(obj): return obj["_type"] == "Agent" and obj["_owner"] == Globals.USER_ID)
 		if agent.size() > 0:
 			# Get the first agent object (assuming there's only one)
 			agent = agent[0]

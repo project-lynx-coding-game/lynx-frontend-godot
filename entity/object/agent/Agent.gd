@@ -2,7 +2,6 @@ extends LynxObject
 class_name LynxAgent
 
 var _tick = String()
-@onready var agent_options = get_node("/root/Scene/CanvasLayer/UI/AgentOptions")
 
 func _ready():
 	var color = self._generate_color_from_id(int(self._owner))
@@ -20,7 +19,7 @@ func init(_position, _id, _owner, _tick):
 	self._id = _id
 	self._owner = _owner
 	self._tick = _tick
-				
+
 # TODO: move to Entity
 func serialize():
 	# TODO: generate attributes json automatically, use logic similar to populate
