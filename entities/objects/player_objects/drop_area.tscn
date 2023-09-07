@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://3cj6sgxgdrfb"]
+
+[ext_resource type="Script" path="res://addons/lynx_nodes/nodes/LynxPlayerObjectNode.gd" id="1_t24bi"]
+[ext_resource type="Texture2D" uid="uid://c5kcgwttra1wa" path="res://assets/NinjaAdventure/Backgrounds/Tilesets/TilesetElement.png" id="2_g8qjm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jkwi"]
+atlas = ExtResource("2_g8qjm")
+region = Rect2(192, 0, 16, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kwwvy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jkwi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="DropArea" type="Node2D"]
+script = ExtResource("1_t24bi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kwwvy")

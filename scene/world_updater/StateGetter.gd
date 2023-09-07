@@ -54,19 +54,21 @@ func _update_state(response):
 	else:
 		current_tick_number = response["tick_number"]
 	
+func _assemble_get_state_url():
+	var url = Globals.SERVER_ADDRESS + "?tick_number=" + str(current_tick_number)
+	if current_tick_number == -1:
+		url = url + "&player=" + Globals.USER_ID
+	return url
+	
 func _on_get_state_http_request_request_completed(_result, response_code, _headers, body):
 	if response_code == 200:
 		json.parse(body.get_string_from_utf8())
 		var response = json.get_data()
 		_update_state(response)
-		
-		
 
-
-# send get state requests every timer timeout (1s)
 func _on_get_state_timer_timeout():
 	if get_state_http_request.get_http_client_status() not in Globals.BUSY_HTTP_STATUSES:
-		var result = get_state_http_request.request(Globals.SERVER_ADDRESS + "?tick_number=" + str(current_tick_number))
+		var result = get_state_http_request.request(_assemble_get_state_url())
 		if result != OK:
 			push_error("[ERROR] Could not GET state: " + str(result))
 		

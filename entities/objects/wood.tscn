@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cu526r6478kku"]
+
+[ext_resource type="Script" path="res://addons/lynx_nodes/nodes/LynxObjectNode.gd" id="1_r26q0"]
+[ext_resource type="Texture2D" uid="uid://ca3n0ke6737vk" path="res://assets/NinjaAdventure/Backgrounds/Tilesets/TilesetHouse.png" id="2_c1q2e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bmy0"]
+atlas = ExtResource("2_c1q2e")
+region = Rect2(496, 288, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pe6wo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bmy0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Wood" type="Node2D"]
+script = ExtResource("1_r26q0")
+action_speed = 1.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pe6wo")

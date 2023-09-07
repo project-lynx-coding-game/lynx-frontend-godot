@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://40n5er2ot2aq"]
+
+[ext_resource type="Script" path="res://addons/lynx_nodes/entity/action/error_log/ErrorLog.gd" id="1_pl6sx"]
+
+[node name="error_log" type="Node2D"]
+script = ExtResource("1_pl6sx")
