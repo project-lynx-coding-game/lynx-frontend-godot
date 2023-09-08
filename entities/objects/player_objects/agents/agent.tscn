@@ -1,10 +1,18 @@
-[gd_scene load_steps=42 format=3 uid="uid://bjpqr01437cuf"]
+[gd_scene load_steps=52 format=3 uid="uid://bjpqr01437cuf"]
 
 [ext_resource type="Script" path="res://addons/lynx_nodes/nodes/LynxAgentNode.gd" id="1_t2m5c"]
+[ext_resource type="Shader" path="res://addons/lynx_nodes/utils/shaders/color_with_outline.gdshader" id="2_su7av"]
 [ext_resource type="Texture2D" uid="uid://d0qtsmpiwwsxl" path="res://assets/NinjaAdventure/Actor/Characters/Villager/SeparateAnim/Attack.png" id="2_ttbqf"]
 [ext_resource type="Texture2D" uid="uid://ic6skivoqf27" path="res://assets/NinjaAdventure/Actor/Characters/Villager/SeparateAnim/Idle.png" id="3_6m5aa"]
 [ext_resource type="Texture2D" uid="uid://ewkhgaisv5sq" path="res://assets/NinjaAdventure/Actor/Characters/Villager/SpriteSheet.png" id="4_2gndx"]
 [ext_resource type="Texture2D" uid="uid://cy6fgu12r3dx1" path="res://assets/NinjaAdventure/Actor/Characters/Villager/SeparateAnim/Walk.png" id="5_0jir0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pah6c"]
+shader = ExtResource("2_su7av")
+shader_parameter/is_player = false
+shader_parameter/tint_color = Color(0, 0, 0, 1)
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o1wb4"]
 atlas = ExtResource("2_ttbqf")
@@ -81,6 +89,38 @@ region = Rect2(16, 64, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_gbcws"]
 atlas = ExtResource("4_2gndx")
 region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2j45h"]
+atlas = ExtResource("4_2gndx")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okx6v"]
+atlas = ExtResource("4_2gndx")
+region = Rect2(0, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imc33"]
+atlas = ExtResource("4_2gndx")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_718l4"]
+atlas = ExtResource("4_2gndx")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3oqy"]
+atlas = ExtResource("4_2gndx")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2veu"]
+atlas = ExtResource("4_2gndx")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhiyo"]
+atlas = ExtResource("4_2gndx")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhpew"]
+atlas = ExtResource("4_2gndx")
+region = Rect2(16, 64, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_opo26"]
 atlas = ExtResource("5_0jir0")
@@ -300,6 +340,62 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_2j45h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okx6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2j45h")
+}],
+"loop": true,
+"name": &"take_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imc33")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_718l4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imc33")
+}],
+"loop": true,
+"name": &"take_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3oqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2veu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3oqy")
+}],
+"loop": true,
+"name": &"take_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhiyo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhpew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhiyo")
+}],
+"loop": true,
+"name": &"take_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_opo26")
 }, {
 "duration": 1.0,
@@ -369,8 +465,10 @@ animations = [{
 
 [node name="Agent" type="Node2D"]
 script = ExtResource("1_t2m5c")
+action_speed = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.0823529, 0.333333, 0.341176, 1)
+material = SubResource("ShaderMaterial_pah6c")
 sprite_frames = SubResource("SpriteFrames_6onvm")
-animation = &"walk_down"
+animation = &"take_left"
