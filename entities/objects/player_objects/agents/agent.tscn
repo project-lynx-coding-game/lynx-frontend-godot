@@ -339,13 +339,13 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_2j45h")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_okx6v")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_2j45h")
 }],
 "loop": true,
@@ -353,13 +353,13 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_imc33")
 }, {
 "duration": 2.0,
 "texture": SubResource("AtlasTexture_718l4")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_imc33")
 }],
 "loop": true,
@@ -367,13 +367,13 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_w3oqy")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_m2veu")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_w3oqy")
 }],
 "loop": true,
@@ -381,13 +381,13 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_nhiyo")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_dhpew")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_nhiyo")
 }],
 "loop": true,
@@ -471,4 +471,4 @@ action_speed = 1.0
 modulate = Color(0.0823529, 0.333333, 0.341176, 1)
 material = SubResource("ShaderMaterial_pah6c")
 sprite_frames = SubResource("SpriteFrames_6onvm")
-animation = &"take_left"
+animation = &"walk_down"
