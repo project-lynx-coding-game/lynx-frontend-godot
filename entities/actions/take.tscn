@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbqjhx7hnc8lb"]
+
+[ext_resource type="Script" path="res://addons/lynx_nodes/entity/action/take/take.gd" id="1_ympg5"]
+
+[node name="take_tscn" type="Node2D"]
+script = ExtResource("1_ympg5")
