@@ -2,30 +2,26 @@ extends LynxAction
 
 var _object_id = int()
 var _direction = Vector2()
+var _animation_name = "default"
 
 func _init():
 	self.accepted_attributes = ["object_id", "direction"]
 
+func _ready():
+	if _direction == Config.SOUTH:
+		_animation_name = "move_south"
+	elif _direction == Config.NORTH:
+		_animation_name = "move_north"
+	elif _direction == Config.WEST:
+		_animation_name = "move_west"
+	elif _direction == Config.EAST:
+		_animation_name = "move_east"
+
 func _execute():
 	var object = get_parent().object
-	if object.has_node("AnimatedSprite2D"):
-		var vect_anim = {
-			Vector2(1,0) : "walk_right",
-			Vector2(-1,0) : "walk_left",
-			Vector2(0,1) : "walk_down",
-			Vector2(0,-1) : "walk_up"
-		}
-		var animation = ""
-		if vect_anim.has(self._direction):
-			animation = vect_anim[self._direction]
-		else:
-			animation = "walk_right"
-		object.get_node("AnimatedSprite2D").set_animation(animation)
-		object.get_node("AnimatedSprite2D").play()
-		object.get_node("AnimatedSprite2D").set_frame(0)
-		
+	
+	object.start_animation(_animation_name)
 	
 	await object.move(Vector2i(object._position) + Vector2i(self._direction), Globals.DEFAULT_ACTION_SPEED / Globals.ACTION_SPEED_MULTIPLIER)
 	
-	if object.has_node("AnimatedSprite2D"):
-		object.get_node("AnimatedSprite2D").stop()
+	object.end_animation()

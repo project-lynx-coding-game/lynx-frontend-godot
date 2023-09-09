@@ -1,17 +1,17 @@
 [gd_scene load_steps=5 format=3 uid="uid://cyuvpdqgwtad"]
 
 [ext_resource type="Script" path="res://addons/lynx_nodes/nodes/LynxObjectNode.gd" id="1_wfxp3"]
-[ext_resource type="Texture2D" uid="uid://dfl6otahv4btm" path="res://assets/NinjaAdventure/Backgrounds/Tilesets/tree_pack/tree_pack/tree2b_16x16.png" id="2_mbd1m"]
+[ext_resource type="Texture2D" uid="uid://dfcthcjxkdpbc" path="res://assets/HAS/Buildings/HAS Overworld Starter Pack/SP-Trees.png" id="2_3bj14"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tbqp4"]
-atlas = ExtResource("2_mbd1m")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_waebp"]
+atlas = ExtResource("2_3bj14")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fm41g"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tbqp4")
+"texture": SubResource("AtlasTexture_waebp")
 }],
 "loop": true,
 "name": &"default",

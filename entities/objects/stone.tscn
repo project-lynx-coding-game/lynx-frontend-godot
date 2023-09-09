@@ -1,17 +1,17 @@
 [gd_scene load_steps=5 format=3 uid="uid://oasjmn608au4"]
 
 [ext_resource type="Script" path="res://addons/lynx_nodes/nodes/LynxObjectNode.gd" id="1_lkusj"]
-[ext_resource type="Texture2D" uid="uid://do12si5bh4lnq" path="res://assets/NinjaAdventure/Backgrounds/Tilesets/world_elements/stone.png" id="2_es1li"]
+[ext_resource type="Texture2D" uid="uid://dta8l3txsdm3m" path="res://assets/HAS/Buildings/HAS Overworld Starter Pack/SP-Mountains.png" id="2_vbd0s"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_82jmr"]
-atlas = ExtResource("2_es1li")
-region = Rect2(0, 0, 7, 6)
+[sub_resource type="AtlasTexture" id="AtlasTexture_2w0pq"]
+atlas = ExtResource("2_vbd0s")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_15jdw"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_82jmr")
+"texture": SubResource("AtlasTexture_2w0pq")
 }],
 "loop": true,
 "name": &"default",
@@ -20,6 +20,7 @@ animations = [{
 
 [node name="Stone" type="Node2D"]
 script = ExtResource("1_lkusj")
+action_speed = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_15jdw")

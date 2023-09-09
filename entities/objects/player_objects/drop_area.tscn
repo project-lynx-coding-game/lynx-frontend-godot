@@ -1,17 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://3cj6sgxgdrfb"]
+[gd_scene load_steps=7 format=3 uid="uid://3cj6sgxgdrfb"]
 
 [ext_resource type="Script" path="res://addons/lynx_nodes/nodes/LynxPlayerObjectNode.gd" id="1_t24bi"]
-[ext_resource type="Texture2D" uid="uid://c5kcgwttra1wa" path="res://assets/NinjaAdventure/Backgrounds/Tilesets/TilesetElement.png" id="2_g8qjm"]
+[ext_resource type="Shader" path="res://addons/lynx_nodes/utils/shaders/color_with_outline.gdshader" id="2_pgs3i"]
+[ext_resource type="Texture2D" uid="uid://cmaf8a5epsw5r" path="res://assets/HAS/Overworld/Universal/Universal-Buildings-and-walls.png" id="3_0bwhg"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4jkwi"]
-atlas = ExtResource("2_g8qjm")
-region = Rect2(192, 0, 16, 15)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5d342"]
+shader = ExtResource("2_pgs3i")
+shader_parameter/is_player = false
+shader_parameter/tint_color = Color(0, 0, 0, 1)
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00hgk"]
+atlas = ExtResource("3_0bwhg")
+region = Rect2(160, 64, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kwwvy"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4jkwi")
+"texture": SubResource("AtlasTexture_00hgk")
 }],
 "loop": true,
 "name": &"default",
@@ -20,6 +28,8 @@ animations = [{
 
 [node name="DropArea" type="Node2D"]
 script = ExtResource("1_t24bi")
+action_speed = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_5d342")
 sprite_frames = SubResource("SpriteFrames_kwwvy")

@@ -5,6 +5,7 @@ var _position = Vector2()
 var _id = int()
 var _owner = ""
 
+@onready var animated_sprite = get_node("AnimatedSprite2D")
 
 func _init():
 	self.accepted_attributes = ["position", "id", "owner"]
@@ -14,6 +15,13 @@ func _post_populate():
 	self.position = Vector2i(self._position) * Globals.TILE_SIZE
 	self.position = self.position.snapped(Globals.TILE_SIZE)
 	self.position += Vector2(Globals.TILE_SIZE / 2)
+
+func start_animation(animation_name: String):
+	animated_sprite.play(animation_name)
+	
+func end_animation():
+	animated_sprite.frame = 0
+	animated_sprite.stop()
 
 # accepts position in tile coordinates
 func move(_target_position: Vector2i, duration: float):

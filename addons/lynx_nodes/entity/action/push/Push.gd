@@ -1,31 +1,30 @@
 extends LynxAction
 
-@onready var entity_mapper = get_node("/root/Scene/WorldUpdater/StateGetter/EntityDeserializer/EntityMapper")
-
 var _object_id = int()
 var _direction = Vector2()
+var _animation_name = "default"
 var _pushed_object_ids: Array[int] = []
 
 func _init():
 	self.accepted_attributes = ["object_id", "direction", "pushed_object_ids"]
 	
+func _ready():
+	if _direction == Config.SOUTH:
+		_animation_name = "action_south"
+	elif _direction == Config.NORTH:
+		_animation_name = "action_north"
+	elif _direction == Config.WEST:
+		_animation_name = "action_west"
+	elif _direction == Config.EAST:
+		_animation_name = "action_east"
+	
 func _execute():
 	var object = get_parent().object
-	if object.has_node("AnimatedSprite2D"):
-		var vect_anim = {
-			Vector2(1,0) : "push_right",
-			Vector2(-1,0) : "push_left",
-			Vector2(0,-1) : "push_down",
-			Vector2(0,1) : "push_up"
-		}
-		
-		var animation = ""
-		if vect_anim.has(self._direction):
-			animation = vect_anim[self._direction]
-		else:
-			animation = "push_right"
-		object.get_node("AnimatedSprite2D").set_animation(animation)
+	
+	object.start_animation(_animation_name)
 	
 	for pushed_object_id in _pushed_object_ids:
 		var pushed_object = await Globals.WORLD_UPDATER.objects_container.get_object_by_id(pushed_object_id)
 		await pushed_object.move(Vector2i(pushed_object._position) + Vector2i(self._direction), Globals.DEFAULT_ACTION_SPEED / Globals.ACTION_SPEED_MULTIPLIER)
+	
+	object.end_animation()
