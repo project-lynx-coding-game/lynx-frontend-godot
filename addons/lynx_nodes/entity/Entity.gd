@@ -11,8 +11,14 @@ func _populate(attributes_json: Dictionary):
 		if attributes_json.has(accepted_attribute):
 			var attribute = "_" + accepted_attribute
 			var attribute_value = self.get(attribute)
-			if attribute_value is int or attribute_value is float or attribute_value is bool or attribute_value is String:
-				self.set(attribute, attributes_json.get(accepted_attribute))
+			if attribute_value is int:
+				self.set(attribute, int(attributes_json.get(accepted_attribute)))
+			elif attribute_value is float:
+				self.set(attribute, float(attributes_json.get(accepted_attribute)))
+			elif attribute_value is bool:
+				self.set(attribute, bool(attributes_json.get(accepted_attribute)))
+			elif attribute_value is String:
+				self.set(attribute, str(attributes_json.get(accepted_attribute)))
 			elif attribute_value is Vector2:
 				var vector2 = Vector2(attributes_json.get(accepted_attribute).get("x"), attributes_json.get(accepted_attribute).get("y"))
 				self.set(attribute, vector2)
@@ -29,7 +35,7 @@ func _populate(attributes_json: Dictionary):
 					attribute_value.append(bool(element))
 			elif attribute_value is Array[String]:
 				for element in attributes_json.get(accepted_attribute):
-					attribute_value.append(String(element))
+					attribute_value.append(str(element))
 			elif attribute_value is Array[Vector2]:
 				for element in attributes_json.get(accepted_attribute):
 					var vector2 = Vector2(element.get("x"), element.get("y"))
@@ -38,7 +44,7 @@ func _populate(attributes_json: Dictionary):
 				for element in attributes_json.get(accepted_attribute):
 					attribute_value.append(entity_deserializer.deserialize(element))
 			else:
-				push_error("[ERROR] Unknown attribute type when populating")
+				push_error("[ERROR] Unknown attribute type when populating attribute " + str(accepted_attribute))
 
 func _post_populate():
 	pass
