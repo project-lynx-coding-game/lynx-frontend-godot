@@ -17,10 +17,7 @@ func _handle_global_action(entity):
 
 func _handle_object_action(entity):
 	var object = await objects_container.get_object_by_id(entity._object_id)
-	if object:
-		object.action_queue.add_child(entity)
-	else:
-		push_error("[ERROR] Could not get object to have applied action on with id: " + str(entity._object_id))
+	object.action_queue.add_child(entity)
 
 func apply_deltas(deltas_json):
 	json.parse(deltas_json)
