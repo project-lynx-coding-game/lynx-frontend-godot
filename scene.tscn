@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ynmbka5a07qq"]
+[gd_scene load_steps=18 format=3 uid="uid://ynmbka5a07qq"]
 
 [ext_resource type="PackedScene" uid="uid://b1ele5lo5n6u1" path="res://scene/world_updater.tscn" id="1_0bk4q"]
 [ext_resource type="PackedScene" uid="uid://bkm4i5405grrr" path="res://ui.tscn" id="1_sys4y"]

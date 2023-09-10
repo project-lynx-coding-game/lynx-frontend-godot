@@ -6,7 +6,6 @@ extends Node
 var json = JSON.new()
 
 func get_ranking():
-	print("RANKING FETCHER")
 	if get_ranking_http_request.get_http_client_status() not in Globals.BUSY_HTTP_STATUSES:
 		var url = Globals.SERVER_ADDRESS + "get_ranking"
 		var result = get_ranking_http_request.request(
