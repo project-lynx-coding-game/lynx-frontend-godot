@@ -3,6 +3,8 @@ class_name LynxAgent
 
 var _tick = String()
 
+@onready var active_item = get_node("ActiveItem")
+
 func init(_position, _id, _owner, _tick):
 	self._position = _position
 	self._id = _id
@@ -26,3 +28,28 @@ func serialize():
 		}
 	}
 	return attributes_json
+
+# TODO: move active item logic to a separate scene
+func start_active_item_animation(animation_name: String, direction: Vector2):
+	active_item.visible = true
+	
+	active_item.set_animation(animation_name)
+	
+	var offset = active_item.sprite_frames.get_frame_texture(animation_name, 0).get_width() / 2
+	active_item.set_position(Vector2i(active_item.position) + offset * Vector2i(direction))
+	
+	if direction == Config.WEST:
+		active_item.set_flip_h(true)
+	elif direction == Config.SOUTH:
+		active_item.set_flip_v(true)
+
+func end_active_item_animation(animation_name: String, direction: Vector2):
+	active_item.visible = false
+	
+	var offset = active_item.sprite_frames.get_frame_texture(animation_name, 0).get_width() / 2
+	active_item.set_position(Vector2i(active_item.position) - offset * Vector2i(direction))
+	
+	if direction == Config.WEST:
+		active_item.set_flip_h(false)
+	elif direction == Config.SOUTH:
+		active_item.set_flip_v(false)

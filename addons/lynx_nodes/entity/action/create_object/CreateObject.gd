@@ -9,11 +9,11 @@ func _init():
 func _execute():
 	json.parse(self._serialized_object)
 	var entity = entity_deserializer.deserialize(json.get_data())
+	
 	if !entity:
 		push_error("[ERROR] Could not deserialize Entity")
 		return
 	
-	# TODO: this could be done at beginning of the loop by checking type key value
 	if !entity is LynxObject:
 		push_error("[ERROR] Entity could not be recreated, because it is not an Object")
 		return

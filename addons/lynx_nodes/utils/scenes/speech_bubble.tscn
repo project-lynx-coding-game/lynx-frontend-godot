@@ -1,18 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://ghvgwvmmooc8"]
+[gd_scene load_steps=5 format=3 uid="uid://ghvgwvmmooc8"]
 
 [ext_resource type="Script" path="res://addons/lynx_nodes/utils/scenes/speech_bubble/SpeechBubble.gd" id="1_a5jj3"]
-[ext_resource type="Texture2D" uid="uid://vtgbixhxo82p" path="res://assets/NinjaAdventure/HUD/Dialog/DialogInfo.png" id="1_nfdv7"]
-[ext_resource type="FontFile" uid="uid://uxkpb0fktw2s" path="res://assets/NinjaAdventure/HUD/Font/6px-Normal.ttf" id="2_p0135"]
+[ext_resource type="Texture2D" uid="uid://csfvl8ejw2qyr" path="res://assets/Lynx/speech_bubble.png" id="2_qmpcu"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wx12h"]
-atlas = ExtResource("1_nfdv7")
-region = Rect2(0, 0, 20, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1gbt"]
+atlas = ExtResource("2_qmpcu")
+region = Rect2(0, 0, 48, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4b2tp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wx12h")
+"texture": SubResource("AtlasTexture_e1gbt")
 }],
 "loop": true,
 "name": &"speech_bubble",
@@ -27,20 +26,18 @@ offset_bottom = 40.0
 script = ExtResource("1_a5jj3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -27)
-scale = Vector2(2.5, 2.5)
+position = Vector2(4, -24)
 sprite_frames = SubResource("SpriteFrames_4b2tp")
 animation = &"speech_bubble"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = -19.0
-offset_top = -43.0
-offset_right = 17.0
-offset_bottom = -17.0
+offset_left = -17.0
+offset_top = -38.0
+offset_right = 25.0
+offset_bottom = -16.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_constants/line_separation = -2
-theme_override_fonts/normal_font = ExtResource("2_p0135")
 theme_override_font_sizes/normal_font_size = 8
 
 [node name="VisibilityTimer" type="Timer" parent="."]

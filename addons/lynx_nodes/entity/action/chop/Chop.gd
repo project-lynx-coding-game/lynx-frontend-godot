@@ -2,23 +2,29 @@ extends LynxAction
 
 var _object_id = int()
 var _direction = Vector2()
+var _animation_name = "default"
+var _active_item_animation_name = "axe"
 
 func _init():
 	self.accepted_attributes = ["object_id", "direction"]
+	
+func _ready():
+	if _direction == Config.SOUTH:
+		_animation_name = "action_south"
+	elif _direction == Config.NORTH:
+		_animation_name = "action_north"
+	elif _direction == Config.WEST:
+		_animation_name = "action_west"
+	elif _direction == Config.EAST:
+		_animation_name = "action_east"
 
 func _execute():
-	var vect_anim = {
-		Vector2(1,0) : "chop_right",
-		Vector2(-1,0) : "chop_left",
-		Vector2(0,1) : "chop_down",
-		Vector2(0,-1) : "chop_up"
-	}
-	var animation = ""
-	if vect_anim.has( self._direction):
-		animation = vect_anim[ self._direction]
-	else:
-		animation = "chop_right"
 	var object = get_parent().object
-	object.get_node("AnimatedSprite2D").set_animation(animation)
-	object.get_node("AnimatedSprite2D").play()
-	object.get_node("AnimatedSprite2D").set_frame(0)
+	
+	object.start_animation(_animation_name)
+	object.start_active_item_animation(_active_item_animation_name, _direction)
+	
+	await get_tree().create_timer(Globals.DEFAULT_ACTION_SPEED / Globals.ACTION_SPEED_MULTIPLIER).timeout
+	
+	object.end_animation()
+	object.end_active_item_animation(_active_item_animation_name, _direction)
