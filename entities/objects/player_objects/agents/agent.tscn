@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dti8au6u8o8qg" path="res://assets/HAS/IconPack/IconPack 1.0/AllItems/Weapon/Axe/AxeOriginal.png" id="5_clcij"]
 [ext_resource type="Texture2D" uid="uid://bfgb3lp34pb3o" path="res://assets/HAS/IconPack/IconPack 1.0/AllItems/Weapon/Axe/AxeOutline/AxeOutline 2.png" id="8_xhubm"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_en4yc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hs573"]
 shader = ExtResource("2_su7av")
 shader_parameter/is_player = false
 shader_parameter/tint_color = Color(0, 0, 0, 1)
@@ -229,7 +229,7 @@ action_speed = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.0823529, 0.333333, 0.341176, 1)
-material = SubResource("ShaderMaterial_en4yc")
+material = SubResource("ShaderMaterial_hs573")
 sprite_frames = SubResource("SpriteFrames_6onvm")
 animation = &"action_south"
 
