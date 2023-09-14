@@ -1,5 +1,4 @@
-
-[gd_scene load_steps=10 format=3 uid="uid://bkm4i5405grrr"]
+[gd_scene load_steps=11 format=3 uid="uid://bkm4i5405grrr"]
 
 [ext_resource type="Script" path="res://ui/UI.gd" id="1_bsom3"]
 [ext_resource type="Script" path="res://ui/CodeEditor.gd" id="1_gixgk"]
@@ -7,8 +6,8 @@
 [ext_resource type="Script" path="res://OutputConsole.gd" id="4_rw6m0"]
 [ext_resource type="Script" path="res://ui/Settings.gd" id="4_ss325"]
 [ext_resource type="Script" path="res://ui/Tooltips.gd" id="5_fyncs"]
-[ext_resource type="Script" path="res://ui/AgentOptions.gd" id="7_ft5ov"]
 [ext_resource type="Script" path="res://ui/Ranking.gd" id="7_dgc1q"]
+[ext_resource type="Script" path="res://ui/AgentOptions.gd" id="7_ft5ov"]
 
 [sub_resource type="CodeHighlighter" id="CodeHighlighter_2lklk"]
 
