@@ -7,12 +7,10 @@ var _animation_name = "default"
 
 func _init():
 	self.accepted_attributes = ["object_id", "target_position"]
-	print("xdasdsasdssdsdsdsdsdsdsdsdsd")
 
 func _ready():
 	var object = get_parent().object
 	_direction = self._target_position - Vector2(object._position)
-	print("xdasdsa")
 	if _direction == Config.SOUTH:
 		_animation_name = "action_south"
 	elif _direction == Config.NORTH:
