@@ -17,6 +17,7 @@ var available_entity_types = {
 	"MessageLog" : load("res://entities/actions/message_log.tscn"),
 	"ErrorLog": load("res://entities/actions/error_log.tscn"),
 	"Print": load("res://entities/actions/print.tscn"),
+	"Drop": load("res://entities/actions/drop.tscn"),
 	"Take": load("res://entities/actions/take.tscn"),
 }
 

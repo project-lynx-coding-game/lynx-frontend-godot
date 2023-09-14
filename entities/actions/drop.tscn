@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cubgcxu3sw8qj"]
+
+[ext_resource type="Script" path="res://addons/lynx_nodes/entity/action/drop/drop.gd" id="1_wcjbf"]
+
+[node name="drop" type="Node2D"]
+script = ExtResource("1_wcjbf")
