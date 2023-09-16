@@ -49,7 +49,7 @@ class TestTileDeserialization:
 					"y":2
 				},
 				"tags": [
-					"walkable"
+					"tile"
 				]
 			}
 		}
@@ -62,7 +62,7 @@ class TestTileDeserialization:
 			"attributes": {
 				"name": "Grass",
 				"tags": [
-					"walkable"
+					"tile"
 				]
 			}
 		}
