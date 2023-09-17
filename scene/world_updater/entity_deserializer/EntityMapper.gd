@@ -19,6 +19,7 @@ var available_entity_types = {
 	"Print": load("res://entities/actions/print.tscn"),
 	"Drop": load("res://entities/actions/drop.tscn"),
 	"Take": load("res://entities/actions/take.tscn"),
+	"UpdateResources": load("res://entities/actions/update_resources.tscn"),
 }
 
 func map_entity_type_to_node(entity_type):

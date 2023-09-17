@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkm4i5405grrr"]
+[gd_scene load_steps=15 format=3 uid="uid://bkm4i5405grrr"]
 
 [ext_resource type="Script" path="res://ui/UI.gd" id="1_bsom3"]
 [ext_resource type="Script" path="res://ui/CodeEditor.gd" id="1_gixgk"]
@@ -8,18 +8,26 @@
 [ext_resource type="Script" path="res://ui/Tooltips.gd" id="5_fyncs"]
 [ext_resource type="Script" path="res://ui/Ranking.gd" id="7_dgc1q"]
 [ext_resource type="Script" path="res://ui/AgentOptions.gd" id="7_ft5ov"]
+[ext_resource type="Script" path="res://ui/ResourcePanel.gd" id="9_7rqtw"]
+[ext_resource type="Texture2D" uid="uid://bdsohiu75t4dy" path="res://assets/HAS/Buildings/HAS Buildings Pack/Resources/Wood.png" id="10_hp6ei"]
+[ext_resource type="Texture2D" uid="uid://dta8l3txsdm3m" path="res://assets/HAS/Buildings/HAS Overworld Starter Pack/SP-Mountains.png" id="11_ij3yt"]
 
 [sub_resource type="CodeHighlighter" id="CodeHighlighter_2lklk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fkh4e"]
 font_size = 32
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfq13"]
+atlas = ExtResource("11_ij3yt")
+region = Rect2(0, 0, 16, 16)
+
 [node name="UI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_top = 2.0
-offset_right = 1279.0
-offset_bottom = 723.0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 1280.0
+offset_bottom = 720.0
 script = ExtResource("1_bsom3")
 
 [node name="AgentCreatorToggle" type="Button" parent="."]
@@ -257,6 +265,7 @@ offset_bottom = 40.0
 script = ExtResource("7_dgc1q")
 
 [node name="RankingPanel" type="Panel" parent="Ranking"]
+visible = false
 layout_mode = 2
 anchor_left = 0.5
 anchor_top = 0.5
@@ -292,6 +301,55 @@ offset_right = 146.0
 offset_bottom = 31.0
 toggle_mode = true
 text = "Ranking"
+
+[node name="ResourcesPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.006
+anchor_top = -0.069
+anchor_right = -0.006
+anchor_bottom = -0.069
+offset_left = 158.052
+offset_top = 49.749
+offset_right = 227.052
+offset_bottom = 81.749
+script = ExtResource("9_7rqtw")
+
+[node name="ResourcesContainer" type="HBoxContainer" parent="ResourcesPanel"]
+layout_mode = 2
+
+[node name="Wood" type="HBoxContainer" parent="ResourcesPanel/ResourcesContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Icon" type="TextureRect" parent="ResourcesPanel/ResourcesContainer/Wood"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_hp6ei")
+stretch_mode = 3
+
+[node name="ItemCount" type="Label" parent="ResourcesPanel/ResourcesContainer/Wood"]
+layout_mode = 2
+text = "0"
+vertical_alignment = 2
+
+[node name="Stone" type="HBoxContainer" parent="ResourcesPanel/ResourcesContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="ResourcesPanel/ResourcesContainer/Stone"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_rfq13")
+stretch_mode = 3
+
+[node name="ItemCount" type="Label" parent="ResourcesPanel/ResourcesContainer/Stone"]
+layout_mode = 2
+text = "0"
+vertical_alignment = 2
 
 [connection signal="mouse_entered" from="AgentCreatorToggle" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="AgentCreatorToggle" to="." method="_on_mouse_exited"]
