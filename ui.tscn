@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bkm4i5405grrr"]
+[gd_scene load_steps=18 format=3 uid="uid://bkm4i5405grrr"]
 
 [ext_resource type="Script" path="res://ui/UI.gd" id="1_bsom3"]
 [ext_resource type="Script" path="res://ui/CodeEditor.gd" id="1_gixgk"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" path="res://ui/ResourcePanel.gd" id="9_7rqtw"]
 [ext_resource type="Texture2D" uid="uid://bdsohiu75t4dy" path="res://assets/HAS/Buildings/HAS Buildings Pack/Resources/Wood.png" id="10_hp6ei"]
 [ext_resource type="Texture2D" uid="uid://dta8l3txsdm3m" path="res://assets/HAS/Buildings/HAS Overworld Starter Pack/SP-Mountains.png" id="11_ij3yt"]
+[ext_resource type="Shader" path="res://addons/lynx_nodes/utils/shaders/ui.gdshader" id="12_k773e"]
+[ext_resource type="Script" path="res://ui/Login.gd" id="12_kpqfr"]
 
 [sub_resource type="CodeHighlighter" id="CodeHighlighter_2lklk"]
 
@@ -21,6 +23,9 @@ font_size = 32
 [sub_resource type="AtlasTexture" id="AtlasTexture_rfq13"]
 atlas = ExtResource("11_ij3yt")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h7sej"]
+shader = ExtResource("12_k773e")
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -155,7 +160,6 @@ offset_bottom = 40.0
 script = ExtResource("4_ss325")
 
 [node name="SettingsPanel" type="Panel" parent="Settings"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -356,6 +360,59 @@ vertical_alignment = 2
 stream = ExtResource("7_e7dui")
 volume_db = -20.155
 
+[node name="LoginScreen" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("12_kpqfr")
+
+[node name="Panel" type="Panel" parent="LoginScreen"]
+self_modulate = Color(0, 0, 0, 1)
+material = SubResource("ShaderMaterial_h7sej")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.0
+offset_top = -20.0
+offset_right = 1272.0
+offset_bottom = 712.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LoginScreen/Panel"]
+layout_mode = 0
+offset_left = 413.0
+offset_top = 271.0
+offset_right = 888.0
+offset_bottom = 376.0
+
+[node name="UsernameLabel" type="Label" parent="LoginScreen/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Username:"
+
+[node name="UsernameTextEdit" type="TextEdit" parent="LoginScreen/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+placeholder_text = "Enter your name"
+
+[node name="LoginButton" type="Button" parent="LoginScreen/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Login"
+
+[node name="PopupError" type="PopupPanel" parent="LoginScreen/Panel"]
+size = Vector2i(260, 40)
+
+[node name="ErrorMessage" type="Label" parent="LoginScreen/Panel/PopupError"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 256.0
+offset_bottom = 36.0
+text = "Please enter your username!"
+horizontal_alignment = 1
+
 [connection signal="button_up" from="AgentCreatorToggle" to="." method="_on_agent_creator_toggle_button_up"]
 [connection signal="mouse_entered" from="AgentCreatorToggle" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="AgentCreatorToggle" to="." method="_on_mouse_exited"]
@@ -382,3 +439,4 @@ volume_db = -20.155
 [connection signal="mouse_entered" from="Ranking/RankingButton" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Ranking/RankingButton" to="." method="_on_mouse_exited"]
 [connection signal="toggled" from="Ranking/RankingButton" to="Ranking" method="_on_ranking_button_toggled"]
+[connection signal="button_up" from="LoginScreen/Panel/VBoxContainer/LoginButton" to="LoginScreen" method="_on_login_button_button_up"]

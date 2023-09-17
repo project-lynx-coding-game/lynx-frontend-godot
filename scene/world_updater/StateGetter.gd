@@ -61,7 +61,7 @@ func _assemble_get_state_url():
 	return url
 	
 func _on_get_state_http_request_request_completed(_result, response_code, _headers, body):
-	if response_code == 200:
+	if response_code == 200 and Globals.USER_IS_LOGGED_IN:
 		json.parse(body.get_string_from_utf8())
 		var response = json.get_data()
 		_update_state(response)
