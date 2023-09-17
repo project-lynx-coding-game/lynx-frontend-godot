@@ -8,5 +8,5 @@ func _init():
 	self.accepted_attributes = ["user_name", "points_updated"]
 
 func _execute():
-	_resources_panel.update_points( self._points_updated)
+	_resources_panel.update_points(self._points_updated)
 

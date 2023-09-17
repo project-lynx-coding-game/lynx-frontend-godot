@@ -38,6 +38,9 @@ func _populate(attributes_json: Dictionary):
 			elif attribute_value is Array[String]:
 				for element in attributes_json.get(accepted_attribute):
 					attribute_value.append(str(element))
+			elif attribute_value is Array[Dictionary]:
+				for element in attributes_json.get(accepted_attribute):
+					attribute_value.append(Dictionary(element))
 			elif attribute_value is Array[Vector2]:
 				for element in attributes_json.get(accepted_attribute):
 					var vector2 = Vector2(element.get("x"), element.get("y"))

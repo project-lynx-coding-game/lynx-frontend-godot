@@ -9,20 +9,17 @@
 [ext_resource type="Script" path="res://ui/Ranking.gd" id="7_dgc1q"]
 [ext_resource type="Script" path="res://ui/AgentOptions.gd" id="7_ft5ov"]
 [ext_resource type="Script" path="res://ui/ResourcePanel.gd" id="9_7rqtw"]
-[ext_resource type="Texture2D" uid="uid://dv0o6i8lyvs6r" path="res://assets/HAS/Overworld/Additional Materials/HAS Overworld 1.1.2/GrassBiome/GB-Trees-and-Mountains.png" id="9_8c7oe"]
+[ext_resource type="Texture2D" uid="uid://bdsohiu75t4dy" path="res://assets/HAS/Buildings/HAS Buildings Pack/Resources/Wood.png" id="10_hp6ei"]
+[ext_resource type="Texture2D" uid="uid://dta8l3txsdm3m" path="res://assets/HAS/Buildings/HAS Overworld Starter Pack/SP-Mountains.png" id="11_ij3yt"]
 
 [sub_resource type="CodeHighlighter" id="CodeHighlighter_2lklk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fkh4e"]
 font_size = 32
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_amfs7"]
-atlas = ExtResource("9_8c7oe")
-region = Rect2(16, 96, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3jew6"]
-atlas = ExtResource("9_8c7oe")
-region = Rect2(16, 144, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfq13"]
+atlas = ExtResource("11_ij3yt")
+region = Rect2(0, 0, 16, 16)
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -323,27 +320,36 @@ layout_mode = 2
 
 [node name="Wood" type="HBoxContainer" parent="ResourcesPanel/ResourcesContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="Icon" type="TextureRect" parent="ResourcesPanel/ResourcesContainer/Wood"]
 layout_mode = 2
-texture = SubResource("AtlasTexture_amfs7")
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_hp6ei")
 stretch_mode = 3
 
 [node name="ItemCount" type="Label" parent="ResourcesPanel/ResourcesContainer/Wood"]
 layout_mode = 2
 text = "0"
+vertical_alignment = 2
 
 [node name="Stone" type="HBoxContainer" parent="ResourcesPanel/ResourcesContainer"]
 layout_mode = 2
+alignment = 1
 
 [node name="Icon" type="TextureRect" parent="ResourcesPanel/ResourcesContainer/Stone"]
 layout_mode = 2
-texture = SubResource("AtlasTexture_3jew6")
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_rfq13")
 stretch_mode = 3
 
 [node name="ItemCount" type="Label" parent="ResourcesPanel/ResourcesContainer/Stone"]
 layout_mode = 2
 text = "0"
+vertical_alignment = 2
 
 [connection signal="mouse_entered" from="AgentCreatorToggle" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="AgentCreatorToggle" to="." method="_on_mouse_exited"]
