@@ -4,12 +4,12 @@
 [ext_resource type="Shader" path="res://addons/lynx_nodes/utils/shaders/color_with_outline.gdshader" id="2_pgs3i"]
 [ext_resource type="Texture2D" uid="uid://cmaf8a5epsw5r" path="res://assets/HAS/Overworld/Universal/Universal-Buildings-and-walls.png" id="3_0bwhg"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5d342"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ibb7"]
 shader = ExtResource("2_pgs3i")
 shader_parameter/is_player = false
 shader_parameter/tint_color = Color(0, 0, 0, 1)
-shader_parameter/line_color = Color(1, 1, 1, 1)
-shader_parameter/line_thickness = 1.0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_thickness = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_00hgk"]
 atlas = ExtResource("3_0bwhg")
@@ -31,5 +31,5 @@ script = ExtResource("1_t24bi")
 action_speed = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_5d342")
+material = SubResource("ShaderMaterial_5ibb7")
 sprite_frames = SubResource("SpriteFrames_kwwvy")

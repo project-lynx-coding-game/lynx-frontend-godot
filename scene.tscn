@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://scene/TooltipsUpdater.gd" id="8_j32hx"]
 [ext_resource type="Script" path="res://scene/AgentDeleter.gd" id="12_3vloe"]
 [ext_resource type="Script" path="res://scene/RankingFetcher.gd" id="12_11l3g"]
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_udycp"]
 texture = ExtResource("2_bxdqr")
 1:0/0 = 0

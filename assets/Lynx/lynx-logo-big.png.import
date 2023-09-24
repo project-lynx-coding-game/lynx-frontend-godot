@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo55hjky513ok"
-path="res://.godot/imported/lynx-logo.jpg-4b3195a4e4c7bd6b69f241a7d19777ce.ctex"
+uid="uid://whpwqcfty4d4"
+path="res://.godot/imported/lynx-logo-big.png-0fcb7df7d29c5c0d282b9bc450341ccb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Lynx/lynx-logo.jpg"
-dest_files=["res://.godot/imported/lynx-logo.jpg-4b3195a4e4c7bd6b69f241a7d19777ce.ctex"]
+source_file="res://assets/Lynx/lynx-logo-big.png"
+dest_files=["res://.godot/imported/lynx-logo-big.png-0fcb7df7d29c5c0d282b9bc450341ccb.ctex"]
 
 [params]
 
