@@ -23,9 +23,9 @@ func _input(event):
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			zoom = zoom * pow(1 + zoom_speed, 1)
 			zoom = clamp(zoom, min_zoom, max_zoom)
+			
 		if event.button_index == MOUSE_BUTTON_MIDDLE:
 			self._reset_camera_position(get_viewport_rect())
-
 func _process(delta):
 	if is_mouse_outside_screen or self.is_mouse_on_gui:
 		return

@@ -19,3 +19,4 @@ func _post_populate():
 func play_global_action(effect):
 	self._audio_node.stream = effect
 	self._audio_node.play()
+	
