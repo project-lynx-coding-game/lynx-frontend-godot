@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ynmbka5a07qq"]
+[gd_scene load_steps=19 format=3 uid="uid://ynmbka5a07qq"]
 
 [ext_resource type="PackedScene" uid="uid://b1ele5lo5n6u1" path="res://scene/world_updater.tscn" id="1_0bk4q"]
 [ext_resource type="PackedScene" uid="uid://bkm4i5405grrr" path="res://ui.tscn" id="1_sys4y"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://scene/TooltipsUpdater.gd" id="8_j32hx"]
 [ext_resource type="Script" path="res://scene/AgentDeleter.gd" id="12_3vloe"]
 [ext_resource type="Script" path="res://scene/RankingFetcher.gd" id="12_11l3g"]
+[ext_resource type="AudioStream" uid="uid://bo5mf8ngttnah" path="res://assets/Music/background_music.mp3" id="12_emngv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_udycp"]
 texture = ExtResource("2_bxdqr")
@@ -983,6 +984,11 @@ script = ExtResource("12_3vloe")
 script = ExtResource("12_11l3g")
 
 [node name="GetRankingHTTPRequest" type="HTTPRequest" parent="RankingFetcher"]
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_emngv")
+volume_db = -40.435
+autoplay = true
 
 [connection signal="create_agent_requested" from="CanvasLayer/UI" to="AgentCreator" method="_on_ui_create_agent_requested"]
 [connection signal="delete_agent_requested" from="CanvasLayer/UI" to="AgentDeleter" method="_on_ui_delete_agent_requested"]
