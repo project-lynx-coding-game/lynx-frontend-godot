@@ -990,6 +990,8 @@ stream = ExtResource("12_emngv")
 volume_db = -40.435
 autoplay = true
 
+[node name="GlobalAudioEffect" type="AudioStreamPlayer" parent="."]
+
 [connection signal="create_agent_requested" from="CanvasLayer/UI" to="AgentCreator" method="_on_ui_create_agent_requested"]
 [connection signal="delete_agent_requested" from="CanvasLayer/UI" to="AgentDeleter" method="_on_ui_delete_agent_requested"]
 [connection signal="disable_camera_movement" from="CanvasLayer/UI" to="Camera2D" method="_on_ui_disable_camera_movement"]
