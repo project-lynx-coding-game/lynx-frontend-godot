@@ -26,6 +26,7 @@ func _input(event):
 			
 		if event.button_index == MOUSE_BUTTON_MIDDLE:
 			self._reset_camera_position(get_viewport_rect())
+
 func _process(delta):
 	if is_mouse_outside_screen or self.is_mouse_on_gui:
 		return
@@ -60,7 +61,6 @@ func _process(delta):
 	
 	if can_move:
 		position = camera_pos
-
 func _reset_camera_position(viewport_rect):
 	position = Vector2(0,  0)
 

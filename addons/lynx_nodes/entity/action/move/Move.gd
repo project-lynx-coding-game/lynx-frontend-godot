@@ -22,8 +22,7 @@ func _execute():
 	var object = get_parent().object
 	
 	object.start_animation(_animation_name)
-	object.play_audio(_animation_effect)
+	object.play_audio(_animation_effect, object._position * 16 )
 	
 	await object.move(Vector2i(object._position) + Vector2i(self._direction), Globals.DEFAULT_ACTION_SPEED / Globals.ACTION_SPEED_MULTIPLIER)
-	
 	object.end_animation()

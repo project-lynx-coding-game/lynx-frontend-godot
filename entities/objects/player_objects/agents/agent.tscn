@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dti8au6u8o8qg" path="res://assets/HAS/IconPack/IconPack 1.0/AllItems/Weapon/Axe/AxeOriginal.png" id="5_clcij"]
 [ext_resource type="Texture2D" uid="uid://bfgb3lp34pb3o" path="res://assets/HAS/IconPack/IconPack 1.0/AllItems/Weapon/Axe/AxeOutline/AxeOutline 2.png" id="8_xhubm"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qs01y"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0yjy0"]
 shader = ExtResource("2_su7av")
 shader_parameter/is_player = false
 shader_parameter/tint_color = Color(0, 0, 0, 1)
@@ -228,7 +228,7 @@ script = ExtResource("1_t2m5c")
 action_speed = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_qs01y")
+material = SubResource("ShaderMaterial_0yjy0")
 sprite_frames = SubResource("SpriteFrames_6onvm")
 animation = &"move_south"
 
@@ -238,5 +238,3 @@ sprite_frames = SubResource("SpriteFrames_k4gfm")
 animation = &"pickaxe"
 
 [node name="SoundEffect" type="AudioStreamPlayer2D" parent="."]
-volume_db = -10.481
-attenuation = 0.0227243
