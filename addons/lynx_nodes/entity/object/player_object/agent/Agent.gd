@@ -56,13 +56,13 @@ func end_active_item_animation(animation_name: String, direction: Vector2):
 		active_item.set_flip_v(false)
 
 #Function used to play sound around agents, like sound animation of action
-func play_audio(effect, obj_position):
-	var screen_size = Vector2i(1280, 720) / camera.zoom.x /2
+func play_audio(effect: Object, obj_position: Vector2i):
+	var screen_size = DisplayServer.window_get_size() / camera.zoom.x /2
 	if obj_position.x + 8 < camera.position.x + screen_size.x and \
 		obj_position.x + 8 > camera.position.x - screen_size.x and \
 		obj_position.y + 8 < camera.position.y + screen_size.y and \
 		obj_position.y + 8 > camera.position.y - screen_size.y:
-		
+		print(typeof(effect))
 		self._audio_node.stream = effect
 		self._audio_node.max_distance = screen_size.x
 		self._audio_node.volume_db = - (11 - camera.zoom.x) * 2

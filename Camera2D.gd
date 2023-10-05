@@ -60,7 +60,7 @@ func _process(delta):
 	
 	if can_move:
 		position = camera_pos
-	
+
 func _reset_camera_position(viewport_rect):
 	position = Vector2(0,  0)
 
