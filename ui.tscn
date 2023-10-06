@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bkm4i5405grrr"]
+[gd_scene load_steps=15 format=3 uid="uid://bkm4i5405grrr"]
 
 [ext_resource type="Script" path="res://ui/UI.gd" id="1_bsom3"]
 [ext_resource type="Script" path="res://ui/CodeEditor.gd" id="1_gixgk"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://ui/Settings.gd" id="4_ss325"]
 [ext_resource type="Script" path="res://ui/Tooltips.gd" id="5_fyncs"]
 [ext_resource type="Script" path="res://ui/Ranking.gd" id="7_dgc1q"]
-[ext_resource type="AudioStream" uid="uid://dwhe2pfkl4no8" path="res://assets/Music/button_press.wav" id="7_e7dui"]
 [ext_resource type="Script" path="res://ui/AgentOptions.gd" id="7_ft5ov"]
 [ext_resource type="Script" path="res://ui/ResourcePanel.gd" id="9_7rqtw"]
 [ext_resource type="Texture2D" uid="uid://bdsohiu75t4dy" path="res://assets/HAS/Buildings/HAS Buildings Pack/Resources/Wood.png" id="10_hp6ei"]
@@ -352,11 +351,6 @@ layout_mode = 2
 text = "0"
 vertical_alignment = 2
 
-[node name="ButtonPress" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_e7dui")
-volume_db = -20.155
-
-[connection signal="button_up" from="AgentCreatorToggle" to="." method="_on_agent_creator_toggle_button_up"]
 [connection signal="mouse_entered" from="AgentCreatorToggle" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="AgentCreatorToggle" to="." method="_on_mouse_exited"]
 [connection signal="toggled" from="AgentCreatorToggle" to="AgentCreator" method="_on_agent_creator_toggle_toggled"]
@@ -373,12 +367,10 @@ volume_db = -20.155
 [connection signal="mouse_entered" from="AgentCreator/Populate" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="AgentCreator/Populate" to="." method="_on_mouse_exited"]
 [connection signal="button_up" from="Settings/SettingsPanel/SaveButton" to="Settings" method="_on_save_button_button_up"]
-[connection signal="button_up" from="Settings/SettingsButton" to="." method="_on_settings_button_button_up"]
 [connection signal="mouse_entered" from="Settings/SettingsButton" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Settings/SettingsButton" to="." method="_on_mouse_exited"]
 [connection signal="toggled" from="Settings/SettingsButton" to="Settings" method="_on_settings_button_toggled"]
 [connection signal="button_up" from="AgentOptions/AgentOptionsPanel/DeleteButton" to="." method="_on_delete_agent_button_up"]
-[connection signal="button_up" from="Ranking/RankingButton" to="." method="_on_ranking_button_button_up"]
 [connection signal="mouse_entered" from="Ranking/RankingButton" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Ranking/RankingButton" to="." method="_on_mouse_exited"]
 [connection signal="toggled" from="Ranking/RankingButton" to="Ranking" method="_on_ranking_button_toggled"]

@@ -63,8 +63,3 @@ func _get_configuration_warnings() -> PackedStringArray:
 			return []
 	
 	return ["Add AnimatedSprite2D as a child."]
-	
-func _setup_audio_stream_player_2d():
-	var Sound = load('res://addons/lynx_nodes/utils/sound/local_sound.tscn')
-	self.audio_stream_player_2d = Sound.instantiate()
-	self.add_child(self.audio_stream_player_2d)

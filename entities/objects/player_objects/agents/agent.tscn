@@ -6,12 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://dti8au6u8o8qg" path="res://assets/HAS/IconPack/IconPack 1.0/AllItems/Weapon/Axe/AxeOriginal.png" id="5_clcij"]
 [ext_resource type="Texture2D" uid="uid://bfgb3lp34pb3o" path="res://assets/HAS/IconPack/IconPack 1.0/AllItems/Weapon/Axe/AxeOutline/AxeOutline 2.png" id="8_xhubm"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bqdlt"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_po2wk"]
 shader = ExtResource("2_su7av")
 shader_parameter/is_player = false
 shader_parameter/tint_color = Color(0, 0, 0, 1)
 shader_parameter/outline_color = Color(1, 1, 1, 1)
-shader_parameter/outline_thickness = 1.0
+shader_parameter/width = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q12n0"]
 atlas = ExtResource("3_xb0nm")
@@ -228,7 +228,7 @@ script = ExtResource("1_t2m5c")
 action_speed = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_bqdlt")
+material = SubResource("ShaderMaterial_po2wk")
 sprite_frames = SubResource("SpriteFrames_6onvm")
 animation = &"move_south"
 
