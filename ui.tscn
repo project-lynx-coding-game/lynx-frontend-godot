@@ -123,7 +123,22 @@ grow_horizontal = 0
 grow_vertical = 2
 placeholder_text = "Y"
 
-[node name="Populate" type="Button" parent="AgentCreator"]
+[node name="Generate" type="Button" parent="AgentCreator"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 1146.0
+offset_top = 232.0
+offset_right = 1280.0
+offset_bottom = 263.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Generate"
+
+[node name="GenerateDebug" type="Button" parent="AgentCreator"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -136,7 +151,7 @@ offset_right = 1280.0
 offset_bottom = 295.0
 grow_horizontal = 0
 grow_vertical = 2
-text = "Populate
+text = "Generate Debug
 "
 
 [node name="ColorRect" type="ColorRect" parent="AgentCreator"]
@@ -230,7 +245,6 @@ offset_bottom = 40.0
 script = ExtResource("7_ft5ov")
 
 [node name="AgentOptionsPanel" type="Panel" parent="AgentOptions"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -270,7 +284,6 @@ offset_bottom = 40.0
 script = ExtResource("7_dgc1q")
 
 [node name="RankingPanel" type="Panel" parent="Ranking"]
-visible = false
 layout_mode = 2
 anchor_left = 0.5
 anchor_top = 0.5
@@ -426,9 +439,12 @@ horizontal_alignment = 1
 [connection signal="mouse_exited" from="AgentCreator/XInput" to="." method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="AgentCreator/YInput" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="AgentCreator/YInput" to="." method="_on_mouse_exited"]
-[connection signal="button_up" from="AgentCreator/Populate" to="." method="_on_populate_button_up"]
-[connection signal="mouse_entered" from="AgentCreator/Populate" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="AgentCreator/Populate" to="." method="_on_mouse_exited"]
+[connection signal="button_up" from="AgentCreator/Generate" to="." method="_on_generate_button_up"]
+[connection signal="mouse_entered" from="AgentCreator/Generate" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="AgentCreator/Generate" to="." method="_on_mouse_exited"]
+[connection signal="button_up" from="AgentCreator/GenerateDebug" to="." method="_on_generate_debug_button_up"]
+[connection signal="mouse_entered" from="AgentCreator/GenerateDebug" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="AgentCreator/GenerateDebug" to="." method="_on_mouse_exited"]
 [connection signal="button_up" from="Settings/SettingsPanel/SaveButton" to="Settings" method="_on_save_button_button_up"]
 [connection signal="button_up" from="Settings/SettingsButton" to="." method="_on_settings_button_button_up"]
 [connection signal="mouse_entered" from="Settings/SettingsButton" to="." method="_on_mouse_entered"]
