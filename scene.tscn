@@ -8,9 +8,9 @@
 [ext_resource type="Script" path="res://scene/Tiles.gd" id="3_cqne8"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="4_xglqh"]
 [ext_resource type="Script" path="res://scene/AgentCreator.gd" id="6_mlocu"]
-[ext_resource type="Script" path="res://scene/MapPopulator.gd" id="7_jlnul"]
 [ext_resource type="Script" path="res://scene/ObjectsContainer.gd" id="7_ol1bq"]
 [ext_resource type="Script" path="res://scene/TooltipsUpdater.gd" id="8_j32hx"]
+[ext_resource type="Script" path="res://scene/MapGenerator.gd" id="9_otgwo"]
 [ext_resource type="Script" path="res://scene/AgentDeleter.gd" id="12_3vloe"]
 [ext_resource type="Script" path="res://scene/RankingFetcher.gd" id="12_11l3g"]
 [ext_resource type="AudioStream" uid="uid://bo5mf8ngttnah" path="res://assets/Music/background_music.mp3" id="12_emngv"]
@@ -961,10 +961,10 @@ script = ExtResource("6_mlocu")
 
 [node name="PostAgentHTTPRequest" type="HTTPRequest" parent="AgentCreator"]
 
-[node name="Populator" type="Node" parent="."]
-script = ExtResource("7_jlnul")
+[node name="Generator" type="Node" parent="."]
+script = ExtResource("9_otgwo")
 
-[node name="PostPopulateHTTPRequest" type="HTTPRequest" parent="Populator"]
+[node name="PostGenerateHTTPRequest" type="HTTPRequest" parent="Generator"]
 use_threads = true
 
 [node name="TooltipsUpdater" type="Node2D" parent="."]
@@ -997,5 +997,6 @@ autoplay = true
 [connection signal="disable_camera_movement" from="CanvasLayer/UI" to="Camera2D" method="_on_ui_disable_camera_movement"]
 [connection signal="enable_camera_movement" from="CanvasLayer/UI" to="Camera2D" method="_on_ui_enable_camera_movement"]
 [connection signal="get_ranking_requested" from="CanvasLayer/UI" to="RankingFetcher" method="_on_ui_get_ranking_requested"]
-[connection signal="post_populate_map_requested" from="CanvasLayer/UI" to="Populator" method="_on_ui_post_populate_map_requested"]
+[connection signal="post_generate_debug_requested" from="CanvasLayer/UI" to="Generator" method="_on_ui_post_generate_debug_requested"]
+[connection signal="post_generate_requested" from="CanvasLayer/UI" to="Generator" method="_on_ui_post_generate_requested"]
 [connection signal="request_completed" from="RankingFetcher/GetRankingHTTPRequest" to="RankingFetcher" method="_on_get_ranking_http_request_request_completed"]
