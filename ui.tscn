@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bkm4i5405grrr"]
+[gd_scene load_steps=22 format=3 uid="uid://bkm4i5405grrr"]
 
 [ext_resource type="Script" path="res://ui/UI.gd" id="1_bsom3"]
 [ext_resource type="Script" path="res://ui/CodeEditor.gd" id="1_gixgk"]
@@ -6,19 +6,22 @@
 [ext_resource type="Script" path="res://OutputConsole.gd" id="4_rw6m0"]
 [ext_resource type="Script" path="res://ui/Settings.gd" id="4_ss325"]
 [ext_resource type="Script" path="res://ui/Tooltips.gd" id="5_fyncs"]
+[ext_resource type="Script" path="res://ui/AgentPanel.gd" id="7_bp5wl"]
 [ext_resource type="Script" path="res://ui/Ranking.gd" id="7_dgc1q"]
 [ext_resource type="AudioStream" uid="uid://dwhe2pfkl4no8" path="res://assets/Music/button_press.wav" id="7_e7dui"]
-[ext_resource type="Script" path="res://ui/AgentOptions.gd" id="7_ft5ov"]
-[ext_resource type="Script" path="res://ui/ResourcePanel.gd" id="9_7rqtw"]
+[ext_resource type="Script" path="res://ui/ResourcesPanel.gd" id="9_psibt"]
 [ext_resource type="Texture2D" uid="uid://bdsohiu75t4dy" path="res://assets/HAS/Buildings/HAS Buildings Pack/Resources/Wood.png" id="10_hp6ei"]
 [ext_resource type="Texture2D" uid="uid://dta8l3txsdm3m" path="res://assets/HAS/Buildings/HAS Overworld Starter Pack/SP-Mountains.png" id="11_ij3yt"]
 [ext_resource type="Shader" path="res://addons/lynx_nodes/utils/shaders/ui.gdshader" id="12_k773e"]
 [ext_resource type="Script" path="res://ui/Login.gd" id="12_kpqfr"]
+[ext_resource type="Script" path="res://ui/AgentList/AgentList.gd" id="15_ronof"]
 
 [sub_resource type="CodeHighlighter" id="CodeHighlighter_2lklk"]
 
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_87dip"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_fkh4e"]
-font_size = 32
+font_size = 24
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rfq13"]
 atlas = ExtResource("11_ij3yt")
@@ -27,13 +30,15 @@ region = Rect2(0, 0, 16, 16)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h7sej"]
 shader = ExtResource("12_k773e")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xrg1v"]
+
 [node name="UI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 1.0
-offset_top = -1.0
-offset_right = 1280.0
-offset_bottom = 720.0
+offset_left = 4.0
+offset_top = -4.0
+offset_right = 1283.0
+offset_bottom = 717.0
 script = ExtResource("1_bsom3")
 
 [node name="AgentCreatorToggle" type="Button" parent="."]
@@ -66,9 +71,10 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -6.0
 offset_top = 359.0
 offset_right = 947.0
-offset_bottom = 721.0
+offset_bottom = 726.0
 grow_horizontal = 2
 grow_vertical = 0
 highlight_current_line = true
@@ -159,13 +165,15 @@ layout_mode = 0
 offset_left = 947.0
 offset_top = 359.0
 offset_right = 1281.0
-offset_bottom = 720.0
+offset_bottom = 727.0
 color = Color(0.156863, 0.164706, 0.211765, 1)
 
 [node name="OutputConsole" type="RichTextLabel" parent="AgentCreator/ColorRect"]
 layout_mode = 0
-offset_right = 332.0
-offset_bottom = 362.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 327.0
+offset_bottom = 358.0
 script = ExtResource("4_rw6m0")
 
 [node name="Settings" type="Control" parent="."]
@@ -175,6 +183,7 @@ offset_bottom = 40.0
 script = ExtResource("4_ss325")
 
 [node name="SettingsPanel" type="Panel" parent="Settings"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -238,44 +247,135 @@ layout_mode = 2
 [node name="ObjectCounts" type="VBoxContainer" parent="Tooltips/TileData"]
 layout_mode = 2
 
-[node name="AgentOptions" type="Control" parent="."]
+[node name="AgentPanel" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("7_ft5ov")
+script = ExtResource("7_bp5wl")
 
-[node name="AgentOptionsPanel" type="Panel" parent="AgentOptions"]
+[node name="AgentPanel" type="Panel" parent="AgentPanel"]
+self_modulate = Color(0.211765, 0.203922, 0.156863, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -19.0
-offset_top = 13.0
-offset_right = 175.0
-offset_bottom = 100.0
+offset_left = 314.0
+offset_top = -19.0
+offset_right = 1050.0
+offset_bottom = 331.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DeleteButton" type="Button" parent="AgentOptions/AgentOptionsPanel"]
+[node name="DeleteButton" type="Button" parent="AgentPanel/AgentPanel"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 37.0
-offset_right = 67.0
-offset_bottom = 68.0
+offset_left = 4.0
+offset_top = 29.0
+offset_right = 63.0
+offset_bottom = 60.0
 text = "Delete"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="AgentOptions/AgentOptionsPanel"]
+[node name="FollowButton" type="Button" parent="AgentPanel/AgentPanel"]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 29.0
+offset_right = 128.0
+offset_bottom = 60.0
+text = "Follow"
+
+[node name="UnfollowButton" type="Button" parent="AgentPanel/AgentPanel"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 29.0
+offset_right = 214.0
+offset_bottom = 60.0
+text = "Unfollow"
+
+[node name="AgentId" type="VBoxContainer" parent="AgentPanel/AgentPanel"]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 1.0
 offset_right = 142.0
 offset_bottom = 27.0
 
-[node name="AgentIdLabel" type="Label" parent="AgentOptions/AgentOptionsPanel/VBoxContainer"]
+[node name="AgentIdLabel" type="Label" parent="AgentPanel/AgentPanel/AgentId"]
 layout_mode = 2
 text = "Agent: "
+
+[node name="AgentCodeLabel" type="Label" parent="AgentPanel/AgentPanel"]
+layout_mode = 0
+offset_left = 371.0
+offset_top = 11.0
+offset_right = 474.0
+offset_bottom = 37.0
+text = "Agent's code:"
+
+[node name="AgentCode" type="CodeEdit" parent="AgentPanel/AgentPanel"]
+layout_mode = 0
+offset_left = 372.0
+offset_top = 36.0
+offset_right = 735.0
+offset_bottom = 349.0
+editable = false
+highlight_current_line = true
+draw_tabs = true
+syntax_highlighter = SubResource("CodeHighlighter_87dip")
+script = ExtResource("1_gixgk")
+
+[node name="AgentInventory" type="ColorRect" parent="AgentPanel/AgentPanel"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 231.0
+offset_right = 372.0
+offset_bottom = 350.0
+color = Color(0.211765, 0.203922, 0.156863, 1)
+
+[node name="Label" type="Label" parent="AgentPanel/AgentPanel/AgentInventory"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 9.0
+offset_right = 142.0
+offset_bottom = 35.0
+text = "Agent's inventory:"
+
+[node name="Text" type="RichTextLabel" parent="AgentPanel/AgentPanel/AgentInventory"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 35.0
+offset_right = 370.0
+offset_bottom = 118.0
+text = "
+"
+
+[node name="AgentInformation" type="RichTextLabel" parent="AgentPanel/AgentPanel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 63.0
+offset_right = 368.0
+offset_bottom = 137.0
+
+[node name="AgentPerformance" type="ColorRect" parent="AgentPanel/AgentPanel"]
+layout_mode = 0
+offset_top = 142.0
+offset_right = 372.0
+offset_bottom = 231.0
+color = Color(0.211765, 0.203922, 0.156863, 1)
+
+[node name="Label" type="Label" parent="AgentPanel/AgentPanel/AgentPerformance"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 164.0
+offset_bottom = 28.0
+text = "Agent's performance"
+
+[node name="Text" type="RichTextLabel" parent="AgentPanel/AgentPanel/AgentPerformance"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 29.0
+offset_right = 369.0
+offset_bottom = 94.0
 
 [node name="Ranking" type="Control" parent="."]
 anchors_preset = 0
@@ -284,6 +384,7 @@ offset_bottom = 40.0
 script = ExtResource("7_dgc1q")
 
 [node name="RankingPanel" type="Panel" parent="Ranking"]
+visible = false
 layout_mode = 2
 anchor_left = 0.5
 anchor_top = 0.5
@@ -314,8 +415,8 @@ offset_bottom = 707.0
 
 [node name="RankingButton" type="Button" parent="Ranking"]
 layout_mode = 0
-offset_left = 75.0
-offset_right = 146.0
+offset_left = 73.0
+offset_right = 144.0
 offset_bottom = 31.0
 toggle_mode = true
 text = "Ranking"
@@ -323,15 +424,12 @@ text = "Ranking"
 [node name="ResourcesPanel" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.006
-anchor_top = -0.069
-anchor_right = -0.006
-anchor_bottom = -0.069
-offset_left = 158.052
-offset_top = 49.749
-offset_right = 227.052
-offset_bottom = 81.749
-script = ExtResource("9_7rqtw")
+anchor_left = 0.118
+anchor_right = 0.118
+offset_left = 111.078
+offset_right = 181.078
+offset_bottom = 29.0
+script = ExtResource("9_psibt")
 
 [node name="ResourcesContainer" type="HBoxContainer" parent="ResourcesPanel"]
 layout_mode = 2
@@ -374,12 +472,14 @@ stream = ExtResource("7_e7dui")
 volume_db = -20.155
 
 [node name="LoginScreen" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("12_kpqfr")
 
 [node name="Panel" type="Panel" parent="LoginScreen"]
+visible = false
 self_modulate = Color(0, 0, 0, 1)
 material = SubResource("ShaderMaterial_h7sej")
 layout_mode = 1
@@ -426,6 +526,47 @@ offset_bottom = 36.0
 text = "Please enter your username!"
 horizontal_alignment = 1
 
+[node name="Agents" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("15_ronof")
+
+[node name="AgentPanel" type="Panel" parent="Agents"]
+visible = false
+self_modulate = Color(0.211765, 0.239216, 0.290196, 1)
+material = SubResource("ShaderMaterial_xrg1v")
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = 14.0
+offset_right = 312.0
+offset_bottom = 198.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Agents/AgentPanel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 330.0
+offset_bottom = 181.0
+
+[node name="AgentListContainer" type="VBoxContainer" parent="Agents/AgentPanel/ScrollContainer"]
+layout_mode = 2
+
+[node name="AgentsButton" type="Button" parent="Agents"]
+layout_mode = 0
+offset_left = 148.0
+offset_right = 219.0
+offset_bottom = 31.0
+toggle_mode = true
+text = "Agents"
+
 [connection signal="button_up" from="AgentCreatorToggle" to="." method="_on_agent_creator_toggle_button_up"]
 [connection signal="mouse_entered" from="AgentCreatorToggle" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="AgentCreatorToggle" to="." method="_on_mouse_exited"]
@@ -445,14 +586,21 @@ horizontal_alignment = 1
 [connection signal="button_up" from="AgentCreator/GenerateDebug" to="." method="_on_generate_debug_button_up"]
 [connection signal="mouse_entered" from="AgentCreator/GenerateDebug" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="AgentCreator/GenerateDebug" to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="AgentCreator/ColorRect/OutputConsole" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="AgentCreator/ColorRect/OutputConsole" to="." method="_on_mouse_exited"]
 [connection signal="button_up" from="Settings/SettingsPanel/SaveButton" to="Settings" method="_on_save_button_button_up"]
 [connection signal="button_up" from="Settings/SettingsButton" to="." method="_on_settings_button_button_up"]
 [connection signal="mouse_entered" from="Settings/SettingsButton" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Settings/SettingsButton" to="." method="_on_mouse_exited"]
 [connection signal="toggled" from="Settings/SettingsButton" to="Settings" method="_on_settings_button_toggled"]
-[connection signal="button_up" from="AgentOptions/AgentOptionsPanel/DeleteButton" to="." method="_on_delete_agent_button_up"]
+[connection signal="button_up" from="AgentPanel/AgentPanel/DeleteButton" to="." method="_on_delete_agent_button_up"]
+[connection signal="pressed" from="AgentPanel/AgentPanel/FollowButton" to="AgentPanel" method="_on_follow_button_pressed"]
+[connection signal="pressed" from="AgentPanel/AgentPanel/UnfollowButton" to="AgentPanel" method="_on_unfollow_button_pressed"]
 [connection signal="button_up" from="Ranking/RankingButton" to="." method="_on_ranking_button_button_up"]
 [connection signal="mouse_entered" from="Ranking/RankingButton" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Ranking/RankingButton" to="." method="_on_mouse_exited"]
 [connection signal="toggled" from="Ranking/RankingButton" to="Ranking" method="_on_ranking_button_toggled"]
 [connection signal="button_up" from="LoginScreen/Panel/VBoxContainer/LoginButton" to="LoginScreen" method="_on_login_button_button_up"]
+[connection signal="mouse_entered" from="Agents/AgentsButton" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Agents/AgentsButton" to="." method="_on_mouse_exited"]
+[connection signal="toggled" from="Agents/AgentsButton" to="Agents" method="_on_agents_button_toggled"]

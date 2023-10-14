@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwjjibhx2lgne"]
+
+[ext_resource type="Script" path="res://ui/AgentList/AgentContainer.gd" id="1_jka2i"]
+[ext_resource type="Texture2D" uid="uid://dymxgco2w8mdk" path="res://addons/lynx_nodes/utils/icons/information.png" id="2_svf7f"]
+[ext_resource type="Texture2D" uid="uid://bnrohp1hv8ugw" path="res://addons/lynx_nodes/utils/icons/remove.png" id="3_01kyc"]
+[ext_resource type="Texture2D" uid="uid://df3bkrrtrsypx" path="res://addons/lynx_nodes/utils/icons/map.png" id="4_6nnhr"]
+[ext_resource type="Texture2D" uid="uid://5pq2gi5lihnn" path="res://addons/lynx_nodes/utils/icons/bin.png" id="5_atfyg"]
+
+[node name="AgentContainer" type="VBoxContainer"]
+script = ExtResource("1_jka2i")
+
+[node name="AgentRow" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="AgentID" type="Label" parent="AgentRow"]
+layout_mode = 2
+
+[node name="AgentStatus" type="Label" parent="AgentRow"]
+layout_mode = 2
+
+[node name="ShowDetails" type="TextureButton" parent="AgentRow"]
+layout_mode = 2
+texture_normal = ExtResource("2_svf7f")
+
+[node name="DeleteAgentButton" type="TextureButton" parent="AgentRow"]
+layout_mode = 2
+texture_normal = ExtResource("3_01kyc")
+
+[node name="SetCameraButton" type="TextureButton" parent="AgentRow"]
+layout_mode = 2
+texture_normal = ExtResource("4_6nnhr")
+
+[node name="RemoveFromListButton" type="TextureButton" parent="AgentRow"]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("5_atfyg")
+
+[node name="DeleteAgentFromListHTTPRequest" type="HTTPRequest" parent="AgentRow"]
+
+[node name="AgentInfoContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="AgentInformation" type="Label" parent="AgentInfoContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="AgentRow/ShowDetails" to="." method="_on_show_details_pressed"]
+[connection signal="pressed" from="AgentRow/DeleteAgentButton" to="." method="_on_delete_agent_button_pressed"]
+[connection signal="pressed" from="AgentRow/SetCameraButton" to="." method="_on_set_camera_button_pressed"]
+[connection signal="pressed" from="AgentRow/RemoveFromListButton" to="." method="_on_remove_from_list_button_pressed"]

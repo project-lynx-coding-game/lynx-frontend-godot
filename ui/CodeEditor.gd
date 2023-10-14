@@ -10,7 +10,6 @@ const keywords = ['and', 'assert', 'break', 'class', 'continue', 'def', 'del', '
 const keyword_color = "#8be9fd"
 const comment_color = "#6272a4"
 const string_color = "#f1fa8c"
-
 const background_color = "#282a36"
 const function_color = "#50fa7b"
 const number_color = "#ffb86c"

@@ -8,6 +8,13 @@ extends Camera2D
 @export var min_zoom = Vector2(1.0, 1.0)
 var is_mouse_outside_screen = false
 var is_mouse_on_gui = false
+var target_position: Vector2 = Vector2()
+var is_moving_to_target : bool = false
+var object_to_follow: Node2D = null
+
+func move_to_position(target: Vector2):
+	target_position = target
+	is_moving_to_target = true
 
 func _notification(what):
 	if what == NOTIFICATION_WM_MOUSE_EXIT:
@@ -16,7 +23,7 @@ func _notification(what):
 		is_mouse_outside_screen = false
 
 func _input(event):
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and not is_mouse_on_gui:
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			zoom = zoom / pow(1 + zoom_speed, 1)
 			zoom = clamp(zoom, min_zoom, max_zoom)
@@ -27,6 +34,15 @@ func _input(event):
 			self._reset_camera_position(get_viewport_rect())
 
 func _process(delta):
+	follow_object(delta)
+	handle_target_movement(delta)
+	move_camera_at_screen_edge(delta)
+
+func follow_object(delta):
+	if self.object_to_follow:
+		position = position.lerp(object_to_follow.global_position, smoothness * delta)
+
+func move_camera_at_screen_edge(delta: float):		
 	if is_mouse_outside_screen or self.is_mouse_on_gui:
 		return
 	
@@ -60,6 +76,11 @@ func _process(delta):
 	
 	if can_move:
 		position = camera_pos
+
+func handle_target_movement(delta: float):
+	if is_moving_to_target:
+		position = position.lerp(target_position, smoothness * delta)
+		is_moving_to_target = position.distance_to(target_position) >= 1.0
 
 func _reset_camera_position(viewport_rect):
 	position = Vector2(0,  0)
