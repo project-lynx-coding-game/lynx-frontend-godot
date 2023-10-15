@@ -15,4 +15,4 @@ func populate_ranking(ranking: Array):
 
 func _on_ranking_button_toggled(button_pressed):
 	get_node("RankingPanel").visible = button_pressed
-	var response = get_parent().get_ranking_requested.emit()
+	get_parent().get_ranking_requested.emit()

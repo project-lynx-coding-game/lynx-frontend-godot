@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ynmbka5a07qq"]
+[gd_scene load_steps=22 format=3 uid="uid://ynmbka5a07qq"]
 
 [ext_resource type="PackedScene" uid="uid://b1ele5lo5n6u1" path="res://scene/world_updater.tscn" id="1_0bk4q"]
 [ext_resource type="PackedScene" uid="uid://bkm4i5405grrr" path="res://ui.tscn" id="1_sys4y"]
@@ -14,6 +14,9 @@
 [ext_resource type="Script" path="res://scene/AgentDeleter.gd" id="12_3vloe"]
 [ext_resource type="Script" path="res://scene/RankingFetcher.gd" id="12_11l3g"]
 [ext_resource type="AudioStream" uid="uid://bo5mf8ngttnah" path="res://assets/Music/background_music.mp3" id="12_emngv"]
+[ext_resource type="Script" path="res://scene/AgentsFetcher.gd" id="15_lya6r"]
+[ext_resource type="Script" path="res://scene/AgentFetcher.gd" id="16_1kj1t"]
+[ext_resource type="Script" path="res://scene/ResourcesFetcher.gd" id="17_hfgo1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_udycp"]
 texture = ExtResource("2_bxdqr")
@@ -992,11 +995,32 @@ autoplay = true
 
 [node name="GlobalAudioEffect" type="AudioStreamPlayer" parent="."]
 
+[node name="AgentsFetcher" type="Node" parent="."]
+script = ExtResource("15_lya6r")
+
+[node name="GetAgentsHTPPRequest" type="HTTPRequest" parent="AgentsFetcher"]
+
+[node name="AgentFetcher" type="Node" parent="."]
+script = ExtResource("16_1kj1t")
+
+[node name="GetAgentHTTPRequest" type="HTTPRequest" parent="AgentFetcher"]
+
+[node name="ResourcesFetcher" type="Node" parent="."]
+script = ExtResource("17_hfgo1")
+
+[node name="GetResourcesHTTPRequest" type="HTTPRequest" parent="ResourcesFetcher"]
+
 [connection signal="create_agent_requested" from="CanvasLayer/UI" to="AgentCreator" method="_on_ui_create_agent_requested"]
 [connection signal="delete_agent_requested" from="CanvasLayer/UI" to="AgentDeleter" method="_on_ui_delete_agent_requested"]
 [connection signal="disable_camera_movement" from="CanvasLayer/UI" to="Camera2D" method="_on_ui_disable_camera_movement"]
 [connection signal="enable_camera_movement" from="CanvasLayer/UI" to="Camera2D" method="_on_ui_enable_camera_movement"]
+[connection signal="get_agent_requested" from="CanvasLayer/UI" to="AgentFetcher" method="_on_ui_get_agent_requested"]
+[connection signal="get_agents_requested" from="CanvasLayer/UI" to="AgentsFetcher" method="_on_ui_get_agents_requested"]
 [connection signal="get_ranking_requested" from="CanvasLayer/UI" to="RankingFetcher" method="_on_ui_get_ranking_requested"]
+[connection signal="get_resources_requested" from="CanvasLayer/UI" to="ResourcesFetcher" method="_on_ui_get_resources_requested"]
 [connection signal="post_generate_debug_requested" from="CanvasLayer/UI" to="Generator" method="_on_ui_post_generate_debug_requested"]
 [connection signal="post_generate_requested" from="CanvasLayer/UI" to="Generator" method="_on_ui_post_generate_requested"]
 [connection signal="request_completed" from="RankingFetcher/GetRankingHTTPRequest" to="RankingFetcher" method="_on_get_ranking_http_request_request_completed"]
+[connection signal="request_completed" from="AgentsFetcher/GetAgentsHTPPRequest" to="AgentsFetcher" method="_on_get_agents_htpp_request_request_completed"]
+[connection signal="request_completed" from="AgentFetcher/GetAgentHTTPRequest" to="AgentFetcher" method="_on_get_agent_http_request_request_completed"]
+[connection signal="request_completed" from="ResourcesFetcher/GetResourcesHTTPRequest" to="ResourcesFetcher" method="_on_get_resources_http_request_request_completed"]

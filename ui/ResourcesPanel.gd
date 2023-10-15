@@ -1,8 +1,8 @@
 extends Control
 
-func update_points(points_updated: Dictionary):
-	for resource_name in points_updated:
-		var points = points_updated[resource_name]
+func update_resources(resources_updated: Dictionary):
+	for resource_name in resources_updated:
+		var points = resources_updated[resource_name]
 		var resource_node_path = "ResourcesContainer/%s/ItemCount" % resource_name
 		var resource = get_node(resource_node_path)
 		var current_resource_points = int(resource.text)
