@@ -472,14 +472,12 @@ stream = ExtResource("7_e7dui")
 volume_db = -20.155
 
 [node name="LoginScreen" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("12_kpqfr")
 
 [node name="Panel" type="Panel" parent="LoginScreen"]
-visible = false
 self_modulate = Color(0, 0, 0, 1)
 material = SubResource("ShaderMaterial_h7sej")
 layout_mode = 1
