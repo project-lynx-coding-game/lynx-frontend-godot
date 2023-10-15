@@ -1020,6 +1020,7 @@ script = ExtResource("17_hfgo1")
 [connection signal="get_resources_requested" from="CanvasLayer/UI" to="ResourcesFetcher" method="_on_ui_get_resources_requested"]
 [connection signal="post_generate_debug_requested" from="CanvasLayer/UI" to="Generator" method="_on_ui_post_generate_debug_requested"]
 [connection signal="post_generate_requested" from="CanvasLayer/UI" to="Generator" method="_on_ui_post_generate_requested"]
+[connection signal="request_completed" from="AgentCreator/PostAgentHTTPRequest" to="AgentCreator" method="_on_post_agent_http_request_request_completed"]
 [connection signal="request_completed" from="RankingFetcher/GetRankingHTTPRequest" to="RankingFetcher" method="_on_get_ranking_http_request_request_completed"]
 [connection signal="request_completed" from="AgentsFetcher/GetAgentsHTPPRequest" to="AgentsFetcher" method="_on_get_agents_htpp_request_request_completed"]
 [connection signal="request_completed" from="AgentFetcher/GetAgentHTTPRequest" to="AgentFetcher" method="_on_get_agent_http_request_request_completed"]
