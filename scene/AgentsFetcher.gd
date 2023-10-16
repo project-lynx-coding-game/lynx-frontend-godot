@@ -19,7 +19,6 @@ func _on_get_agents_htpp_request_request_completed(result, response_code, header
 	if response_code == 200:
 		json.parse(body.get_string_from_utf8())
 		var response = json.get_data()
-		print(response)
 		self.agents.handle_agents(response)
 
 func _on_ui_get_agents_requested():

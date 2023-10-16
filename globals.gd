@@ -7,5 +7,5 @@ var DEFAULT_ACTION_SPEED: float = 0.5
 var ACTION_SPEED_MULTIPLIER: int
 var OBJECTS_IN_CREATION: Array[int] = []
 var BUSY_HTTP_STATUSES: Array[int] = [HTTPClient.STATUS_CONNECTING, HTTPClient.STATUS_REQUESTING]
-var USER_ID: String = "XDD"
-var USER_IS_LOGGED_IN: bool = true
+var USER_ID: String = ""
+var USER_IS_LOGGED_IN: bool = false

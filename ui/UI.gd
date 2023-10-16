@@ -10,6 +10,7 @@ signal get_ranking_requested()
 signal get_agents_requested()
 signal get_resources_requested()
 signal get_agent_requested(agent_id: int)
+signal buy_slot_requested()
 
 @onready var code_editor = get_node("AgentCreator/CodeEditor")
 @onready var x_input = get_node("AgentCreator/XInput")
