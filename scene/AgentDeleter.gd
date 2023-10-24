@@ -16,6 +16,10 @@ func delete_agent(agent_id):
 
 func _on_ui_delete_agent_requested(agent_id: int):
 	var current_followed_object = camera.object_to_follow
+	var object = await Globals.WORLD_UPDATER.objects_container.get_object_by_id(agent_id)
+	if object == null:
+		return
+		
 	if current_followed_object and current_followed_object._id == agent_id:
 		camera.object_to_follow = null
 		
