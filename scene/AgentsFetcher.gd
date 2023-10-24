@@ -16,12 +16,10 @@ func get_agents():
 			push_error("[ERROR] Could not GET Agents: %s" % [result])
 
 func _on_get_agents_htpp_request_request_completed(result, response_code, headers, body):
-	var agents = []
 	if response_code == 200:
 		json.parse(body.get_string_from_utf8())
-		agents = json.get_data()
-	
-	self.agents.populate(agents)
+		var response = json.get_data()
+		self.agents.handle_agents(response)
 
 func _on_ui_get_agents_requested():
 	self.get_agents()

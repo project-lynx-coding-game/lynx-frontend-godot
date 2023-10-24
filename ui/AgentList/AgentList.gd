@@ -9,6 +9,27 @@ func clear_agents():
 	for child in agent_list_container.get_children():
 		child.queue_free()  
 
+func handle_agents(agents_response: Dictionary):
+	if agents_response == {}:
+		return 
+		
+	self.populate(agents_response["agents"])
+	self.add_agent_ratio(agents_response["number_of_agents"], agents_response["agent_max"])
+	self.add_agent_cost(agents_response["slot_cost"])
+	
+func add_agent_ratio(number_of_agent: int, agent_max: int):
+	var agent_ratio = "Slot ratio: %s/%s" % [number_of_agent, agent_max]
+	get_node("AgentPanel/AgentsRatio").text = agent_ratio
+
+func add_agent_cost(slot_cost: Dictionary):
+	var cost_string = "Slot cost: "
+	var keys = slot_cost.keys()
+	var values = slot_cost.values()
+	for i in range(slot_cost.size()):
+		cost_string += "%s: %s, " % [keys[i], values[i]]
+	
+	cost_string = cost_string.trim_suffix(", ")
+	get_node("AgentPanel/SlotCost").text = cost_string
 
 func populate(agents: Array):
 	self.clear_agents()
@@ -21,7 +42,17 @@ func add_agent(agent_data : Dictionary):
 	agent_list_container.add_child(agent_container_instance)
 	agent_container_instance.initialize(agent_data)
 
+func show_communication(message: String):
+	var dialog = self.get_node("Communication")
+	dialog.dialog_text = message
+	dialog.popup_centered()
+	get_parent().get_agents_requested.emit()
+
 func _on_agents_button_toggled(button_pressed):
 	get_node("../ButtonPress").play()
 	get_node("AgentPanel").visible = button_pressed
 	get_parent().get_agents_requested.emit()
+
+func _on_buy_slot_button_pressed():
+	get_node("../ButtonPress").play()
+	get_parent().buy_slot_requested.emit()

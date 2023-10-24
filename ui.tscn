@@ -27,10 +27,10 @@ font_size = 24
 atlas = ExtResource("11_ij3yt")
 region = Rect2(0, 0, 16, 16)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xrg1v"]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h7sej"]
 shader = ExtResource("12_k773e")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xrg1v"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -175,6 +175,11 @@ offset_top = 6.0
 offset_right = 327.0
 offset_bottom = 358.0
 script = ExtResource("4_rw6m0")
+
+[node name="CreateAgentWarningDialog" type="AcceptDialog" parent="AgentCreator"]
+title = "Warning"
+initial_position = 1
+size = Vector2i(404, 100)
 
 [node name="Settings" type="Control" parent="."]
 anchors_preset = 0
@@ -471,6 +476,70 @@ vertical_alignment = 2
 stream = ExtResource("7_e7dui")
 volume_db = -20.155
 
+[node name="Agents" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("15_ronof")
+
+[node name="AgentPanel" type="Panel" parent="Agents"]
+visible = false
+self_modulate = Color(0.211765, 0.239216, 0.290196, 1)
+material = SubResource("ShaderMaterial_xrg1v")
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = 14.0
+offset_right = 312.0
+offset_bottom = 198.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AgentsRatio" type="RichTextLabel" parent="Agents/AgentPanel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 223.0
+offset_bottom = 26.0
+
+[node name="SlotCost" type="RichTextLabel" parent="Agents/AgentPanel"]
+layout_mode = 0
+offset_top = 60.0
+offset_right = 328.0
+offset_bottom = 87.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Agents/AgentPanel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 90.0
+offset_right = 328.0
+offset_bottom = 183.0
+
+[node name="AgentListContainer" type="VBoxContainer" parent="Agents/AgentPanel/ScrollContainer"]
+layout_mode = 2
+
+[node name="BuySlotButton" type="Button" parent="Agents/AgentPanel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 27.0
+offset_right = 72.0
+offset_bottom = 58.0
+text = "Buy slot"
+
+[node name="AgentsButton" type="Button" parent="Agents"]
+layout_mode = 0
+offset_left = 148.0
+offset_right = 219.0
+offset_bottom = 31.0
+toggle_mode = true
+text = "Agents"
+
+[node name="Communication" type="AcceptDialog" parent="Agents"]
+
 [node name="LoginScreen" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
@@ -486,7 +555,7 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -22.0
+offset_left = -31.0
 offset_top = -20.0
 offset_right = 1272.0
 offset_bottom = 712.0
@@ -524,47 +593,6 @@ offset_bottom = 36.0
 text = "Please enter your username!"
 horizontal_alignment = 1
 
-[node name="Agents" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("15_ronof")
-
-[node name="AgentPanel" type="Panel" parent="Agents"]
-visible = false
-self_modulate = Color(0.211765, 0.239216, 0.290196, 1)
-material = SubResource("ShaderMaterial_xrg1v")
-layout_mode = 2
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -18.0
-offset_top = 14.0
-offset_right = 312.0
-offset_bottom = 198.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Agents/AgentPanel"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 2.0
-offset_right = 330.0
-offset_bottom = 181.0
-
-[node name="AgentListContainer" type="VBoxContainer" parent="Agents/AgentPanel/ScrollContainer"]
-layout_mode = 2
-
-[node name="AgentsButton" type="Button" parent="Agents"]
-layout_mode = 0
-offset_left = 148.0
-offset_right = 219.0
-offset_bottom = 31.0
-toggle_mode = true
-text = "Agents"
-
 [connection signal="button_up" from="AgentCreatorToggle" to="." method="_on_agent_creator_toggle_button_up"]
 [connection signal="mouse_entered" from="AgentCreatorToggle" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="AgentCreatorToggle" to="." method="_on_mouse_exited"]
@@ -598,7 +626,8 @@ text = "Agents"
 [connection signal="mouse_entered" from="Ranking/RankingButton" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Ranking/RankingButton" to="." method="_on_mouse_exited"]
 [connection signal="toggled" from="Ranking/RankingButton" to="Ranking" method="_on_ranking_button_toggled"]
-[connection signal="button_up" from="LoginScreen/Panel/VBoxContainer/LoginButton" to="LoginScreen" method="_on_login_button_button_up"]
+[connection signal="pressed" from="Agents/AgentPanel/BuySlotButton" to="Agents" method="_on_buy_slot_button_pressed"]
 [connection signal="mouse_entered" from="Agents/AgentsButton" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Agents/AgentsButton" to="." method="_on_mouse_exited"]
 [connection signal="toggled" from="Agents/AgentsButton" to="Agents" method="_on_agents_button_toggled"]
+[connection signal="button_up" from="LoginScreen/Panel/VBoxContainer/LoginButton" to="LoginScreen" method="_on_login_button_button_up"]

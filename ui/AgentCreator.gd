@@ -22,6 +22,10 @@ func hide_agent_creator():
 	self.get_node("GenerateDebug").hide()
 	self.get_node("ColorRect").hide()
 
+func show_warning(message: String):
+	var dialog = self.get_node("CreateAgentWarningDialog")
+	dialog.dialog_text = message
+	dialog.popup_centered()
 
 func _on_agent_creator_toggle_toggled(button_pressed):
 	self.set_visibility(button_pressed)

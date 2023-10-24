@@ -47,6 +47,9 @@ func _on_show_details_pressed():
 
 func _on_set_camera_button_pressed():
 	var object = await Globals.WORLD_UPDATER.objects_container.get_object_by_id(agent_data["id"])
+	if object == null:
+		return
+		
 	camera.move_to_position(object.position)
 
 func _on_remove_from_list_button_pressed():

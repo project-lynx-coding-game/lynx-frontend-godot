@@ -22,4 +22,4 @@ func _on_get_resources_http_request_request_completed(result, response_code, hea
 	if response_code == 200:
 		json.parse(body.get_string_from_utf8())
 		var response = json.get_data()
-		self.resources_panel.update_resources(json.get_data())
+		self.resources_panel.update_resources(response)
